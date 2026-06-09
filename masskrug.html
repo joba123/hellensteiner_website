@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hellensteiner Bräu</title>
+  <link rel="stylesheet" href="style_shop.css">
+  <link rel="stylesheet" href="style.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="logo_klar.png">
+</head>
+<body>
+
+  <header>
+        <a href="index.html">
+            <div class="logo">
+                <img src="logo_neu.png" alt="Hellensteiner Logo">
+            </div>
+        </a>
+        <input type="checkbox" id="menu-togglen">
+        <label for="menu-togglen" class="burger" aria-label="Menü öffnen oder schließen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="Shop.html"><u>Shop</u></a></li>
+                <li><a href="historie.html">Historie</a></li>
+                <li><a href="biergarten.html">Biergarten</a></li>
+                <li><a href="freunde_club.html">Freunde Club</a></li>
+                <li><a href="karriere.html">Karriere</a></li>
+            </ul>
+        </nav>
+  </header>
+
+  <section class="bier-detail">
+    <div class="bier-container">
+
+<div class="bier-bild slider">
+  <input type="radio" name="hefe" id="hefe-s1" checked>
+  <input type="radio" name="hefe" id="hefe-s2">
+
+  
+  <div class="slides">
+    <div class="slide"><img src="hellensteiner_masskrug.png" alt="Hellensteiner Masskrug Bild 1"></div>
+    <div class="slide"><img src="hellensteiner_masskrug2.png" alt="Hellensteiner Masskrug Bild 2"></div>
+  </div>
+
+  
+  <div class="nav-arrows">
+    <label class="prev1" for="hefe-s2">&#10094;</label>
+    <label class="next1" for="hefe-s2">&#10095;</label>
+
+    <label class="prev2" for="hefe-s1">&#10094;</label>
+    <label class="next2" for="hefe-s1">&#10095;</label>
+</div>
+
+  
+  <div class="dots">
+    <label for="hefe-s1" class="dot"></label>
+    <label for="hefe-s2" class="dot"></label>
+  </div>
+</div>
+
+
+      <div class="bier-info">
+        <h1>Hellensteiner Maßkrug – 1,0 Liter</h1>
+        <p class="bier-beschreibung">
+          Unser traditioneller <strong>Hellensteiner Maßkrug</strong> verbindet echte bayerische Braukultur mit hochwertiger Handwerkskunst. Robust, authentisch und perfekt ausbalanciert liegt er angenehm in der Hand und sorgt für echten Festzeltgenuss. Mit einem Fassungsvermögen von 1,0 Litern ist er der ideale Begleiter für Helles, Weißbier, Radler – oder jedes andere Getränk, das stilecht serviert werden soll.
+        </p>
+
+        <div class="bier-details">
+          <h3>Eigenschaften & Vorteile</h3>
+          <ul>
+            <li>Fassungsvermögen: 1,0 Liter</li>
+            <li>Besonders dickwandiges, stabiles Glas</li>
+            <li>Klassische bayerische Maßkrugform</li>
+            <li>Hoher Tragekomfort durch massiven Griff</li>
+            <li>Spülmaschinengeeignet</li>
+            <li>Ideal für Feste, Biergärten, Vereine oder private Feiern</li>
+            <li>Authentisches Gefühl wie auf dem Volksfest</li>
+          </ul>
+
+          <h3>Material</h3>
+          <p>Der Hellensteiner Maßkrug wird aus besonders widerstandsfähigem Glas gefertigt und überzeugt durch seine stabile Wandstärke. Das klare Glas sorgt für eine brillante Optik, während der ergonomische Griff sicheren Halt garantiert – selbst bei prall gefüllten Maßkrügen.</p>
+
+          <h3>Design & Tradition</h3>
+          <p>Das zeitlose Krugdesign ist fest mit der bayerischen Bierkultur verbunden. Die charakteristische Struktur, der massive Standboden und das klare Glas machen ihn zu einem echten Klassiker. Ob auf Festen, im Biergarten oder zuhause: Der Maßkrug steht für Geselligkeit, Tradition und echten Biergenuss.</p>
+
+          <h3>Menge</h3>
+          
+          <label for="groesse">Menge wählen:</label>
+          <select id="groesse" name="groesse" class="groesse-select">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          </select>
+
+          <button>Zum Warenkorb hinzufügen</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Hellensteiner Brauerei – Alle Rechte vorbehalten</p>
+  </footer>
+</body>
+</html>

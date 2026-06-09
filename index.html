@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hellensteiner Bräu</title>
+  <meta name="description" content="Erlebe Hellenstein Bräu – handgebrautes Bier aus Tradition. Seit 1846 steht unsere Brauerei für Qualität, Leidenschaft und echten Geschmack. Entdecke unsere Klassiker Helles, Dunkles und Weizen.">
+  <link rel="stylesheet" href="style.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="logo_klar.png">
+</head>
+<body>
+    <input type="checkbox" id="alter-check" hidden>   
+    <div class="alter-overlay"> 
+        <div class="alter-checkbox"> 
+            <img src="logo_neu_2.png"> 
+            <h2>Willkommen bei Hellensteiner Bräu</h2> 
+            <h3><u>Altersprüfung</u></h3>
+            <p>Hellensteiner Bräu setzt sich für einen verantwortungsbewussten Umgang mit Alkohol ein. Da Sie auf folgenden Seiten Informationen zu alkoholhaltigen Getränken finden, bitten wir Sie, Ihr Alter zu bestätigen.</p> 
+            <label for="alter-check" class="btn_check">
+                 Ich bin 16 Jahre oder älter 
+            </label> 
+        </div>    
+    </div>
+    <div class="achtung-banner">
+        <div class="achtung-banner-text">
+            Studentisches Projekt - DHBW Heidenheim | Wirtschaftsinformatik                        
+        </div>
+    </div>
+
+    <header>
+        <a href="index.html">
+            <div class="logo">
+                <img src="logo_neu.png" alt="Hellensteiner Logo">
+            </div>
+        </a>
+        <input type="checkbox" id="menu-togglen">
+        <label for="menu-togglen" class="burger" aria-label="Menü öffnen oder schließen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="historie.html">Historie</a></li>
+                <li><a href="biergarten.html">Biergarten</a></li>
+                <li><a href="freunde_club.html">Freunde Club</a></li>
+                <li><a href="karriere.html">Karriere</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Aus Liebe zum echten Bier.</h1>
+        <p>Seit 1846 brauen wir mit Leidenschaft.</p>
+        <a href="#klassiker" class="btn_entdecken">Unsere Biere entdecken</a>
+    </section>
+
+    <section class="ueber_uns">
+        <h2>Über unsere Brauerei</h2>
+        <p>Seit Generationen steht unsere Brauerei für echtes Handwerk, regionale Zutaten und unverwechselbaren Geschmack. Mit Leidenschaft und Erfahrung brauen wir Biere, die Tradition und Qualität vereinen – für alle, die ehrliches Bier schätzen. Jeder Schritt, von der Auswahl feinster Malze bis hin zur sorgfältigen Reifung, folgt unserem Anspruch, beste Braukunst zu leben. Unsere Rezepturen sind über Jahrzehnte gewachsen und verbinden bewährte Methoden mit moderner Technik. So entsteht Bier, das nicht nur erfrischt, sondern auch unsere Geschichte weitererzählt – Schluck für Schluck.</p>
+    </section>
+
+    <section class="news">
+        <h2>Aktuelle Neuigkeiten</h2>
+        <div class="news-grid">
+            <div class="news-grid-left">
+                <img src="malztonic_head1.png" alt="Neue Malz Tonic Drinks">
+                <div class="text-overlay">
+                    <h3>Neu im Sortiment: Hellensteiner Malz Tonic!</h3>
+                    <div class="klapp-text">
+                        <p>Unser neues Malztonic bringt natürliche Energie in vier erfrischenden Sorten: Orange, Apfel, Kirsch und Zitrone. Vollmundiges Gerstenmalz trifft auf fruchtige Frische – isotonisch, alkoholfrei und ideal für Sport, Arbeit oder einfach zwischendurch. Entdecke die belebende Alternative für jeden Moment. 💥</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="news-grid-right">
+                <div class="news-grid-right-div"> 
+                    <img src="weihnachtsfeier.png" alt="Weihnachtsfeier">
+                    <div class="text-overlay">
+                        <h3>Weihnachtsfeier 2025 – Prost auf ein gutes Jahr!</h3>
+                        <div class="klapp-text"><p>Am vergangenen Wochenende fand unsere diesjährige Weihnachtsfeier im Brauereistadel statt. Bei winterlicher Stimmung, gutem Essen und natürlich frischem Hellensteiner Bräu wurde gemeinsam gefeiert, gelacht und auf das erfolgreiche Jahr angestoßen.
+Ein herzliches Dankeschön an alle, die dabei waren – wir freuen uns schon jetzt auf ein genauso genussvolles neues Jahr mit euch!</p></div>
+                    </div>
+                </div>
+                <div class="news-grid-right-div">
+                    <img src="Goldmedaille.png" alt="Goldmedaille European Beer Star 2025">
+                    <div class="text-overlay">
+                        <h3>Gold beim European Beer Star 2025!</h3>
+                        <div class="klapp-text"><p>Großer Erfolg für unser Hellensteiner Bräu:
+Unser Hellensteiner Helles wurde beim European Beer Star 2025 mit Gold ausgezeichnet!
+Ein Zeichen für beste Braukunst, regionale Zutaten und echte Leidenschaft – Prost auf diesen Erfolg! 🍻</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+    </section>
+
+    <section id="klassiker" class="klassiker">
+        <h2>Unsere Klassiker</h2>
+        <a href="Shop.html" aria-label="Bier Produkte">
+        <div class="klassiker-grid">
+            <div style="background-color: var(--color-primary);" class="bier">
+                  <img src="zwickl_hell_transparent.png" alt="Helles">
+                  <h3>Zwickl Hell</h3>
+            </div>
+            <div style="background-color: var(--color-schrift);" class="bier">
+                  <img src="dunkelweiss_transparent.png" alt="Dunkles">
+                 <h3>Dunkelweiss</h3>
+            </div>
+            <div style="background-color: var(--color-hover);" class="bier">
+                 <img src="weizen_alkoholfrei_transparent.png" alt="Weizen">
+                 <h3>Weizen - Alkoholfrei</h3>
+            </div>
+            <div style="background-color: var(--color-schrift);" class="bier">
+                  <img src="hefeweiss_trasnparent.png" alt="Helles">
+                  <h3>Hefe</h3>
+            </div>
+            <div style="background-color: var(--color-hover);" class="bier">
+                  <img src="radler_alkoholfrei_transparent.png" alt="Dunkles">
+                 <h3>Radler - Alkoholfrei</h3>
+            </div>
+            <div style="background-color: var(--color-primary);" class="bier">
+                 <img src="helles_radler_transparent.png" alt="Weizen">
+                 <h3>Helles Radler</h3>
+            </div>
+        </div>
+        </a>
+    </section>
+
+    <section class="werte">
+        <div>
+            <h2 style="padding-top: 80px;">Unsere Werte</h2>
+            <div class="werte-grid">
+               <div>
+                  <img src="handwerk_icon_transparent.png" width="50" height="50" alt="Handwerk">
+                    <h3>Ehrlichkeit & Handwerk</h3>
+                    <p>Wir setzen auf echtes Handwerk statt Industrieproduktion.</p>
+                </div>
+                <div>
+                    <img src="nachhaltigkeit_icon_transparent.png" width="50" height="50" alt="Nachhaltigkeit">
+                    <h3>Nachhaltigkeit</h3>
+                   <p>Umweltbewusstsein gehört bei uns zum guten Ton – von der Braugerste bis zur Flasche.</p>
+               </div>
+               <div>
+                    <img src="anstoß_icon_transparent.png" width="50" height="50" alt="Tradition">
+                 <h3>Tradition & Qualität</h3>
+                 <p>Wir brauen nach bewährten Rezepten, die seit Generationen bestehen.</p>
+              </div>
+              <div>
+                    <img src="regional_icon_transparent.png" width="50" height="50" alt="Regionalität">
+                  <h3>Regionalität</h3>
+                  <p>Unsere Rohstoffe stammen von Bauern aus der Region – das schmeckt man.</p>
+               </div>
+               <div>
+                    <img src="innovation_transparent.png" width="50" height="50" alt="Innovation">
+                  <h3>Innovation & Zukunft</h3>
+                  <p>Wir achten unsere Wurzeln und gehen zugleich mit modernen Ideen in die Zukunft.</p>
+               </div>
+               <div>
+                    <img src="gemeinschaft_tr4ansparent.png" width="50" height="50" alt="Genuss">
+                  <h3>Gemeinschaft & Genuss</h3>
+                  <p>Bier verbindet – ob beim Fest, im Biergarten oder zu Hause mit Freunden.</p>
+               </div>
+            
+            </div>
+        </div>
+        <div class="werte-randbild">
+            <img src="biere.png" alt="Biere">
+        </div>
+    </section>
+
+    <!-- footer links-->
+    <footer>
+        <div class="foot-grid">
+            <div>
+                <iframe class="karte" title="karte" src="https://www.openstreetmap.org/export/embed.html?bbox=10.153327882289888%2C48.6816285680517%2C10.155130326747896%2C48.68267162232338&amp;layer=mapnik" 
+                ></iframe>
+                <br/>
+                <a class="karte-link" aria-label="Karten-Link" href="https://www.openstreetmap.org/?#map=17/48.680587/10.152140">Hier findest du uns</a>
+            </div>
+            <div class="foot-row">
+                 <h3><a href="Impressum.html">Impressum</a></h3>
+                 <h3><a href="Impressum.html#kontakt">Kontakt</a></h3>
+                 <h3><a href="Datenschutz.html">Datenschutz</a></h3>
+                 <h3><a href="AGB.html">AGB's</a></h3>
+            </div>
+            <div>
+                <h3>Folge uns:</h3>
+                <a href="https://www.instagram.com/hellensteiner_brauerei/" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" 
+                       width="30" height="30" 
+                       viewBox="0 0 24 24" 
+                       fill="none" 
+                       stroke="var(--color-primary)" 
+                       stroke-width="2" 
+                       stroke-linecap="round" 
+                       stroke-linejoin="round"
+                       aria-hidden="true" 
+                       focusable="false">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                 </svg>  
+                </a>
+                <a href="https://www.facebook.com/share/17VXGpS5KQ/" class="social-link" aria-label="facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" 
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" 
+                       focusable="false">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@HellensteinerBr%C3%A4u" class="social-link" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" 
+                       focusable="false">
+                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.94C18.88 4 12 4 12 4s-6.88 0-8.6.48A2.78 2.78 0 0 0 1.46 6.42 29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 1.94C5.12 20 12 20 12 20s6.88 0 8.6-.48a2.78 2.78 0 0 0 1.94-1.94A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"></path>
+                      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <p>© 2025 HELLENSTEINER BRÄU – Alle Rechte vorbehalten</p>
+    </footer>
+</body>

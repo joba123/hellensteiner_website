@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --Goldbraun: #C49A6C;
+    --Dunkelblau: #2E3A4F;
+    --Cremeweiß: #F5F0E6;
+    --Beigebraun: #A88F6B;
+    --Hellgold: #E6CFA1;
+    --color-primary:  #3B1E08;  
+    --color-secondary: #A88F6B; 
+    --color-hover: #F5F0E6; 
+    --color-schrift: #E6CFA1;
+    --Schriftart: 'Montserrat', Montserrat;
+    background: whitesmoke;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--Schriftart);
+    margin: 0;
+    color: var(--Dunkelblau);
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid var(--Beigebraun);
+  background-color: whitesmoke;
+}
+
+header img {
+  height: 130px;
+  margin-top: 20px;
+}
+
+h1.header {
+  font-weight: 600;
+  font-size: 1.9rem;
+  margin-top: 0px;
+}
+
+
+p.header {
+  font-size: 1rem;
+  color: var(--Dunkelblau);
+  border-bottom: 1px solid var(--Beigebraun);
+  padding-bottom: 15px;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  margin: 10px;
+  text-decoration: none;
+  color: var(--Dunkelblau);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 10px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--Dunkelblau);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--Goldbraun);
+  text-decoration: underline;
+}
+
+
+
+main.Startseite {
+  margin-right: 17%;
+  margin-left: 17%;
+}    
+
+h1.title {
+  font-size: 1.4rem;
+  color: #8a671c;
+  margin-top: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #b88a27;
+  display: inline-block;
+  padding-bottom: 0.25rem;  
+}
+
+.job {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.job h2 {
+    font-weight: 900;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.job p.p1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.job p.p2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.job:hover {
+    box-shadow: 0px 2px 7px;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+h1.titel {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #8a671c;
+    text-decoration: underline var(--Goldbraun) solid 3px;
+    text-underline-offset: 12px;
+}
+
+.info {
+    margin: 10%;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    border-radius: 15px;
+    box-shadow: var(--Dunkelblau) 0px 4px 8px;
+    padding: 2.5%;
+    padding-top: 20px;
+    background-color: whitesmoke;
+}
+
+.info h2 {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+.info p.p1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.info p.p2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.info:hover {
+    box-shadow: 0px 2px 7px;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+a.button {
+  background-color: var(--color-schrift);
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;;
+}
+
+a.button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-schrift);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 1200px) {
+main.Startseite {
+  margin-right: 4%;
+  margin-left: 4%;
+}
+header img {
+  height: 110px;
+  margin-top: 15px;
+}
+h1.titel {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+.info{
+  margin: 5%;
+  padding: 5%;
+  }
+}
+
+@media (max-width: 500px) {
+.info {
+  margin: 4%;
+  padding: 4%;
+  }
+h1.titel {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+header img {
+  height: 80px;
+  margin: 0;
+}
+
+.header-top {
+  margin-top: 10px;
+  text-align: center;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 2%;
+}
+h1.header {
+  margin: 20px;
+  font-size: 1.5rem;
+}
+
+h1.title{
+  margin-left: 2%;
+}
+
+.nav-menu {
+  flex-direction: column;
+  align-items: center;
+}
+
+main.Startseite {
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+a.button {
+  display: flex;
+  margin: 10px 13% 10px 13%;
+  flex-direction: column;
+  text-align: center;
+  padding: 8px 8px;
+}
+}
+
+
+
+
+
+footer {
+    margin-top: 20px;
+    background-color:var(--color-hover);
+    padding: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.foot-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background:
+    linear-gradient(to right, var(--color-secondary) 1px, transparent 1px) calc(33.333% + 10px) 0,
+    linear-gradient(to right, var(--color-secondary) 1px, transparent 1px) calc(66.666% + 10px) 0;
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+}
+
+.karte {
+  width: 300px; 
+  height: 250px;
+  border: 10px;
+  border-color: black;
+  border-radius: 10px;
+}
+
+.foot-row {
+  display:grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 40px;
+  font-family: var(--font-main);
+}
+
+.foot-row a{
+  font-family: var(--font-main);
+  color: var(--color-primary);
+}
+
+.foot-row a:hover {
+  color: var(--color-light);
+}
+
+.karte-link {
+    font-family: var(--font-main);
+    color: var(--color-primary);
+}
+
+.karte-link:hover {
+    color: var(--color-light);
+}
+
+.social-link{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+
+.social-link svg {
+  transition: stroke 0.3s;
+}
+
+.social-link:hover svg {
+  stroke: var(--color-schrift);
+}
+
+@media (max-width: 1050px) {
+  .foot-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: 0;
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  .foot-grid{
+    grid-template-columns: 1fr;
+    background: none;
+  }
+}
