@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHBierW – Hefeweiß</title>
+  <link rel="stylesheet" href="../assets/css/style_shop.css">
+  <link rel="stylesheet" href="../assets/css/style.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="../assets/images/logo_klar.png">
+</head>
+<body>
+
+  <header>
+        <a href="../index.html">
+            <div class="logo">
+                <img src="../assets/images/logo_neu.png" alt="Hellensteiner Logo">
+            </div>
+        </a>
+        <input type="checkbox" id="menu-togglen">
+        <label for="menu-togglen" class="burger" aria-label="Menü öffnen oder schließen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li><a href="Shop.html"><u>Shop</u></a></li>
+                <li><a href="historie.html">Historie</a></li>
+                <li><a href="biergarten.html">Biergarten</a></li>
+                <li><a href="freunde_club.html">Freunde Club</a></li>
+                <li><a href="karriere.html">Karriere</a></li>
+            </ul>
+        </nav>
+  </header>
+
+  <section class="bier-detail">
+    <div class="bier-container">
+
+<div class="bier-bild slider">
+  <input type="radio" name="hefe" id="hefe-s1" checked>
+  <input type="radio" name="hefe" id="hefe-s2">
+
+  
+  <div class="slides">
+    <div class="slide"><img src="../assets/images/biergarten_brett.png" alt="Biergarten-Brett Bild 1"></div>
+    <div class="slide"><img src="../assets/images/biergarten_brett1.png" alt="Biergarten-Brett Bild 2"></div>
+  </div>
+
+  
+  <div class="nav-arrows">
+    <label class="prev1" for="hefe-s2">&#10094;</label>
+    <label class="next1" for="hefe-s2">&#10095;</label>
+
+    <label class="prev2" for="hefe-s1">&#10094;</label>
+    <label class="next2" for="hefe-s1">&#10095;</label>
+</div>
+
+  
+  <div class="dots">
+    <label for="hefe-s1" class="dot"></label>
+    <label for="hefe-s2" class="dot"></label>
+  </div>
+</div>
+
+
+      <div class="bier-info">
+        <h1>Biergarten-Brett</h1>
+        <p class="bier-beschreibung">
+          Unser traditionelles <strong>Biergarten-Brett</strong> bringt bayerisches Biergartenfeeling direkt nach Hause. Aus hochwertigem Holz gefertigt, bietet es eine robuste, geschmacksneutrale Oberfläche und eignet sich ideal für Brotzeit, Käseplatten oder rustikale Serviermomente. Jedes Brett besitzt eine natürliche Maserung und ist somit ein echtes Unikat.
+        </p>
+
+        <div class="bier-details">
+          <h3>Eigenschaften & Vorteile</h3>
+          <ul>
+            <li>Großzügige Fläche für Snacks oder Käseplatten</li>
+            <li>Leicht zu reinigen und pflegeleicht</li>
+            <li>Rustikales Design für authentische Brotzeiten</li>
+          </ul>
+
+          <h3>Material</h3>
+          <p>Das Brett wird aus massivem Holz, wie Buche oder Eiche, gefertigt und besitzt eine naturbelassene, langlebige Oberfläche, die den rustikalen Charakter unterstreicht.</p>
+
+          <h3>Design & Tradition</h3>
+          <p>Das rustikale Design erinnert an traditionelle Biergarten-Atmosphäre und vereint klassisches Holzhandwerk mit moderner Alltagstauglichkeit.</p>
+
+          <h3>Menge</h3>
+          
+          <label for="groesse">Menge wählen:</label>
+          <select id="groesse" name="groesse" class="groesse-select">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          </select>
+
+          <button>Zum Warenkorb hinzufügen</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Hellensteiner Brauerei – Alle Rechte vorbehalten</p>
+  </footer>
+</body>
+</html>
