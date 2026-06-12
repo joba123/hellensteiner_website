@@ -322,3 +322,211 @@ footer {
   }
 
 }
+
+/* Modern main navigation inspired by large brewery brand headers. */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 76px;
+  padding: 12px clamp(18px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(22px, 5vw, 78px);
+  align-items: center;
+  justify-content: stretch;
+  box-sizing: border-box;
+  background:
+    linear-gradient(135deg, rgba(32, 13, 4, 0.98) 0%, rgba(59, 30, 8, 0.98) 48%, rgba(88, 43, 12, 0.98) 100%);
+  border-bottom: 1px solid rgba(230, 207, 161, 0.22);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(12px);
+}
+
+header * {
+  box-sizing: border-box;
+}
+
+header > a {
+  grid-column: 1;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  text-decoration: none;
+}
+
+header #menu-togglen {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+header .logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 62px;
+  width: auto;
+  margin-right: 0;
+  display: block;
+  filter: drop-shadow(0 7px 12px rgba(0, 0, 0, 0.35));
+}
+
+header nav {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  justify-self: end;
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 100%;
+  margin: 0;
+  padding: 7px;
+  list-style: none;
+  background: rgba(18, 7, 2, 0.28);
+  border: 1px solid rgba(230, 207, 161, 0.16);
+  border-radius: 999px;
+}
+
+header nav li {
+  display: flex;
+}
+
+header nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  color: rgba(230, 207, 161, 0.86);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border-radius: 999px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+header nav a:hover,
+header nav a:focus-visible {
+  color: var(--color-primary);
+  background: var(--color-schrift);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+header nav a u {
+  text-decoration: none;
+}
+
+header nav a:has(u) {
+  color: var(--color-primary);
+  background: var(--color-schrift);
+}
+
+header .burger {
+  grid-column: 3;
+  grid-row: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  justify-self: end;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(230, 207, 161, 0.5);
+  border-radius: 999px;
+  background: rgba(230, 207, 161, 0.16);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.26);
+}
+
+header .burger span {
+  display: block;
+  width: 18px;
+  height: 2.5px;
+  flex: 0 0 auto;
+  background-color: var(--color-schrift);
+  border-radius: 999px;
+}
+
+header .burger:hover,
+header .burger:focus-visible {
+  background: rgba(230, 207, 161, 0.24);
+}
+
+@media (max-width: 960px) {
+  header {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    row-gap: 0;
+    min-height: 70px;
+    padding: 10px 16px;
+  }
+
+  header .burger {
+    display: inline-flex;
+  }
+
+  header nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  header nav ul {
+    display: none;
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    background: rgba(23, 9, 2, 0.96);
+    border: 1px solid rgba(230, 207, 161, 0.22);
+    border-radius: 18px;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.42);
+  }
+
+  header #menu-togglen:checked ~ nav ul {
+    display: flex;
+  }
+
+  header nav a {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  header .logo img {
+    height: 54px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding-inline: 14px;
+  }
+
+  header .logo img {
+    height: 48px;
+  }
+}
