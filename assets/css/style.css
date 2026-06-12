@@ -17,61 +17,166 @@ body {
 .alter-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  padding: 32px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(230, 207, 161, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(25, 10, 3, 0.98) 0%, rgba(59, 30, 8, 0.98) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.alter-checkbox{
-  background: var(--color-primary);
+.alter-overlay.is-hidden {
+  display: none;
+}
+
+.age-gate-card {
+  width: min(100%, 560px);
   font-family: var(--font-main);
   color: var(--color-schrift);
-  padding: 48px 56px;
-  max-width: 920px;
   text-align: center;
-  border: 3px solid var(--color-secondary);
-  border-radius: 18px;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+  padding: 0;
 }
 
-.alter-checkbox img{
-  height: 64px;
+.age-gate-card img {
+  height: clamp(96px, 16vw, 142px);
   display: block;
-  margin: 0 auto 18px auto;
+  margin: 0 auto 28px;
 }
 
-.alter-checkbox h2{
-  margin: 0 0 10px 0;
-  font-size: 28px;
+.age-gate-eyebrow {
+  margin: 0 0 10px;
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.alter-checkbox h3{
-  margin: 0 0 18px 0;
-  font-size: 18px;
+.age-gate-card h2 {
+  margin: 0 auto 30px;
+  max-width: 520px;
+  color: var(--color-hover);
+  font-size: clamp(2rem, 6vw, 4.1rem);
+  line-height: 1.04;
+  font-weight: 700;
 }
 
-.alter-checkbox p{
-  margin: 0 auto 28px auto;
-  max-width: 700px;
-  line-height: 1.6;
+.alter-form {
+  display: grid;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.alter-form label {
+  color: rgba(245, 240, 230, 0.88);
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.alter-form select,
+.alter-form input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 52px;
+  padding: 12px 14px;
+  color: var(--color-primary);
+  background: var(--color-hover);
+  border: 1px solid rgba(230, 207, 161, 0.62);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+}
+
+.alter-form select:focus,
+.alter-form input:focus {
+  outline: 3px solid rgba(230, 207, 161, 0.36);
+  outline-offset: 2px;
+}
+
+.age-date-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.age-date-fields legend {
+  grid-column: 1 / -1;
+  padding: 0 0 8px;
+  color: rgba(245, 240, 230, 0.88);
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.age-date-fields label {
+  display: grid;
+  gap: 7px;
+}
+
+.age-date-fields span {
+  color: rgba(245, 240, 230, 0.78);
+  font-size: 0.78rem;
+  text-transform: uppercase;
 }
 
 .btn_check {
   background-color: var(--color-schrift);
   color: var(--color-primary);
+  min-height: 54px;
   padding: 12px 25px;
-  border-radius: 30px;
-  font-weight: 600;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn_check:hover {
   background-color: var(--color-hover);
+  transform: translateY(-1px);
 }
 
-#alter-check:checked + .alter-overlay {
-  display: none;
+.age-gate-note {
+  max-width: 360px;
+  margin: 0 auto;
+  color: rgba(245, 240, 230, 0.76);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.alter-error {
+  min-height: 1.4em;
+  margin: 0;
+  color: #ffdfd7;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .alter-overlay {
+    align-items: flex-start;
+    padding: 28px 18px;
+    overflow-y: auto;
+  }
+
+  .age-gate-card img {
+    height: 88px;
+    margin-bottom: 22px;
+  }
+
+  .age-date-fields {
+    grid-template-columns: 1fr;
+  }
 }
 
 .achtung-banner {
@@ -1099,6 +1204,219 @@ header .burger:focus-visible {
 
   header .logo img {
     height: 48px;
+  }
+}
+
+/* Modern footer */
+footer {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding: clamp(36px, 6vw, 72px) clamp(18px, 4vw, 48px) 24px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(168, 143, 107, 0.22), transparent 28%),
+    linear-gradient(135deg, #201007 0%, #3b1e08 58%, #241005 100%);
+  color: #f5f0e6;
+  text-align: left;
+  font-family: var(--font-main, var(--Schriftart, 'Montserrat', sans-serif));
+  font-weight: 500;
+  border-top: 1px solid rgba(230, 207, 161, 0.24);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-secondary, #a88f6b), var(--color-schrift, #e6cfa1), var(--color-secondary, #a88f6b));
+}
+
+footer .foot-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.2fr) minmax(160px, 0.75fr) minmax(180px, 0.75fr);
+  align-items: start;
+  justify-content: center;
+  gap: clamp(24px, 4vw, 56px);
+  max-width: 1180px;
+  margin: 0 auto 30px;
+  background: none;
+}
+
+footer .foot-grid > div {
+  min-width: 0;
+}
+
+footer .foot-grid > div:nth-child(2),
+footer .foot-grid > div:nth-child(3) {
+  padding-top: 8px;
+}
+
+footer .foot-grid h3 {
+  margin: 0 0 16px;
+  color: var(--color-schrift, #e6cfa1);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.3;
+}
+
+footer .karte {
+  display: block;
+  width: min(100%, 390px);
+  height: clamp(190px, 23vw, 255px);
+  border: 0;
+  border-radius: 8px;
+  background: rgba(245, 240, 230, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.26);
+}
+
+footer .karte-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: #f5f0e6;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+footer .karte-link::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--color-schrift, #e6cfa1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(230, 207, 161, 0.14);
+}
+
+footer .karte-link:hover,
+footer .karte-link:focus-visible {
+  color: var(--color-schrift, #e6cfa1);
+}
+
+footer .foot-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: inherit;
+}
+
+footer .foot-row h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+footer .foot-row a {
+  position: relative;
+  display: inline-flex;
+  padding: 8px 0;
+  color: #f5f0e6;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+footer .foot-row a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background: var(--color-schrift, #e6cfa1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+footer .foot-row a:hover,
+footer .foot-row a:focus-visible {
+  color: var(--color-schrift, #e6cfa1);
+}
+
+footer .foot-row a:hover::after,
+footer .foot-row a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+footer .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 10px 10px 0;
+  color: var(--color-schrift, #e6cfa1);
+  border: 1px solid rgba(230, 207, 161, 0.36);
+  border-radius: 50%;
+  background: rgba(245, 240, 230, 0.06);
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+footer .social-link svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  transition: transform 0.2s ease;
+}
+
+footer .social-link:hover,
+footer .social-link:focus-visible {
+  color: var(--color-primary, #3b1e08);
+  background: var(--color-schrift, #e6cfa1);
+  transform: translateY(-2px);
+}
+
+footer .social-link:hover svg,
+footer .social-link:focus-visible svg {
+  transform: scale(1.04);
+  stroke: currentColor;
+}
+
+footer > p {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-top: 22px;
+  border-top: 1px solid rgba(230, 207, 161, 0.18);
+  color: rgba(245, 240, 230, 0.78);
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+@media (max-width: 850px) {
+  footer {
+    text-align: center;
+  }
+
+  footer .foot-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  footer .karte {
+    margin: 0 auto;
+  }
+
+  footer .foot-row {
+    align-items: center;
+  }
+
+  footer .social-link {
+    margin: 0 5px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 34px 16px 22px;
+  }
+
+  footer .karte {
+    height: 210px;
   }
 }
 

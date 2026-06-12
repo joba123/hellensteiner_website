@@ -9,17 +9,46 @@
   <link rel="icon" href="assets/images/logo_klar.png">
 </head>
 <body>
-    <input type="checkbox" id="alter-check" hidden>   
-    <div class="alter-overlay"> 
-        <div class="alter-checkbox"> 
-            <img src="assets/images/logo_neu_2.png">
-            <h2>Willkommen bei Hellensteiner Bräu</h2> 
-            <h3><u>Altersprüfung</u></h3>
-            <p>Hellensteiner Bräu setzt sich für einen verantwortungsbewussten Umgang mit Alkohol ein. Da Sie auf folgenden Seiten Informationen zu alkoholhaltigen Getränken finden, bitten wir Sie, Ihr Alter zu bestätigen.</p> 
-            <label for="alter-check" class="btn_check">
-                 Ich bin 16 Jahre oder älter 
-            </label> 
-        </div>    
+    <div class="alter-overlay" id="age-gate" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+        <div class="age-gate-card">
+            <img src="assets/images/logo_neu_2.png" alt="Hellensteiner Br&auml;u Logo">
+            <p class="age-gate-eyebrow">Alterspr&uuml;fung</p>
+            <h2 id="age-gate-title">Bitte sag uns,<br>wann du geboren bist.</h2>
+            <form class="alter-form" id="age-gate-form" novalidate>
+                <label for="age-country">Land ausw&auml;hlen</label>
+                <select id="age-country" name="country" required>
+                    <option value="">Bitte ausw&auml;hlen</option>
+                    <option value="DE" selected>Deutschland</option>
+                    <option value="AT">&Ouml;sterreich</option>
+                    <option value="CH">Schweiz</option>
+                    <option value="FR">Frankreich</option>
+                    <option value="BE">Belgien</option>
+                    <option value="NL">Niederlande</option>
+                    <option value="LU">Luxemburg</option>
+                    <option value="DK">D&auml;nemark</option>
+                    <option value="PL">Polen</option>
+                    <option value="CZ">Tschechien</option>
+                </select>
+                <fieldset class="age-date-fields">
+                    <legend>Geburtsdatum</legend>
+                    <label>
+                        <span>Tag</span>
+                        <input type="text" id="birth-day" name="birth-day" inputmode="numeric" autocomplete="bday-day" maxlength="2" placeholder="TT" required>
+                    </label>
+                    <label>
+                        <span>Monat</span>
+                        <input type="text" id="birth-month" name="birth-month" inputmode="numeric" autocomplete="bday-month" maxlength="2" placeholder="MM" required>
+                    </label>
+                    <label>
+                        <span>Jahr</span>
+                        <input type="text" id="birth-year" name="birth-year" inputmode="numeric" autocomplete="bday-year" maxlength="4" placeholder="JJJJ" required>
+                    </label>
+                </fieldset>
+                <button type="submit" class="btn_check">WEITER</button>
+                <p class="age-gate-note">Bitte genie&szlig;e verantwortungsvoll.</p>
+                <p class="alter-error" id="age-gate-error" aria-live="polite"></p>
+            </form>
+        </div>
     </div>
     <div class="achtung-banner">
         <div class="achtung-banner-text">
@@ -220,4 +249,147 @@ Ein Zeichen für beste Braukunst, regionale Zutaten und echte Leidenschaft – P
         </div>
         <p>© 2025 HELLENSTEINER BRÄU – Alle Rechte vorbehalten</p>
     </footer>
+    <script>
+      (function () {
+        var storageKey = "hellensteinerAgeVerified";
+        var minimumAges = {
+          DE: 16,
+          AT: 16,
+          CH: 16,
+          FR: 18,
+          BE: 16,
+          NL: 18,
+          LU: 16,
+          DK: 16,
+          PL: 18,
+          CZ: 18
+        };
+        var countryNames = {
+          DE: "Deutschland",
+          AT: "\u00d6sterreich",
+          CH: "Schweiz",
+          FR: "Frankreich",
+          BE: "Belgien",
+          NL: "Niederlande",
+          LU: "Luxemburg",
+          DK: "D\u00e4nemark",
+          PL: "Polen",
+          CZ: "Tschechien"
+        };
+        var overlay = document.getElementById("age-gate");
+        var form = document.getElementById("age-gate-form");
+        var countryInput = document.getElementById("age-country");
+        var dayInput = document.getElementById("birth-day");
+        var monthInput = document.getElementById("birth-month");
+        var yearInput = document.getElementById("birth-year");
+        var errorMessage = document.getElementById("age-gate-error");
+
+        if (!overlay || !form || !countryInput || !dayInput || !monthInput || !yearInput || !errorMessage) {
+          return;
+        }
+
+        function getSessionValue() {
+          try {
+            return sessionStorage.getItem(storageKey);
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function setSessionValue() {
+          try {
+            sessionStorage.setItem(storageKey, "true");
+          } catch (error) {
+            return;
+          }
+        }
+
+        function parseNumber(value) {
+          if (!/^\d+$/.test(value)) {
+            return NaN;
+          }
+
+          return Number(value);
+        }
+
+        function parseBirthdate(dayValue, monthValue, yearValue) {
+          var day = parseNumber(dayValue.trim());
+          var month = parseNumber(monthValue.trim());
+          var year = parseNumber(yearValue.trim());
+
+          if (!day || !month || !year) {
+            return null;
+          }
+
+          var date = new Date(year, month - 1, day);
+
+          if (
+            date.getFullYear() !== year ||
+            date.getMonth() !== month - 1 ||
+            date.getDate() !== day
+          ) {
+            return null;
+          }
+
+          return date;
+        }
+
+        function isAtLeastMinimumAge(birthdate, minimumAge) {
+          var today = new Date();
+          var minimumBirthday = new Date(
+            birthdate.getFullYear() + minimumAge,
+            birthdate.getMonth(),
+            birthdate.getDate()
+          );
+
+          today.setHours(0, 0, 0, 0);
+          return minimumBirthday <= today;
+        }
+
+        function focusFirstEmptyField() {
+          var fields = [countryInput, dayInput, monthInput, yearInput];
+
+          for (var index = 0; index < fields.length; index += 1) {
+            if (!fields[index].value.trim()) {
+              fields[index].focus();
+              return;
+            }
+          }
+        }
+
+        if (getSessionValue() === "true") {
+          overlay.classList.add("is-hidden");
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var country = countryInput.value;
+          var minimumAge = minimumAges[country];
+          var birthdate = parseBirthdate(dayInput.value, monthInput.value, yearInput.value);
+
+          if (!country || !minimumAge || !dayInput.value.trim() || !monthInput.value.trim() || !yearInput.value.trim()) {
+            errorMessage.textContent = "Bitte w\u00e4hlen Sie ein Land aus und geben Sie Ihr vollst\u00e4ndiges Geburtsdatum ein.";
+            focusFirstEmptyField();
+            return;
+          }
+
+          if (!birthdate || birthdate > new Date()) {
+            errorMessage.textContent = "Bitte geben Sie ein g\u00fcltiges Geburtsdatum ein.";
+            dayInput.focus();
+            return;
+          }
+
+          if (!isAtLeastMinimumAge(birthdate, minimumAge)) {
+            errorMessage.textContent = "F\u00fcr " + countryNames[country] + " m\u00fcssen Sie mindestens " + minimumAge + " Jahre alt sein.";
+            yearInput.focus();
+            return;
+          }
+
+          setSessionValue();
+          errorMessage.textContent = "";
+          overlay.classList.add("is-hidden");
+        });
+      })();
+    </script>
 </body>
