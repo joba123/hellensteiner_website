@@ -182,11 +182,3 @@ export function formatPrice(cents: number): string {
     currency: "EUR"
   }).format(cents / 100);
 }
-
-export function getPageHref(pageName: string): string {
-  if (typeof window === "undefined") {
-    return pageName;
-  }
-
-  return window.location.pathname.includes("/pages/") ? pageName : `pages/${pageName}`;
-}

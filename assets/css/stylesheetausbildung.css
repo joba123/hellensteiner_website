@@ -20,6 +20,8 @@ body {
     font-family: var(--Schriftart);
     margin: 0;
     color: var(--Dunkelblau);
+    background:
+      linear-gradient(180deg, #f7f3ea 0%, #f4f7f1 42%, #ffffff 100%);
 }
 
 header {
@@ -191,6 +193,491 @@ a.button:hover {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.career-page,
+.application-page {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 74px) 0;
+}
+
+.career-site-header {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(59, 30, 8, 0.14);
+  background:
+    linear-gradient(135deg, rgba(245, 240, 230, 0.97), rgba(255, 255, 255, 0.88)),
+    url("../images/hellenstein_braeu_img.png") center 36%/cover;
+  box-shadow: 0 18px 52px rgba(46, 58, 79, 0.08);
+}
+
+.career-site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.58)),
+    radial-gradient(circle at 50% 0%, rgba(230, 207, 161, 0.34), transparent 42%);
+  pointer-events: none;
+}
+
+.career-site-header .header-top,
+.career-site-header > p,
+.career-site-header nav {
+  position: relative;
+  z-index: 1;
+}
+
+.career-site-header .header-top {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 26px 18px 8px;
+}
+
+.career-site-header img.logo {
+  height: clamp(82px, 11vw, 126px);
+  margin: 0;
+  filter: drop-shadow(0 10px 18px rgba(59, 30, 8, 0.1));
+}
+
+.career-site-header h1.header {
+  margin: 0;
+  color: #263247;
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.career-site-header p.header {
+  max-width: 780px;
+  margin: 12px auto 20px;
+  padding: 0 20px;
+  border: 0;
+  color: #3d4656;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.career-site-nav {
+  border-top: 1px solid rgba(59, 30, 8, 0.1);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(14px);
+}
+
+.career-site-nav .nav-menu {
+  width: min(900px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 12px 0;
+  gap: 8px;
+}
+
+.career-site-nav .nav-menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: #263247;
+  font-size: 0.98rem;
+  text-decoration: none;
+}
+
+.career-site-nav .nav-menu a:hover,
+.career-site-nav .nav-menu a:focus-visible {
+  background: #263247;
+  color: #f7f3ea;
+  text-decoration: none;
+}
+
+.career-eyebrow {
+  margin: 0 0 10px;
+  color: #6f7f42;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.career-hero {
+  display: grid;
+  gap: 20px;
+  padding: clamp(32px, 6vw, 72px);
+  border: 1px solid rgba(46, 58, 79, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(245, 240, 230, 0.78), rgba(255, 255, 255, 0.94)),
+    url("../images/brauerei_innen.png") center/cover;
+  box-shadow: 0 22px 56px rgba(46, 58, 79, 0.11);
+}
+
+.career-hero::before {
+  content: "";
+  width: 74px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6f7f42, #c49a6c);
+}
+
+.career-hero h1,
+.application-hero h1 {
+  max-width: 780px;
+  margin: 0;
+  color: #263247;
+  font-size: clamp(2.2rem, 5vw, 4.7rem);
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.career-hero p:not(.career-eyebrow),
+.application-hero p {
+  max-width: 720px;
+  margin: 0;
+  color: #3d4656;
+  font-size: clamp(1.02rem, 1.8vw, 1.22rem);
+  line-height: 1.7;
+}
+
+.career-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.career-hero__facts span {
+  padding: 10px 14px;
+  border: 1px solid rgba(111, 127, 66, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: #263247;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.career-section {
+  margin-top: clamp(38px, 7vw, 80px);
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(46, 58, 79, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 20px 50px rgba(46, 58, 79, 0.07);
+  scroll-margin-top: 24px;
+}
+
+.career-section__intro {
+  display: grid;
+  gap: 10px;
+  max-width: 780px;
+  margin-bottom: 20px;
+}
+
+.career-section__intro h2,
+.application-block h2,
+.application-apply h2,
+.application-empty h1 {
+  margin: 0;
+  color: #263247;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.career-section__intro p:not(.career-eyebrow) {
+  margin: 0;
+  color: #4c5563;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.career-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+
+.career-benefit,
+.application-summary,
+.application-block,
+.application-apply,
+.application-empty {
+  border: 1px solid rgba(46, 58, 79, 0.11);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 42px rgba(46, 58, 79, 0.08);
+}
+
+.career-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+}
+
+.career-benefit span {
+  display: grid;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: #6f7f42;
+  color: #fff;
+  font-weight: 800;
+}
+
+.career-benefit p {
+  margin: 0;
+  color: #344054;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.career-job-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.career-job-card {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 24px;
+  border: 1px solid rgba(46, 58, 79, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(46, 58, 79, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.career-job-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(111, 127, 66, 0.4);
+  box-shadow: 0 24px 58px rgba(46, 58, 79, 0.13);
+}
+
+.career-job-card__meta,
+.career-job-card__location {
+  margin: 0;
+  color: #6f7f42;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.career-job-card h3 {
+  margin: 10px 0 8px;
+  color: #263247;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.2;
+}
+
+.career-job-card p:not(.career-job-card__meta):not(.career-job-card__location) {
+  margin: 14px 0 0;
+  color: #4c5563;
+  line-height: 1.6;
+}
+
+.club-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 44px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #263247;
+  color: #f7f3ea;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.club-submit:hover,
+.club-submit:focus-visible {
+  background: #6f7f42;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(46, 58, 79, 0.18);
+}
+
+.application-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #5d6675;
+  font-weight: 700;
+}
+
+.application-breadcrumb a {
+  color: #263247;
+  text-decoration: none;
+}
+
+.application-breadcrumb a:hover,
+.application-breadcrumb a:focus-visible {
+  color: #6f7f42;
+}
+
+.application-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 26px;
+  align-items: stretch;
+  margin-bottom: 28px;
+}
+
+.application-hero > div {
+  display: grid;
+  gap: 16px;
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid rgba(46, 58, 79, 0.12);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff, #f7f3ea);
+  box-shadow: 0 22px 56px rgba(46, 58, 79, 0.1);
+}
+
+.application-summary {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  padding: 24px;
+}
+
+.application-summary p {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  color: #263247;
+  font-weight: 800;
+}
+
+.application-summary span {
+  color: #6f7f42;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.application-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 24px;
+  align-items: start;
+}
+
+.application-content {
+  display: grid;
+  gap: 16px;
+}
+
+.application-block,
+.application-apply,
+.application-empty {
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.application-block p,
+.application-block li,
+.application-apply p,
+.application-empty p {
+  color: #4c5563;
+  line-height: 1.65;
+}
+
+.application-block ul {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0 0;
+  padding-left: 20px;
+}
+
+.application-apply {
+  position: sticky;
+  top: 18px;
+}
+
+.application-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.application-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.application-form label {
+  display: grid;
+  gap: 7px;
+  color: #263247;
+  font-weight: 800;
+}
+
+.application-form input,
+.application-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(46, 58, 79, 0.18);
+  border-radius: 8px;
+  padding: 12px 13px;
+  background: #fff;
+  color: #263247;
+  font: inherit;
+}
+
+.application-form textarea {
+  resize: vertical;
+}
+
+.application-form__check {
+  display: flex !important;
+  grid-template-columns: none;
+  align-items: flex-start;
+  gap: 10px !important;
+  font-weight: 600 !important;
+}
+
+.application-form__check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.application-form__submit,
+.application-mail-button {
+  width: 100%;
+}
+
+.application-mail-button {
+  margin-top: 12px;
+}
+
+.application-form__status {
+  margin: 0;
+  color: #3f6c3b;
+  font-weight: 800;
+}
+
+.application-page--empty {
+  min-height: 46vh;
+  display: grid;
+  place-items: center;
+}
+
+.application-empty {
+  max-width: 620px;
+  text-align: center;
+}
+
 @media (max-width: 1200px) {
 main.Startseite {
   margin-right: 4%;
@@ -260,6 +747,49 @@ a.button {
   text-align: center;
   padding: 8px 8px;
 }
+}
+
+@media (max-width: 900px) {
+  .career-benefits,
+  .career-job-grid,
+  .application-hero,
+  .application-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .application-apply {
+    position: static;
+  }
+}
+
+@media (max-width: 620px) {
+  .career-page,
+  .application-page {
+    width: min(100% - 24px, 1120px);
+    padding: 24px 0 42px;
+  }
+
+  .career-hero,
+  .application-hero > div,
+  .application-block,
+  .application-apply,
+  .application-empty,
+  .career-job-card {
+    padding: 20px;
+  }
+
+  .career-hero h1,
+  .application-hero h1 {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .application-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .club-submit {
+    width: 100%;
+  }
 }
 
 

@@ -26,7 +26,6 @@ export interface Produkt {
   kurzbeschreibung: string;
   preis: string;
   bilder: readonly ProduktBild[];
-  highlightBild?: ProduktBild;
   details: {
     titel: string;
     beschreibung: string;
@@ -420,7 +419,6 @@ export const produkte: readonly Produkt[] = [
     name: "Malztonic",
     kurzbeschreibung: "Malz trifft Energie - gesund genießen",
     preis: "Ab 2,29 €",
-    highlightBild: { src: "../assets/images/malztonic_head1.png", alt: "Malztonic" },
     bilder: [
       { src: "../assets/images/malztonic_shop.png", alt: "Malztonic" },
       { src: "../assets/images/malztonic_green.png", alt: "Malztonic grün" },
@@ -842,7 +840,7 @@ export function findeProdukt(id: string): Produkt | undefined {
 }
 
 export function produktDetailUrl(id: string): string {
-  return `produkt.html?id=${encodeURIComponent(id)}`;
+  return `/produkt/${encodeURIComponent(id)}`;
 }
 
 export function getAuswahlPreisLabel(produkt: Produkt, auswahlWert?: string): string {

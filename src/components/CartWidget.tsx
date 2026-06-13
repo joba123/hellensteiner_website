@@ -4,7 +4,6 @@ import {
   formatPrice,
   getCartSubtotalCents,
   getCartTotalQuantity,
-  getPageHref,
   removeCartItem,
   updateCartItemQuantity,
   useCart
@@ -57,7 +56,7 @@ export function CartWidget() {
           {items.length === 0 ? (
             <div className="cart-drawer__empty">
               <p>Dein Warenkorb ist noch leer.</p>
-              <a href={getPageHref("Shop.html")}>Zum Shop</a>
+              <a href="/shop">Zum Shop</a>
             </div>
           ) : (
             items.map((item) => (
@@ -111,7 +110,7 @@ export function CartWidget() {
           <Button
             as="a"
             className={items.length === 0 ? "cart-drawer__checkout is-disabled" : "cart-drawer__checkout"}
-            href={items.length === 0 ? "#" : getPageHref("checkout.html")}
+            href={items.length === 0 ? "#" : "/checkout"}
             aria-disabled={items.length === 0}
             onClick={(event) => {
               if (items.length === 0) {

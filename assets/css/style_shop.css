@@ -148,16 +148,102 @@ footer {
   padding: 30px 20px;
 }
 
+.shop-page {
+  min-height: 100vh;
+  padding: clamp(24px, 4vw, 46px) 0 clamp(48px, 7vw, 86px);
+  background: var(--color-primary);
+}
+
 .shop h2 {
   font-size: 2rem;
   margin-bottom: 10px;
   color: var(--color-schrift);
 }
 
-.shop-einleitung {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: var(--color-secondary);
+.shop-search {
+  display: grid;
+  gap: 14px;
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto clamp(22px, 4vw, 42px);
+  padding: clamp(8px, 2vw, 18px) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-schrift);
+  text-align: center;
+}
+
+.shop-search__label {
+  margin: 0;
+  color: var(--color-schrift);
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.shop-search__input {
+  width: min(100%, 720px);
+  min-height: 54px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 18px;
+  border: 1px solid rgba(230, 207, 161, 0.42);
+  border-radius: 999px;
+  background: rgba(24, 11, 4, 0.82);
+  color: var(--color-schrift);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  outline: none;
+  box-shadow:
+    inset 0 1px 0 rgba(230, 207, 161, 0.12),
+    0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.shop-search__input:focus {
+  border-color: var(--color-schrift);
+  box-shadow:
+    0 0 0 4px rgba(230, 207, 161, 0.18),
+    inset 0 1px 0 rgba(230, 207, 161, 0.16);
+}
+
+.shop-search__input::placeholder {
+  color: rgba(230, 207, 161, 0.58);
+}
+
+.shop-search__meta {
+  margin: 0;
+  color: rgba(230, 207, 161, 0.78);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.shop-empty {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  width: min(720px, calc(100% - 32px));
+  margin: 0 auto clamp(48px, 7vw, 80px);
+  padding: clamp(20px, 4vw, 34px) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-schrift);
+  text-align: center;
+  box-shadow: none;
+}
+
+.shop-empty h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.shop-empty p {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(230, 207, 161, 0.76);
+  line-height: 1.6;
 }
 
 .product-grid {
@@ -307,17 +393,6 @@ button:hover {
 .groesse-select:hover {
   transform: scale(1.05);
   background-color: var(--color-schrift);
-}
-.usp {
-  padding: 20px;
-  max-width: 1000px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.malztonic{
-  max-width: 950px;
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
 }
 .slider {
   position: relative;
@@ -1236,35 +1311,6 @@ footer > p {
 #helles-radler-alkoholfrei-s3:checked ~ .nav-arrows .next3 {
   display: block;
 }
-#malztonic-s1:checked ~ .slides { transform: translateX(0%); }
-#malztonic-s2:checked ~ .slides { transform: translateX(-33%); }
-#malztonic-s3:checked ~ .slides { transform: translateX(-66%); }
-#malztonic-s4:checked ~ .slides { transform: translateX(-100%); }
-#malztonic-s5:checked ~ .slides { transform: translateX(-133%); }
-
-.malztonic-slider .prev { left: 10px; }
-.malztonic-slider .next { right: 10px; }
-
-#malztonic-s1:checked ~ .nav-arrows .prev1,
-#malztonic-s1:checked ~ .nav-arrows .next1,
-#malztonic-s2:checked ~ .nav-arrows .prev2,
-#malztonic-s2:checked ~ .nav-arrows .next2,
-#malztonic-s3:checked ~ .nav-arrows .prev3,
-#malztonic-s3:checked ~ .nav-arrows .next3,
-#malztonic-s4:checked ~ .nav-arrows .prev4,
-#malztonic-s4:checked ~ .nav-arrows .next4,
-#malztonic-s5:checked ~ .nav-arrows .prev5,
-#malztonic-s5:checked ~ .nav-arrows .next5 {
-  display: block;
-}
-
-#malztonic-s1:checked ~ .dots label[for="malztonic-s1"],
-#malztonic-s2:checked ~ .dots label[for="malztonic-s2"],
-#malztonic-s3:checked ~ .dots label[for="malztonic-s3"],
-#malztonic-s4:checked ~ .dots label[for="malztonic-s4"],
-#malztonic-s5:checked ~ .dots label[for="malztonic-s5"] {
-  background: var(--color-schrift, #fff);
-}
 #masskrug-s1:checked ~ .slides {
   transform: translateX(0%);
 }
@@ -1735,6 +1781,16 @@ footer > p {
 }
 
 @media (max-width: 600px) {
+  .shop-search {
+    width: min(100% - 24px, 920px);
+    padding: 20px 16px;
+  }
+
+  .shop-search__input {
+    min-height: 50px;
+    border-radius: 8px;
+  }
+
   .product-grid {
     width: 100%;
     box-sizing: border-box;
@@ -1743,11 +1799,6 @@ footer > p {
   .shop .product-grid {
     grid-template-columns: minmax(0, 1fr);
     justify-items: center;
-  }
-
-  .usp {
-    width: min(100%, 1000px);
-    box-sizing: border-box;
   }
 
   .product.product-card {

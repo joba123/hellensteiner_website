@@ -13,7 +13,8 @@ import {
 
 function getProduktAusUrl(): Produkt | undefined {
   const params = new URLSearchParams(window.location.search);
-  const produktId = params.get("id");
+  const [, produktIdAusPfad] = window.location.pathname.match(/\/produkt\/([^/]+)/) ?? [];
+  const produktId = produktIdAusPfad ? decodeURIComponent(produktIdAusPfad) : params.get("id");
 
   if (!produktId) {
     return undefined;
@@ -69,7 +70,7 @@ export function ProductDetailApp() {
           <p className="product-detail__eyebrow">Shop</p>
           <h1>Produkt nicht gefunden</h1>
           <p>Dieses Produkt gibt es nicht oder der Link ist unvollständig.</p>
-          <Button as="a" className="product-detail__shop-link" href="Shop.html">
+          <Button as="a" className="product-detail__shop-link" href="/shop">
             Zurück zum Shop
           </Button>
         </div>
@@ -107,7 +108,7 @@ export function ProductDetailApp() {
   return (
     <section className="product-detail" aria-labelledby="product-detail-title">
       <nav className="product-detail__breadcrumb" aria-label="Produktnavigation">
-        <a href="Shop.html">Shop</a>
+        <a href="/shop">Shop</a>
         <span aria-hidden="true">&gt;</span>
         <span aria-current="page">{currentProduct.name}</span>
       </nav>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Button } from "./components/Button";
-import { clearCart, formatPrice, getCartSubtotalCents, getPageHref, useCart } from "./cartStore";
+import { clearCart, formatPrice, getCartSubtotalCents, useCart } from "./cartStore";
 
 export function CheckoutApp() {
   const { items } = useCart();
@@ -23,7 +23,7 @@ export function CheckoutApp() {
           <p className="checkout-eyebrow">Bestellung</p>
           <h1>Vielen Dank für deine Bestellung!</h1>
           <p>Deine Bestellung wurde abgeschlossen. Es wurde keine echte Zahlung ausgelöst.</p>
-          <Button as="a" href={getPageHref("Shop.html")}>
+          <Button as="a" href="/shop">
             Zurück zum Shop
           </Button>
         </div>
@@ -38,7 +38,7 @@ export function CheckoutApp() {
           <p className="checkout-eyebrow">Warenkorb</p>
           <h1>Dein Warenkorb ist leer</h1>
           <p>Lege zuerst Produkte in den Warenkorb, bevor du zur Kasse gehst.</p>
-          <Button as="a" href={getPageHref("Shop.html")}>
+          <Button as="a" href="/shop">
             Zum Shop
           </Button>
         </div>
