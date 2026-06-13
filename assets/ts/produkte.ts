@@ -15,6 +15,7 @@ export interface ProduktAuswahl {
   label: string;
   optionen: readonly string[];
   vorauswahl?: string;
+  preise?: Partial<Record<string, string>>;
 }
 
 export interface Produkt {
@@ -24,7 +25,6 @@ export interface Produkt {
   name: string;
   kurzbeschreibung: string;
   preis: string;
-  detailSeite: string;
   bilder: readonly ProduktBild[];
   highlightBild?: ProduktBild;
   details: {
@@ -43,6 +43,13 @@ export const kategorieReihenfolge: readonly ProduktKategorie[] = [
   "Merchandise"
 ];
 
+export const produktKategorieLabels: Record<ProduktKategorie, string> = {
+  Weissbiere: "Weißbiere",
+  Hellbiere: "Hellbiere",
+  Alkoholfrei: "Alkoholfrei",
+  Merchandise: "Merchandise"
+};
+
 const mengenOptionen = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] as const;
 const bierGebinde = [
   "0,33 l Dose",
@@ -59,10 +66,61 @@ const standardMenge: ProduktAuswahl = {
   vorauswahl: "1"
 };
 
-const standardBierAuswahl: ProduktAuswahl = {
-  label: "Größe wählen:",
-  optionen: bierGebinde,
-  vorauswahl: "20x 0,5 l Flasche"
+function bierAuswahl(preise: Partial<Record<(typeof bierGebinde)[number], string>>): ProduktAuswahl {
+  return {
+    label: "Größe wählen:",
+    optionen: bierGebinde,
+    vorauswahl: "20x 0,5 l Flasche",
+    preise
+  };
+}
+
+const bierPreise159 = {
+  "0,33 l Dose": "1,59 €",
+  "10x 0,33 l Dose": "14,90 €",
+  "0,5 l Flasche": "1,89 €",
+  "20x 0,5 l Flasche": "34,90 €",
+  "5,0 l Partyfass": "18,90 €"
+};
+
+const bierPreise169 = {
+  "0,33 l Dose": "1,69 €",
+  "10x 0,33 l Dose": "15,90 €",
+  "0,5 l Flasche": "1,99 €",
+  "20x 0,5 l Flasche": "36,90 €",
+  "5,0 l Partyfass": "19,90 €"
+};
+
+const bierPreise179 = {
+  "0,33 l Dose": "1,79 €",
+  "10x 0,33 l Dose": "16,90 €",
+  "0,5 l Flasche": "2,09 €",
+  "20x 0,5 l Flasche": "37,90 €",
+  "5,0 l Partyfass": "20,90 €"
+};
+
+const bierPreise189 = {
+  "0,33 l Dose": "1,89 €",
+  "10x 0,33 l Dose": "17,90 €",
+  "0,5 l Flasche": "2,19 €",
+  "20x 0,5 l Flasche": "39,90 €",
+  "5,0 l Partyfass": "21,90 €"
+};
+
+const bierPreise199 = {
+  "0,33 l Dose": "1,99 €",
+  "10x 0,33 l Dose": "18,90 €",
+  "0,5 l Flasche": "2,29 €",
+  "20x 0,5 l Flasche": "41,90 €",
+  "5,0 l Partyfass": "22,90 €"
+};
+
+const bierPreise209 = {
+  "0,33 l Dose": "2,09 €",
+  "10x 0,33 l Dose": "19,90 €",
+  "0,5 l Flasche": "2,39 €",
+  "20x 0,5 l Flasche": "43,90 €",
+  "5,0 l Partyfass": "23,90 €"
 };
 
 const standardKleidungAuswahl: ProduktAuswahl = {
@@ -84,7 +142,6 @@ export const produkte: readonly Produkt[] = [
     name: "Hefeweiß",
     kurzbeschreibung: "Frisch, mild und süffig - unser Klassiker (5,3%)",
     preis: "Ab 1,89 €",
-    detailSeite: "hefeweiss.html",
     bilder: [
       { src: "../assets/images/hefeweiss.png", alt: "Hefeweiß Flasche" },
       { src: "../assets/images/hefeweiss_dose.png", alt: "Hefeweiß Dose" },
@@ -108,7 +165,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise189),
       menge: standardMenge
     }
   },
@@ -119,7 +176,6 @@ export const produkte: readonly Produkt[] = [
     name: "Kristallweiß",
     kurzbeschreibung: "Klar, feinperlig und erfrischend (5,0 %)",
     preis: "Ab 1,99 €",
-    detailSeite: "kristallweiss.html",
     bilder: [
       { src: "../assets/images/kristallweiss.png", alt: "Kristallweiß Flasche" },
       { src: "../assets/images/kristallweiss_dose.png", alt: "Kristallweiß Dose" },
@@ -143,7 +199,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise199),
       menge: standardMenge
     }
   },
@@ -154,7 +210,6 @@ export const produkte: readonly Produkt[] = [
     name: "Dunkelweiß",
     kurzbeschreibung: "Malzig, karamellig und rund im Geschmack (5,4 %)",
     preis: "Ab 2,09 €",
-    detailSeite: "dunkelweiss.html",
     bilder: [
       { src: "../assets/images/dunkelweiss.png", alt: "Dunkelweiß Flasche" },
       { src: "../assets/images/dunkelweiss_dose.png", alt: "Dunkelweiß Dose" },
@@ -178,7 +233,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise209),
       menge: standardMenge
     }
   },
@@ -189,7 +244,6 @@ export const produkte: readonly Produkt[] = [
     name: "Weiß-Radler",
     kurzbeschreibung: "Spritzig mit Zitronennote, perfekt für den Sommer (2,5 %)",
     preis: "Ab 1,79 €",
-    detailSeite: "weiss_radler.html",
     bilder: [
       { src: "../assets/images/weiss_radler.png", alt: "Weiß-Radler Flasche" },
       { src: "../assets/images/weiss_radler_dose.png", alt: "Weiß-Radler Dose" },
@@ -216,7 +270,7 @@ export const produkte: readonly Produkt[] = [
         },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise179),
       menge: standardMenge
     }
   },
@@ -227,7 +281,6 @@ export const produkte: readonly Produkt[] = [
     name: "Helles Original",
     kurzbeschreibung: "Mild, ausgewogen, typisch süddeutsch (5,0 %)",
     preis: "Ab 1,79 €",
-    detailSeite: "helles_original.html",
     bilder: [
       { src: "../assets/images/helles_original.png", alt: "Helles Original Flasche" },
       { src: "../assets/images/helles_original_dose.png", alt: "Helles Original Dose" },
@@ -251,7 +304,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise179),
       menge: standardMenge
     }
   },
@@ -262,7 +315,6 @@ export const produkte: readonly Produkt[] = [
     name: "Zwickl Hell",
     kurzbeschreibung: "Unfiltriert, leicht hefetrüb mit frischem Charakter (5,1 %)",
     preis: "Ab 1,99 €",
-    detailSeite: "zwickl_hell.html",
     bilder: [
       { src: "../assets/images/zwickl_hell.png", alt: "Zwickl Hell Flasche" },
       { src: "../assets/images/zwickl_hell_dose.png", alt: "Zwickl Hell Dose" },
@@ -286,7 +338,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise199),
       menge: standardMenge
     }
   },
@@ -297,7 +349,6 @@ export const produkte: readonly Produkt[] = [
     name: "Export Hell",
     kurzbeschreibung: "Kräftiger im Körper, angenehm würzig (5,4 %)",
     preis: "Ab 2,09 €",
-    detailSeite: "export_hell.html",
     bilder: [
       { src: "../assets/images/export_hell.png", alt: "Export Hell Flasche" },
       { src: "../assets/images/export_hell_dose.png", alt: "Export Hell Dose" },
@@ -321,7 +372,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise209),
       menge: standardMenge
     }
   },
@@ -332,7 +383,6 @@ export const produkte: readonly Produkt[] = [
     name: "Helles Radler",
     kurzbeschreibung: "Goldgelb, erfrischend, leicht süßlich (2,4 %)",
     preis: "Ab 1,79 €",
-    detailSeite: "helles_radler.html",
     bilder: [
       { src: "../assets/images/helles_radler.png", alt: "Helles Radler Flasche" },
       { src: "../assets/images/helles_radler_dose.png", alt: "Helles Radler Dose" },
@@ -359,7 +409,7 @@ export const produkte: readonly Produkt[] = [
         },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise179),
       menge: standardMenge
     }
   },
@@ -370,7 +420,6 @@ export const produkte: readonly Produkt[] = [
     name: "Malztonic",
     kurzbeschreibung: "Malz trifft Energie - gesund genießen",
     preis: "Ab 2,29 €",
-    detailSeite: "malztonic.html",
     highlightBild: { src: "../assets/images/malztonic_head1.png", alt: "Malztonic" },
     bilder: [
       { src: "../assets/images/malztonic_shop.png", alt: "Malztonic" },
@@ -404,7 +453,11 @@ export const produkte: readonly Produkt[] = [
       auswahl: {
         label: "Größe wählen:",
         optionen: ["0,33 l Dose", "0,5 l Dose"],
-        vorauswahl: "0,33 l Dose"
+        vorauswahl: "0,33 l Dose",
+        preise: {
+          "0,33 l Dose": "2,29 €",
+          "0,5 l Dose": "2,79 €"
+        }
       },
       menge: standardMenge
     }
@@ -416,7 +469,6 @@ export const produkte: readonly Produkt[] = [
     name: "Helles Alkoholfrei",
     kurzbeschreibung: "Vollmundig trotz 0,0 %",
     preis: "Ab 1,59 €",
-    detailSeite: "helles_alkoholfrei.html",
     bilder: [
       { src: "../assets/images/helles_alkoholfrei.png", alt: "Helles Alkoholfrei Flasche" },
       { src: "../assets/images/helles_alkoholfrei_dose.png", alt: "Helles Alkoholfrei Dose" },
@@ -440,7 +492,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise159),
       menge: standardMenge
     }
   },
@@ -451,7 +503,6 @@ export const produkte: readonly Produkt[] = [
     name: "Weizen Alkoholfrei",
     kurzbeschreibung: "Isotonisch & fruchtig (0,0%)",
     preis: "Ab 1,79 €",
-    detailSeite: "weizen_alkoholfrei.html",
     bilder: [
       { src: "../assets/images/weizen_alkoholfrei.png", alt: "Weizen Alkoholfrei Flasche" },
       { src: "../assets/images/weizen_alkoholfrei_dose.png", alt: "Weizen Alkoholfrei Dose" },
@@ -475,7 +526,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise179),
       menge: standardMenge
     }
   },
@@ -486,7 +537,6 @@ export const produkte: readonly Produkt[] = [
     name: "Helles Radler Alkoholfrei",
     kurzbeschreibung: "Spritzig & durstlöschend (0,0%)",
     preis: "Ab 1,69 €",
-    detailSeite: "helles_radler_alkoholfrei.html",
     bilder: [
       { src: "../assets/images/helles_radler_alkoholfrei.png", alt: "Helles Radler Alkoholfrei Flasche" },
       { src: "../assets/images/helles_radler_alkoholfrei_dose.png", alt: "Helles Radler Alkoholfrei Dose" },
@@ -513,7 +563,7 @@ export const produkte: readonly Produkt[] = [
         },
         lagerung
       ],
-      auswahl: standardBierAuswahl,
+      auswahl: bierAuswahl(bierPreise169),
       menge: standardMenge
     }
   },
@@ -524,7 +574,6 @@ export const produkte: readonly Produkt[] = [
     name: "Hellensteiner Maßkrug 1,0 Liter",
     kurzbeschreibung: "Robust. Kultig. Dein Bier schmeckt hier am besten",
     preis: "19,90 €",
-    detailSeite: "masskrug.html",
     bilder: [
       { src: "../assets/images/hellensteiner_masskrug.png", alt: "Masskrug Bild 1" },
       { src: "../assets/images/hellensteiner_masskrug2.png", alt: "Masskrug Bild 2" }
@@ -560,7 +609,6 @@ export const produkte: readonly Produkt[] = [
     name: "Flaschenöffner mit Gravur",
     kurzbeschreibung: "Öffne dein Bier - stilecht mit Brauereikraft",
     preis: "9,90 €",
-    detailSeite: "flaschenoeffner.html",
     bilder: [
       { src: "../assets/images/flaschenoeffner_gravur.png", alt: "Flaschenöffner Bild 1" },
       { src: "../assets/images/flaschenoeffner_gravur1.png", alt: "Flaschenöffner Bild 2" }
@@ -594,7 +642,6 @@ export const produkte: readonly Produkt[] = [
     name: "Biergarten-Brett/ Brotzeitbrett",
     kurzbeschreibung: "Brotzeit? Nur mit deiner Lieblingsbrauerei",
     preis: "18,90 €",
-    detailSeite: "biergarten_brett.html",
     bilder: [
       { src: "../assets/images/biergarten_brett.png", alt: "Biergarten-Brett Bild 1" },
       { src: "../assets/images/biergarten_brett1.png", alt: "Biergarten-Brett Bild 2" }
@@ -628,7 +675,6 @@ export const produkte: readonly Produkt[] = [
     name: "Holz-Bierdeckel-Set (4 Stück)",
     kurzbeschreibung: "Tradition zum Abstellen - handgemacht und edel",
     preis: "12,90 €",
-    detailSeite: "holz_bierdeckel.html",
     bilder: [
       { src: "../assets/images/holz_bierdeckelset.png", alt: "Holz Bierdeckelset Bild 1" },
       { src: "../assets/images/holz_bierdeckelset1.png", alt: "Holz Bierdeckelset Bild 2" }
@@ -661,7 +707,6 @@ export const produkte: readonly Produkt[] = [
     name: "Hoodie mit Retro-Brauerei-Schriftzug",
     kurzbeschreibung: "Gemütlich. Stylisch. 100 % Brauereigefühl",
     preis: "39,90 €",
-    detailSeite: "hoodie.html",
     bilder: [
       { src: "../assets/images/hoodie.png", alt: "Hoodie Bild 1" },
       { src: "../assets/images/hoodie1.png", alt: "Hoodie Bild 2" }
@@ -696,7 +741,6 @@ export const produkte: readonly Produkt[] = [
     name: "Baumwoll-Poloshirt mit Brauerei-Design",
     kurzbeschreibung: "Trag den Geschmack deiner Lieblingsbrauerei - mit Stil",
     preis: "24,90 €",
-    detailSeite: "poloshirt.html",
     bilder: [
       { src: "../assets/images/poloshirt.png", alt: "Poloshirt Bild 1" },
       { src: "../assets/images/poloshirt1.png", alt: "Poloshirt Bild 2" }
@@ -731,7 +775,6 @@ export const produkte: readonly Produkt[] = [
     name: "Rustikale Strickjacke mit Brauerei-Stickerei",
     kurzbeschreibung: "Warm. Echt. Und mit Stolz getragen",
     preis: "59,90 €",
-    detailSeite: "strickjacke.html",
     bilder: [
       { src: "../assets/images/strickjacke.png", alt: "Rustikale Strickjacke mit Brauerei-Stickerei Bild 1" },
       { src: "../assets/images/strickjacke1.png", alt: "Rustikale Strickjacke mit Brauerei-Stickerei Bild 2" }
@@ -766,7 +809,6 @@ export const produkte: readonly Produkt[] = [
     name: "Brauerei-Kappe aus Canvas",
     kurzbeschreibung: "Tradition auf dem Kopf - schlicht & echt",
     preis: "19,90 €",
-    detailSeite: "kappe.html",
     bilder: [
       { src: "../assets/images/kappe.png", alt: "Brauerei-Kappe aus Canvas Bild 1" },
       { src: "../assets/images/kappe1.png", alt: "Brauerei-Kappe aus Canvas Bild 2" }
@@ -797,4 +839,16 @@ export const produkte: readonly Produkt[] = [
 
 export function findeProdukt(id: string): Produkt | undefined {
   return produkte.find((produkt) => produkt.id === id);
+}
+
+export function produktDetailUrl(id: string): string {
+  return `produkt.html?id=${encodeURIComponent(id)}`;
+}
+
+export function getAuswahlPreisLabel(produkt: Produkt, auswahlWert?: string): string {
+  if (!auswahlWert) {
+    return produkt.preis;
+  }
+
+  return produkt.details.auswahl?.preise?.[auswahlWert] ?? produkt.preis;
 }
