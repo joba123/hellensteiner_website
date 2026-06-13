@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Produkt } from "../../assets/ts/produkte";
+import { produktDetailUrl, type Produkt } from "../../assets/ts/produkte";
+import { Button } from "./Button";
 
 interface ProductCardProps {
   produkt: Produkt;
@@ -33,7 +34,7 @@ export function ProductCard({ produkt }: ProductCardProps) {
     >
       <a
         className="product-card__cover-link"
-        href={produkt.detailSeite}
+        href={produktDetailUrl(produkt.id)}
         aria-label={`${produkt.name} Produktseite öffnen`}
       >
         {produkt.name}
@@ -56,9 +57,10 @@ export function ProductCard({ produkt }: ProductCardProps) {
       {imageCount > 1 && (
         <div className="product-card__dots" aria-label={`${produkt.name} Bilder`}>
           {produkt.bilder.map((bild, index) => (
-            <button
+            <Button
               className={`product-card__dot${index === activeIndex ? " is-active" : ""}`} 
               type="button"
+              variant="unstyled"
               key={bild.src}
               aria-label={`${produkt.name} Bild ${index + 1} anzeigen`}
               aria-pressed={index === activeIndex}

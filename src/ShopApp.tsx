@@ -1,12 +1,5 @@
 import { ProductCard } from "./components/ProductCard";
-import { kategorieReihenfolge, produkte, type ProduktKategorie } from "../assets/ts/produkte";
-
-const kategorieLabels: Record<ProduktKategorie, string> = {
-  Weissbiere: "Weißbiere",
-  Hellbiere: "Hellbiere",
-  Alkoholfrei: "Alkoholfrei",
-  Merchandise: "Merchandise"
-};
+import { kategorieReihenfolge, produkte, produktDetailUrl, produktKategorieLabels } from "../assets/ts/produkte";
 
 export function ShopApp() {
   const highlightProdukt = produkte.find((produkt) => produkt.highlightBild);
@@ -16,7 +9,7 @@ export function ShopApp() {
       {highlightProdukt?.highlightBild && (
         <div className="product-grid">
           <div className="usp">
-            <a href={highlightProdukt.detailSeite}>
+            <a href={produktDetailUrl(highlightProdukt.id)}>
               <img
                 className="malztonic"
                 src={highlightProdukt.highlightBild.src}
@@ -36,7 +29,7 @@ export function ShopApp() {
 
         return (
           <section className="shop" key={kategorie}>
-            <h3>{kategorieLabels[kategorie]}</h3>
+            <h3>{produktKategorieLabels[kategorie]}</h3>
             <br />
             <div className="product-grid">
               {produkteDerKategorie.map((produkt) => (
