@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
-import { CountrySelect } from "./CountrySelect";
-import { DateInput } from "./DateInput";
+import { Länderwahl } from "./Länderwahl";
+import { Datum } from "./Datum";
 import { ErrorMessage } from "./ErrorMessage";
 
 const minimumAges: Record<string, number> = {
@@ -29,7 +29,7 @@ const countryNames: Record<string, string> = {
   CZ: "Tschechien"
 };
 
-function getAgeGateInitialState() {
+function getAltersabfrageInitialState() {
   try {
     return sessionStorage.getItem("hellensteinerAgeVerified") === "true";
   } catch {
@@ -37,8 +37,8 @@ function getAgeGateInitialState() {
   }
 }
 
-export function AgeGate() {
-  const [isVerified, setIsVerified] = useState(getAgeGateInitialState);
+export function Altersabfrage() {
+  const [isVerified, setIsVerified] = useState(getAltersabfrageInitialState);
   const [error, setError] = useState("");
   const [country, setCountry] = useState("DE");
   const [day, setDay] = useState("");
@@ -102,7 +102,7 @@ export function AgeGate() {
         <p className="age-gate-eyebrow">Altersprüfung</p>
         <h2 id="age-gate-title">Bitte sag uns,<br />wann du geboren bist.</h2>
         <form className="alter-form" onSubmit={handleSubmit} noValidate>
-          <CountrySelect
+          <Länderwahl
             id="age-country"
             label="Land auswählen"
             options={countryNames}
@@ -111,9 +111,9 @@ export function AgeGate() {
           />
           <fieldset className="age-date-fields">
             <legend>Geburtsdatum</legend>
-            <DateInput id="age-day" label="Tag" placeholder="TT" maxLength={2} value={day} onChange={setDay} />
-            <DateInput id="age-month" label="Monat" placeholder="MM" maxLength={2} value={month} onChange={setMonth} />
-            <DateInput id="age-year" label="Jahr" placeholder="JJJJ" maxLength={4} value={year} onChange={setYear} />
+            <Datum id="age-day" label="Tag" placeholder="TT" maxLength={2} value={day} onChange={setDay} />
+            <Datum id="age-month" label="Monat" placeholder="MM" maxLength={2} value={month} onChange={setMonth} />
+            <Datum id="age-year" label="Jahr" placeholder="JJJJ" maxLength={4} value={year} onChange={setYear} />
           </fieldset>
           <button type="submit" className="btn_check">WEITER</button>
           <p className="age-gate-note">Bitte genieße verantwortungsvoll.</p>

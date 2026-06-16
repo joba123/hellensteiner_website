@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Button } from "../components/Button";
 import { ClubBenefits } from "../ClubBenefits";
 
-export function ClubPage() {
+export function FreundeClub() {
   const [messageVisible, setMessageVisible] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {

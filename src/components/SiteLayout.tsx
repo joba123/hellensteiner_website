@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { CartWidget } from "./CartWidget";
+import { Card } from "./Card";
+import { UserWidget } from "./UserWidget";
 
 interface SiteLayoutProps {
   children: ReactNode;
@@ -58,7 +59,10 @@ export function SiteHeader({
           ))}
         </ul>
       </nav>
-      {showCart && <CartWidget />}
+      <div className="header-actions">
+        <UserWidget />
+        {showCart && <Card />}
+      </div>
     </header>
   );
 }

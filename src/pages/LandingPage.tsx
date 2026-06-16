@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type MouseEvent, type PointerEvent, type ReactNode } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Button } from "../components/Button";
-import { AgeGate } from "../components/AgeGate";
+import { Altersabfrage } from "../components/Altersabfrage";
 import { BeerQuote } from "../components/BeerQuote";
 
 const revealTransition = { duration: 0.7, ease: "easeOut" } as const;
@@ -358,10 +358,10 @@ function LandingFinalCta() {
   );
 }
 
-export function HomePage() {
+export function LandingPage() {
   return (
     <>
-      <AgeGate />
+      <Altersabfrage />
       <main className="landing-page">
         <LandingHero />
         <LandingStats />

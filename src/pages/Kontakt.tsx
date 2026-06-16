@@ -1,4 +1,4 @@
-export function ContactPage() {
+export function Kontakt() {
   return (
     <main>
       <section className="kt">

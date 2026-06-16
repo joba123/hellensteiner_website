@@ -1,4 +1,4 @@
-interface DateInputProps {
+interface DatumProps {
   id: string;
   label: string;
   placeholder: string;
@@ -7,7 +7,7 @@ interface DateInputProps {
   onChange: (value: string) => void;
 }
 
-export function DateInput({ id, label, placeholder, maxLength, value, onChange }: DateInputProps) {
+export function Datum({ id, label, placeholder, maxLength, value, onChange }: DatumProps) {
   return (
     <label htmlFor={id}>
       <span>{label}</span>

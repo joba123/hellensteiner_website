@@ -5,10 +5,10 @@ import { ProductDetailApp } from "./ProductDetailApp";
 import { Button } from "./components/Button";
 import { SiteLayout } from "./components/SiteLayout";
 import { AgbPage, DatenschutzPage, ImpressumPage } from "./pages/LegalPages";
-import { ClubPage } from "./pages/ClubPage";
-import { ContactPage } from "./pages/ContactPage";
-import { HomePage } from "./pages/HomePage";
-import { ShopPage } from "./pages/ShopPage";
+import { FreundeClub } from "./pages/FreundeClub";
+import { Kontakt } from "./pages/Kontakt";
+import { LandingPage } from "./pages/LandingPage";
+import { Shop } from "./pages/Shop";
 
 function normalizePath(pathname: string): string {
   if (pathname.length > 1 && pathname.endsWith("/")) {
@@ -37,7 +37,7 @@ export function App() {
   if (pathname === "/") {
     return (
       <SiteLayout>
-        <HomePage />
+        <LandingPage />
       </SiteLayout>
     );
   }
@@ -45,7 +45,7 @@ export function App() {
   if (pathname === "/shop") {
     return (
       <SiteLayout activeRoute="shop">
-        <ShopPage />
+        <Shop />
       </SiteLayout>
     );
   }
@@ -63,7 +63,7 @@ export function App() {
   if (pathname === "/freunde-club") {
     return (
       <SiteLayout activeRoute="freunde-club">
-        <ClubPage />
+        <FreundeClub />
       </SiteLayout>
     );
   }
@@ -97,7 +97,7 @@ export function App() {
   if (pathname === "/kontakt") {
     return (
       <SiteLayout>
-        <ContactPage />
+        <Kontakt />
       </SiteLayout>
     );
   }

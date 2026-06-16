@@ -1,4 +1,4 @@
-interface CountrySelectProps {
+interface LänderwahlProps {
   id: string;
   label: string;
   options: Record<string, string>;
@@ -6,7 +6,7 @@ interface CountrySelectProps {
   onChange: (value: string) => void;
 }
 
-export function CountrySelect({ id, label, options, value, onChange }: CountrySelectProps) {
+export function Länderwahl({ id, label, options, value, onChange }: LänderwahlProps) {
   return (
     <>
       <label htmlFor={id}>{label}</label>

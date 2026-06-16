@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ProductCard } from "./components/ProductCard";
+import { ShopCard } from "./components/ShopCard";
 import { Button } from "./components/Button";
 import { kategorieReihenfolge, produkte, produktKategorieLabels, type Produkt } from "../assets/ts/produkte";
 
@@ -76,7 +76,7 @@ export function ShopApp() {
             <br />
             <div className="product-grid">
               {produkteDerKategorie.map((produkt) => (
-                <ProductCard key={produkt.id} produkt={produkt} />
+                <ShopCard key={produkt.id} produkt={produkt} />
               ))}
             </div>
           </section>

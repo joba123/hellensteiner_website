@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
-import { CartWidget } from "./components/CartWidget";
+import { Card } from "./components/Card";
+import { UserWidget } from "./components/UserWidget";
 
 const appRootElement = document.getElementById("app-root");
 
@@ -16,7 +17,15 @@ if (appRootElement) {
 document.querySelectorAll<HTMLElement>("#cart-root").forEach((cartRootElement) => {
   createRoot(cartRootElement).render(
     <StrictMode>
-      <CartWidget />
+      <Card />
+    </StrictMode>
+  );
+});
+
+document.querySelectorAll<HTMLElement>("#user-root").forEach((userRootElement) => {
+  createRoot(userRootElement).render(
+    <StrictMode>
+      <UserWidget />
     </StrictMode>
   );
 });

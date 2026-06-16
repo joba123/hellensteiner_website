@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { produktDetailUrl, type Produkt } from "../../assets/ts/produkte";
 import { Button } from "./Button";
 
-interface ProductCardProps {
+interface ShopCardProps {
   produkt: Produkt;
 }
 
-export function ProductCard({ produkt }: ProductCardProps) {
+export function ShopCard({ produkt }: ShopCardProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const imageCount = produkt.bilder.length;

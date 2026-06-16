@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./components/Button";
-import { ProductCard } from "./components/ProductCard";
+import { ShopCard } from "./components/ShopCard";
+import { ReviewsSection } from "./components/ReviewsSection";
 import { addCartItem, parsePriceToCents } from "./cartStore";
 import {
   findeProdukt,
@@ -193,13 +194,15 @@ export function ProductDetailApp() {
         ))}
       </div>
 
+      <ReviewsSection productId={currentProduct.id} />
+
       {aehnlicheProdukte.length > 0 && (
         <section className="product-detail__recommendations" aria-labelledby="more-products-title">
           <h2 id="more-products-title">Mehr {kategorieLabel}</h2>
           <div className="product-detail__recommendation-scroll">
             <div className="product-detail__recommendation-grid">
               {aehnlicheProdukte.map((anderesProdukt) => (
-                <ProductCard key={anderesProdukt.id} produkt={anderesProdukt} />
+                <ShopCard key={anderesProdukt.id} produkt={anderesProdukt} />
               ))}
             </div>
           </div>

@@ -1,11 +1,11 @@
-interface ClubBenefitCardProps {
+interface FClubCardProps {
   imageSrc: string;
   imageAlt: string;
   title: string;
   children: string;
 }
 
-export function ClubBenefitCard({ imageSrc, imageAlt, title, children }: ClubBenefitCardProps) {
+export function FClubCard({ imageSrc, imageAlt, title, children }: FClubCardProps) {
   return (
     <article className="club-card">
       <img src={imageSrc} alt={imageAlt} />

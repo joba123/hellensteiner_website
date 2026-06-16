@@ -9,7 +9,7 @@ import {
   useCart
 } from "../cartStore";
 
-export function CartWidget() {
+export function Card() {
   const { items } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const totalQuantity = getCartTotalQuantity(items);

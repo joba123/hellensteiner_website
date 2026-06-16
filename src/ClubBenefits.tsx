@@ -1,4 +1,4 @@
-import { ClubBenefitCard } from "./components/ClubBenefitCard";
+import { FClubCard } from "./components/FClubCard";
 
 const clubBenefits = [
   {
@@ -43,14 +43,14 @@ export function ClubBenefits() {
   return (
     <div className="vorteile-grid">
       {clubBenefits.map((benefit) => (
-        <ClubBenefitCard
+        <FClubCard
           imageSrc={benefit.imageSrc}
           imageAlt={benefit.imageAlt}
           title={benefit.title}
           key={benefit.title}
         >
           {benefit.text}
-        </ClubBenefitCard>
+        </FClubCard>
       ))}
     </div>
   );
