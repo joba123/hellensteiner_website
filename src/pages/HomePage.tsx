@@ -1,32 +1,8 @@
-import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type PointerEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type PointerEvent, type ReactNode } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Button } from "../components/Button";
-
-const minimumAges: Record<string, number> = {
-  DE: 16,
-  AT: 16,
-  CH: 16,
-  FR: 18,
-  BE: 16,
-  NL: 18,
-  LU: 16,
-  DK: 16,
-  PL: 18,
-  CZ: 18
-};
-
-const countryNames: Record<string, string> = {
-  DE: "Deutschland",
-  AT: "Österreich",
-  CH: "Schweiz",
-  FR: "Frankreich",
-  BE: "Belgien",
-  NL: "Niederlande",
-  LU: "Luxemburg",
-  DK: "Dänemark",
-  PL: "Polen",
-  CZ: "Tschechien"
-};
+import { AgeGate } from "../components/AgeGate";
+import { BeerQuote } from "../components/BeerQuote";
 
 const revealTransition = { duration: 0.7, ease: "easeOut" } as const;
 const revealViewport = { once: true, amount: 0.28 } as const;
@@ -85,110 +61,6 @@ const stats = [
   { end: 450, decimals: 0, suffix: "+", label: "Mitarbeiter", text: "Menschen, die jeden Tag Handwerk, Service und Erlebnis möglich machen." },
   { end: 6, decimals: 0, suffix: "x", label: "Gold", text: "Auszeichnungen für echtes Brauhandwerk." }
 ] as const;
-
-function getAgeGateInitialState() {
-  try {
-    return sessionStorage.getItem("hellensteinerAgeVerified") === "true";
-  } catch {
-    return false;
-  }
-}
-
-function AgeGate() {
-  const [isVerified, setIsVerified] = useState(getAgeGateInitialState);
-  const [error, setError] = useState("");
-  const [country, setCountry] = useState("DE");
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const minimumAge = minimumAges[country];
-    const dayNumber = Number(day);
-    const monthNumber = Number(month);
-    const yearNumber = Number(year);
-    const birthdate = new Date(yearNumber, monthNumber - 1, dayNumber);
-
-    if (!country || !minimumAge || !day || !month || !year) {
-      setError("Bitte wählen Sie ein Land aus und geben Sie Ihr vollständiges Geburtsdatum ein.");
-      return;
-    }
-
-    if (
-      Number.isNaN(dayNumber) ||
-      Number.isNaN(monthNumber) ||
-      Number.isNaN(yearNumber) ||
-      birthdate.getFullYear() !== yearNumber ||
-      birthdate.getMonth() !== monthNumber - 1 ||
-      birthdate.getDate() !== dayNumber ||
-      birthdate > new Date()
-    ) {
-      setError("Bitte geben Sie ein gültiges Geburtsdatum ein.");
-      return;
-    }
-
-    const today = new Date();
-    const minimumBirthday = new Date(yearNumber + minimumAge, monthNumber - 1, dayNumber);
-    today.setHours(0, 0, 0, 0);
-
-    if (minimumBirthday > today) {
-      setError(`Für ${countryNames[country]} müssen Sie mindestens ${minimumAge} Jahre alt sein.`);
-      return;
-    }
-
-    try {
-      sessionStorage.setItem("hellensteinerAgeVerified", "true");
-    } catch {
-      // Session storage can be unavailable in some browser modes.
-    }
-
-    setIsVerified(true);
-    setError("");
-  }
-
-  if (isVerified) {
-    return null;
-  }
-
-  return (
-    <div className="alter-overlay" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
-      <div className="age-gate-card">
-        <img src="/assets/images/logo_neu_2.png" alt="Hellensteiner Bräu Logo" />
-        <p className="age-gate-eyebrow">Altersprüfung</p>
-        <h2 id="age-gate-title">Bitte sag uns,<br />wann du geboren bist.</h2>
-        <form className="alter-form" onSubmit={handleSubmit} noValidate>
-          <label htmlFor="age-country">Land auswählen</label>
-          <select id="age-country" name="country" required value={country} onChange={(event) => setCountry(event.target.value)}>
-            <option value="">Bitte auswählen</option>
-            {Object.entries(countryNames).map(([value, label]) => (
-              <option value={value} key={value}>{label}</option>
-            ))}
-          </select>
-          <fieldset className="age-date-fields">
-            <legend>Geburtsdatum</legend>
-            <label>
-              <span>Tag</span>
-              <input type="text" inputMode="numeric" maxLength={2} placeholder="TT" required value={day} onChange={(event) => setDay(event.target.value)} />
-            </label>
-            <label>
-              <span>Monat</span>
-              <input type="text" inputMode="numeric" maxLength={2} placeholder="MM" required value={month} onChange={(event) => setMonth(event.target.value)} />
-            </label>
-            <label>
-              <span>Jahr</span>
-              <input type="text" inputMode="numeric" maxLength={4} placeholder="JJJJ" required value={year} onChange={(event) => setYear(event.target.value)} />
-            </label>
-          </fieldset>
-          <button type="submit" className="btn_check">WEITER</button>
-          <p className="age-gate-note">Bitte genieße verantwortungsvoll.</p>
-          <p className="alter-error" aria-live="polite">{error}</p>
-        </form>
-      </div>
-    </div>
-  );
-}
 
 function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
@@ -474,7 +346,8 @@ function LandingFinalCta() {
     <section className="landing-final" aria-labelledby="landing-final-title">
       <Reveal>
         <p className="landing-eyebrow">Hellensteiner erleben</p>
-        <h2 id="landing-final-title">Komm vorbei, stoß an oder nimm ein Stück Brauerei mit.</h2>
+        <h2 id="landing-final-title" className="sr-only">Bier-Zitat der Stunde</h2>
+        <BeerQuote />
         <div className="landing-final__actions">
           <Button as="a" href="/shop">Zum Shop</Button>
           <Button as="a" href="/freunde-club">Freunde Club</Button>

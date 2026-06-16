@@ -163,7 +163,7 @@ footer {
 .shop-search {
   display: grid;
   gap: 14px;
-  width: min(920px, calc(100% - 32px));
+  width: min(920px, calc(100% - clamp(40px, 11vw, 150px)));
   margin: 0 auto clamp(22px, 4vw, 42px);
   padding: clamp(8px, 2vw, 18px) 0;
   border: 0;
@@ -1600,7 +1600,7 @@ footer > p {
 }
 
 .shop .product-grid {
-  width: min(100%, 1320px);
+  width: min(calc(100% - clamp(40px, 11vw, 150px)), 1240px);
   margin: 0 auto;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
