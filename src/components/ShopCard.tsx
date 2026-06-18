@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { produktDetailUrl, type Produkt } from "../../assets/ts/produkte";
 import { Button } from "./Button";
 
-interface ProductCardProps {
+interface ShopCardProps {
   produkt: Produkt;
 }
 
-export function ProductCard({ produkt }: ProductCardProps) {
+export function ShopCard({ produkt }: ShopCardProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteracting, setIsInteracting] = useState(false);
   const imageCount = produkt.bilder.length;
@@ -32,13 +33,13 @@ export function ProductCard({ produkt }: ProductCardProps) {
       onFocus={() => setIsInteracting(true)}
       onBlur={() => setIsInteracting(false)}
     >
-      <a
+      <Link
         className="product-card__cover-link"
-        href={produktDetailUrl(produkt.id)}
+        to={produktDetailUrl(produkt.id)}
         aria-label={`${produkt.name} Produktseite öffnen`}
       >
         {produkt.name}
-      </a>
+      </Link>
 
       <div className="product-card__media" data-shop-slider={produkt.id}>
         <div

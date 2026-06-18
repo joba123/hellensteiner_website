@@ -26,7 +26,6 @@ export interface Produkt {
   kurzbeschreibung: string;
   preis: string;
   bilder: readonly ProduktBild[];
-  highlightBild?: ProduktBild;
   details: {
     titel: string;
     beschreibung: string;
@@ -75,7 +74,7 @@ function bierAuswahl(preise: Partial<Record<(typeof bierGebinde)[number], string
   };
 }
 
-const bierPreise159 = {
+const bierpreis1 = {
   "0,33 l Dose": "1,59 €",
   "10x 0,33 l Dose": "14,90 €",
   "0,5 l Flasche": "1,89 €",
@@ -83,7 +82,7 @@ const bierPreise159 = {
   "5,0 l Partyfass": "18,90 €"
 };
 
-const bierPreise169 = {
+const bierpreis2 = {
   "0,33 l Dose": "1,69 €",
   "10x 0,33 l Dose": "15,90 €",
   "0,5 l Flasche": "1,99 €",
@@ -91,7 +90,7 @@ const bierPreise169 = {
   "5,0 l Partyfass": "19,90 €"
 };
 
-const bierPreise179 = {
+const bierpreis3 = {
   "0,33 l Dose": "1,79 €",
   "10x 0,33 l Dose": "16,90 €",
   "0,5 l Flasche": "2,09 €",
@@ -99,7 +98,7 @@ const bierPreise179 = {
   "5,0 l Partyfass": "20,90 €"
 };
 
-const bierPreise189 = {
+const bierpreis4 = {
   "0,33 l Dose": "1,89 €",
   "10x 0,33 l Dose": "17,90 €",
   "0,5 l Flasche": "2,19 €",
@@ -107,7 +106,7 @@ const bierPreise189 = {
   "5,0 l Partyfass": "21,90 €"
 };
 
-const bierPreise199 = {
+const bierpreis5 = {
   "0,33 l Dose": "1,99 €",
   "10x 0,33 l Dose": "18,90 €",
   "0,5 l Flasche": "2,29 €",
@@ -115,7 +114,7 @@ const bierPreise199 = {
   "5,0 l Partyfass": "22,90 €"
 };
 
-const bierPreise209 = {
+const bierpreis6 = {
   "0,33 l Dose": "2,09 €",
   "10x 0,33 l Dose": "19,90 €",
   "0,5 l Flasche": "2,39 €",
@@ -134,6 +133,7 @@ const lagerung: ProduktDetailAbschnitt = {
   text: "Kühl und dunkel lagern. Ideal bei 6-8 °C genießen."
 };
 
+//AI-Tool - siehe AI-Tool Doku - 
 export const produkte: readonly Produkt[] = [
   {
     id: "hefeweiss",
@@ -165,7 +165,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise189),
+      auswahl: bierAuswahl(bierpreis4),
       menge: standardMenge
     }
   },
@@ -199,7 +199,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise199),
+      auswahl: bierAuswahl(bierpreis5),
       menge: standardMenge
     }
   },
@@ -233,7 +233,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise209),
+      auswahl: bierAuswahl(bierpreis6),
       menge: standardMenge
     }
   },
@@ -270,7 +270,7 @@ export const produkte: readonly Produkt[] = [
         },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise179),
+      auswahl: bierAuswahl(bierpreis3),
       menge: standardMenge
     }
   },
@@ -304,7 +304,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise179),
+      auswahl: bierAuswahl(bierpreis3),
       menge: standardMenge
     }
   },
@@ -338,7 +338,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise199),
+      auswahl: bierAuswahl(bierpreis5),
       menge: standardMenge
     }
   },
@@ -372,7 +372,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise209),
+      auswahl: bierAuswahl(bierpreis6),
       menge: standardMenge
     }
   },
@@ -409,7 +409,7 @@ export const produkte: readonly Produkt[] = [
         },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise179),
+      auswahl: bierAuswahl(bierpreis3),
       menge: standardMenge
     }
   },
@@ -420,7 +420,6 @@ export const produkte: readonly Produkt[] = [
     name: "Malztonic",
     kurzbeschreibung: "Malz trifft Energie - gesund genießen",
     preis: "Ab 2,29 €",
-    highlightBild: { src: "../assets/images/malztonic_head1.png", alt: "Malztonic" },
     bilder: [
       { src: "../assets/images/malztonic_shop.png", alt: "Malztonic" },
       { src: "../assets/images/malztonic_green.png", alt: "Malztonic grün" },
@@ -492,7 +491,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Gerstenmalz, Hopfen" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise159),
+      auswahl: bierAuswahl(bierpreis1),
       menge: standardMenge
     }
   },
@@ -526,7 +525,7 @@ export const produkte: readonly Produkt[] = [
         { titel: "Zutaten", text: "Wasser, Weizenmalz, Gerstenmalz, Hopfen, Hefe" },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise179),
+      auswahl: bierAuswahl(bierpreis3),
       menge: standardMenge
     }
   },
@@ -563,7 +562,7 @@ export const produkte: readonly Produkt[] = [
         },
         lagerung
       ],
-      auswahl: bierAuswahl(bierPreise169),
+      auswahl: bierAuswahl(bierpreis2),
       menge: standardMenge
     }
   },
@@ -837,12 +836,14 @@ export const produkte: readonly Produkt[] = [
   }
 ];
 
+//AI Tool Ende
+
 export function findeProdukt(id: string): Produkt | undefined {
   return produkte.find((produkt) => produkt.id === id);
 }
 
 export function produktDetailUrl(id: string): string {
-  return `produkt.html?id=${encodeURIComponent(id)}`;
+  return `/produkt/${encodeURIComponent(id)}`;
 }
 
 export function getAuswahlPreisLabel(produkt: Produkt, auswahlWert?: string): string {
@@ -850,5 +851,8 @@ export function getAuswahlPreisLabel(produkt: Produkt, auswahlWert?: string): st
     return produkt.preis;
   }
 
-  return produkt.details.auswahl?.preise?.[auswahlWert] ?? produkt.preis;
+  const auswahlPreise = produkt.details.auswahl?.preise;
+  const preisFuerAuswahl = auswahlPreise?.[auswahlWert];
+
+  return preisFuerAuswahl ?? produkt.preis;
 }

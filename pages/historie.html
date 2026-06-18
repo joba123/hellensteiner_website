@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" href="../assets/images/logo_klar.png">
   <link rel="stylesheet" href="../assets/css/cart.css">
+  <link rel="stylesheet" href="../assets/css/auth.css">
 </head>
 <body>
     <div class="achtung-banner">
@@ -16,7 +17,7 @@
         </div>
     </div>
     <header>
-        <a href="../index.html">
+        <a href="/">
             <div class="logo">
                 <img src="../assets/images/logo_neu.png" alt="Hellensteiner Logo">
             </div>
@@ -29,14 +30,17 @@
         </label>
         <nav>
             <ul>
-                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="/shop">Shop</a></li>
                 <li><a href="historie.html"><u>Historie</u></a></li>
                 <li><a href="biergarten.html">Biergarten</a></li>
-                <li><a href="freunde_club.html">Freunde Club</a></li>
-                <li><a href="karriere.html">Karriere</a></li>
+                <li><a href="/freunde-club">Freunde Club</a></li>
+                <li><a href="/karriere">Karriere</a></li>
             </ul>
         </nav>
-        <div id="cart-root"></div>
+        <div class="header-actions">
+            <div id="user-root"></div>
+            <div id="cart-root"></div>
+        </div>
   </header>
 
 <h2 class="titel" style="text-align:center; font-size:2.5rem; width:100%; margin:40px 0; font-weight:700;">Unsere Historie</h2>
@@ -120,10 +124,10 @@
                 <a class="karte-link" aria-label="Karten-Link" href="https://www.openstreetmap.org/?#map=17/48.680587/10.152140">Hier findest du uns</a>
             </div>
             <div class="foot-row">
-                 <h3><a href="Impressum.html">Impressum</a></h3>
-                 <h3><a href="Impressum.html#kontakt">Kontakt</a></h3>
-                 <h3><a href="Datenschutz.html">Datenschutz</a></h3>
-                 <h3><a href="AGB.html">AGB's</a></h3>
+                 <h3><a href="/impressum">Impressum</a></h3>
+                 <h3><a href="/impressum#kontakt">Kontakt</a></h3>
+                 <h3><a href="/datenschutz">Datenschutz</a></h3>
+                 <h3><a href="/agb">AGB's</a></h3>
             </div>
             <div>
                 <h3>Folge uns:</h3>

@@ -1,25 +1,30 @@
 import { resolve } from "node:path";
-import { readdirSync } from "node:fs";
+import { cpSync, existsSync } from "node:fs";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-const pageInputs = Object.fromEntries(
-  readdirSync(resolve(__dirname, "pages"))
-    .filter((fileName) => fileName.endsWith(".html"))
-    .map((fileName) => [
-      `page-${fileName.replace(/[^a-zA-Z0-9_-]/g, "-")}`,
-      resolve(__dirname, "pages", fileName)
-    ])
-);
-
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: "copy-static-image-assets",
+      closeBundle() {
+        const source = resolve(__dirname, "assets", "images");
+        const target = resolve(__dirname, "dist", "assets", "images");
+
+        if (existsSync(source)) {
+          cpSync(source, target, { recursive: true });
+        }
+      }
+    }
+  ],
   build: {
     outDir: "dist",
     rollupOptions: {
       input: {
         index: resolve(__dirname, "index.html"),
-        ...pageInputs
+        historie: resolve(__dirname, "pages", "historie.html"),
+        biergarten: resolve(__dirname, "pages", "biergarten.html")
       }
     }
   }

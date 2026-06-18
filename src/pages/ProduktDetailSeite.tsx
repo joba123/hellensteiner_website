@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Button } from "./components/Button";
-import { ProductCard } from "./components/ProductCard";
-import { addCartItem, parsePriceToCents } from "./cartStore";
+import { Link, useParams } from "react-router";
+import { Button } from "../components/Button";
+import { ShopCard } from "../components/ShopCard";
+import { ReviewsSection } from "../components/reviews/ReviewsSection";
+import { addCartItem, parsePriceToCents } from "../cartStore";
 import {
   findeProdukt,
   getAuswahlPreisLabel,
@@ -9,18 +11,7 @@ import {
   produktKategorieLabels,
   type Produkt,
   type ProduktAuswahl
-} from "../assets/ts/produkte";
-
-function getProduktAusUrl(): Produkt | undefined {
-  const params = new URLSearchParams(window.location.search);
-  const produktId = params.get("id");
-
-  if (!produktId) {
-    return undefined;
-  }
-
-  return findeProdukt(produktId);
-}
+} from "../../assets/ts/produkte";
 
 function AuswahlFeld({
   auswahl,
@@ -51,8 +42,9 @@ function AuswahlFeld({
   );
 }
 
-export function ProductDetailApp() {
-  const produkt = getProduktAusUrl();
+export function ProduktDetailSeite() {
+  const { id } = useParams();
+  const produkt = id ? findeProdukt(decodeURIComponent(id)) : undefined;
   const [activeIndex, setActiveIndex] = useState(0);
   const [warenkorbStatus, setWarenkorbStatus] = useState("");
   const [selectedOption, setSelectedOption] = useState(
@@ -69,7 +61,7 @@ export function ProductDetailApp() {
           <p className="product-detail__eyebrow">Shop</p>
           <h1>Produkt nicht gefunden</h1>
           <p>Dieses Produkt gibt es nicht oder der Link ist unvollständig.</p>
-          <Button as="a" className="product-detail__shop-link" href="Shop.html">
+          <Button as="a" className="product-detail__shop-link" href="/shop">
             Zurück zum Shop
           </Button>
         </div>
@@ -107,7 +99,7 @@ export function ProductDetailApp() {
   return (
     <section className="product-detail" aria-labelledby="product-detail-title">
       <nav className="product-detail__breadcrumb" aria-label="Produktnavigation">
-        <a href="Shop.html">Shop</a>
+        <Link to="/shop">Shop</Link>
         <span aria-hidden="true">&gt;</span>
         <span aria-current="page">{currentProduct.name}</span>
       </nav>
@@ -192,13 +184,15 @@ export function ProductDetailApp() {
         ))}
       </div>
 
+      <ReviewsSection productId={currentProduct.id} />
+
       {aehnlicheProdukte.length > 0 && (
         <section className="product-detail__recommendations" aria-labelledby="more-products-title">
           <h2 id="more-products-title">Mehr {kategorieLabel}</h2>
           <div className="product-detail__recommendation-scroll">
             <div className="product-detail__recommendation-grid">
               {aehnlicheProdukte.map((anderesProdukt) => (
-                <ProductCard key={anderesProdukt.id} produkt={anderesProdukt} />
+                <ShopCard key={anderesProdukt.id} produkt={anderesProdukt} />
               ))}
             </div>
           </div>

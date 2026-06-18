@@ -1,14 +1,18 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Button } from "./components/Button";
-import { clearCart, formatPrice, getCartSubtotalCents, getPageHref, useCart } from "./cartStore";
+import { useAuth } from "./authStore";
+import { clearCart, formatPrice, getCartSubtotalCents, getClubDiscountCents, useCart } from "./cartStore";
 
 export function CheckoutApp() {
   const { items } = useCart();
+  const { currentUser } = useAuth();
   const [isComplete, setIsComplete] = useState(false);
   const subtotalCents = getCartSubtotalCents(items);
+  const isClubMember = currentUser?.isClubMember ?? false;
+  const discountCents = isClubMember ? getClubDiscountCents(subtotalCents) : 0;
   const shippingCents = items.length > 0 ? 490 : 0;
-  const totalCents = subtotalCents + shippingCents;
+  const totalCents = subtotalCents - discountCents + shippingCents;
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,7 +27,7 @@ export function CheckoutApp() {
           <p className="checkout-eyebrow">Bestellung</p>
           <h1>Vielen Dank für deine Bestellung!</h1>
           <p>Deine Bestellung wurde abgeschlossen. Es wurde keine echte Zahlung ausgelöst.</p>
-          <Button as="a" href={getPageHref("Shop.html")}>
+          <Button as="a" href="/shop">
             Zurück zum Shop
           </Button>
         </div>
@@ -38,7 +42,7 @@ export function CheckoutApp() {
           <p className="checkout-eyebrow">Warenkorb</p>
           <h1>Dein Warenkorb ist leer</h1>
           <p>Lege zuerst Produkte in den Warenkorb, bevor du zur Kasse gehst.</p>
-          <Button as="a" href={getPageHref("Shop.html")}>
+          <Button as="a" href="/shop">
             Zum Shop
           </Button>
         </div>
@@ -131,6 +135,12 @@ export function CheckoutApp() {
               <span>Zwischensumme</span>
               <strong>{formatPrice(subtotalCents)}</strong>
             </p>
+            {isClubMember && (
+              <p>
+                <span>Freundeclub-Rabatt (-10%)</span>
+                <strong>-{formatPrice(discountCents)}</strong>
+              </p>
+            )}
             <p>
               <span>Versand</span>
               <strong>{formatPrice(shippingCents)}</strong>

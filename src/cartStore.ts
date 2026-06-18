@@ -164,6 +164,12 @@ export function getCartSubtotalCents(items: readonly CartItem[]): number {
   return items.reduce((total, item) => total + item.quantity * item.unitPriceCents, 0);
 }
 
+export const CLUB_DISCOUNT_RATE = 0.1;
+
+export function getClubDiscountCents(subtotalCents: number): number {
+  return Math.round(subtotalCents * CLUB_DISCOUNT_RATE);
+}
+
 export function parsePriceToCents(priceLabel: string): number {
   const priceMatch = priceLabel.match(/(\d+(?:[,.]\d{1,2})?)/);
 
@@ -181,12 +187,4 @@ export function formatPrice(cents: number): string {
     style: "currency",
     currency: "EUR"
   }).format(cents / 100);
-}
-
-export function getPageHref(pageName: string): string {
-  if (typeof window === "undefined") {
-    return pageName;
-  }
-
-  return window.location.pathname.includes("/pages/") ? pageName : `pages/${pageName}`;
 }
