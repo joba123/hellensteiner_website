@@ -1,5 +1,5 @@
 import { ReviewItem } from "./ReviewItem";
-import type { Review } from "../reviewStore";
+import type { Review } from "../../reviewStore";
 
 interface ReviewListProps {
   reviews: readonly Review[];

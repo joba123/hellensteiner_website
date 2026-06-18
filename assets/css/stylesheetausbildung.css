@@ -483,6 +483,7 @@ a.button:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   width: fit-content;
   min-height: 44px;
   padding: 12px 18px;
@@ -565,9 +566,15 @@ a.button:hover {
   text-transform: uppercase;
 }
 
+.application-summary__apply {
+  margin-top: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .application-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
   align-items: start;
 }
@@ -652,19 +659,36 @@ a.button:hover {
   margin-top: 2px;
 }
 
-.application-form__submit,
-.application-mail-button {
+.application-form__files {
   width: 100%;
+  box-sizing: border-box;
+  border: 1px dashed rgba(46, 58, 79, 0.3);
+  border-radius: 8px;
+  padding: 14px 13px;
+  background: #fbf9f4;
+  color: #4c5563;
+  font: inherit;
+  cursor: pointer;
 }
 
-.application-mail-button {
-  margin-top: 12px;
+.application-form__submit {
+  width: 100%;
 }
 
 .application-form__status {
   margin: 0;
   color: #3f6c3b;
   font-weight: 800;
+}
+
+.application-apply-page {
+  display: grid;
+  gap: 6px;
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(46, 58, 79, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(46, 58, 79, 0.08);
 }
 
 .application-page--empty {

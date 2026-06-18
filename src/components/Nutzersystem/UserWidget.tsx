@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Button } from "./Button";
-import { AccountPanel } from "./AccountPanel";
+import { createPortal } from "react-dom";
+import { Button } from "../Button";
+import { AccountLogin } from "./AccountLogin";
 import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";
 import { UserAvatar } from "./UserAvatar";
-import { useAuth } from "../authStore";
+import { useAuth } from "../../authStore";
 
 type AuthMode = "login" | "register";
 
@@ -54,31 +55,35 @@ export function UserWidget() {
         )}
       </Button>
 
-      {isOpen && (
-        <button className="auth-drawer__backdrop" type="button" aria-label="Konto schließen" onClick={closeDrawer} />
-      )}
+      {isOpen &&
+        createPortal(
+          <>
+            <button className="auth-drawer__backdrop" type="button" aria-label="Konto schließen" onClick={closeDrawer} />
 
-      <aside className={`auth-drawer${isOpen ? " is-open" : ""}`} aria-hidden={!isOpen} aria-label="Konto">
-        <div className="auth-drawer__header">
-          <div>
-            <p>{isLoggedIn ? "Willkommen zurück" : "Hellensteiner Konto"}</p>
-            <strong>{headingLabel}</strong>
-          </div>
-          <Button className="auth-drawer__close" type="button" variant="unstyled" aria-label="Konto schließen" onClick={closeDrawer}>
-            ×
-          </Button>
-        </div>
+            <aside className="auth-drawer is-open" aria-label="Konto">
+              <div className="auth-drawer__header">
+                <div>
+                  <p>{isLoggedIn ? "Willkommen zurück" : "Hellensteiner Konto"}</p>
+                  <strong>{headingLabel}</strong>
+                </div>
+                <Button className="auth-drawer__close" type="button" variant="unstyled" aria-label="Konto schließen" onClick={closeDrawer}>
+                  ×
+                </Button>
+              </div>
 
-        <div className="auth-drawer__body">
-          {isLoggedIn && currentUser ? (
-            <AccountPanel user={currentUser} onLogout={closeDrawer} />
-          ) : mode === "login" ? (
-            <LoginForm onSwitchToRegister={() => setMode("register")} onSuccess={closeDrawer} />
-          ) : (
-            <RegisterForm onSwitchToLogin={() => setMode("login")} onSuccess={closeDrawer} />
-          )}
-        </div>
-      </aside>
+              <div className="auth-drawer__body">
+                {isLoggedIn && currentUser ? (
+                  <AccountLogin user={currentUser} onLogout={closeDrawer} />
+                ) : mode === "login" ? (
+                  <LoginForm onSwitchToRegister={() => setMode("register")} onSuccess={closeDrawer} />
+                ) : (
+                  <RegisterForm onSwitchToLogin={() => setMode("login")} onSuccess={closeDrawer} />
+                )}
+              </div>
+            </aside>
+          </>,
+          document.body
+        )}
     </div>
   );
 }

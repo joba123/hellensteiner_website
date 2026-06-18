@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button } from "./components/Button";
-import { ShopCard } from "./components/ShopCard";
-import { ReviewsSection } from "./components/ReviewsSection";
-import { addCartItem, parsePriceToCents } from "./cartStore";
+import { Link, useParams } from "react-router";
+import { Button } from "../components/Button";
+import { ShopCard } from "../components/ShopCard";
+import { ReviewsSection } from "../components/reviews/ReviewsSection";
+import { addCartItem, parsePriceToCents } from "../cartStore";
 import {
   findeProdukt,
   getAuswahlPreisLabel,
@@ -10,19 +11,7 @@ import {
   produktKategorieLabels,
   type Produkt,
   type ProduktAuswahl
-} from "../assets/ts/produkte";
-
-function getProduktAusUrl(): Produkt | undefined {
-  const params = new URLSearchParams(window.location.search);
-  const [, produktIdAusPfad] = window.location.pathname.match(/\/produkt\/([^/]+)/) ?? [];
-  const produktId = produktIdAusPfad ? decodeURIComponent(produktIdAusPfad) : params.get("id");
-
-  if (!produktId) {
-    return undefined;
-  }
-
-  return findeProdukt(produktId);
-}
+} from "../../assets/ts/produkte";
 
 function AuswahlFeld({
   auswahl,
@@ -53,8 +42,9 @@ function AuswahlFeld({
   );
 }
 
-export function ProductDetailApp() {
-  const produkt = getProduktAusUrl();
+export function ProduktDetailSeite() {
+  const { id } = useParams();
+  const produkt = id ? findeProdukt(decodeURIComponent(id)) : undefined;
   const [activeIndex, setActiveIndex] = useState(0);
   const [warenkorbStatus, setWarenkorbStatus] = useState("");
   const [selectedOption, setSelectedOption] = useState(
@@ -109,7 +99,7 @@ export function ProductDetailApp() {
   return (
     <section className="product-detail" aria-labelledby="product-detail-title">
       <nav className="product-detail__breadcrumb" aria-label="Produktnavigation">
-        <a href="/shop">Shop</a>
+        <Link to="/shop">Shop</Link>
         <span aria-hidden="true">&gt;</span>
         <span aria-current="page">{currentProduct.name}</span>
       </nav>

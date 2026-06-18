@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState, type MouseEvent, type PointerEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type PointerEvent } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Button } from "../components/Button";
-import { Altersabfrage } from "../components/Altersabfrage";
+import { Reveal, revealTransition, revealViewport } from "../components/Reveal";
+import { TrikotFloatingCard } from "../components/TrikotFloatingCard";
+import { Altersabfrage } from "./Altersabfrage";
 import { BeerQuote } from "../components/BeerQuote";
-
-const revealTransition = { duration: 0.7, ease: "easeOut" } as const;
-const revealViewport = { once: true, amount: 0.28 } as const;
 
 const klassiker = [
   { image: "zwickl_hell_transparent.png", title: "Zwickl Hell", tone: "Dunkel, frisch, unfiltriert" },
@@ -61,20 +60,6 @@ const stats = [
   { end: 450, decimals: 0, suffix: "+", label: "Mitarbeiter", text: "Menschen, die jeden Tag Handwerk, Service und Erlebnis möglich machen." },
   { end: 6, decimals: 0, suffix: "x", label: "Gold", text: "Auszeichnungen für echtes Brauhandwerk." }
 ] as const;
-
-function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 34 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={revealViewport}
-      transition={{ ...revealTransition, delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 function LandingHero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -369,6 +354,7 @@ export function LandingPage() {
         <LandingClassics />
         <LandingFinalCta />
       </main>
+      <TrikotFloatingCard />
     </>
   );
 }

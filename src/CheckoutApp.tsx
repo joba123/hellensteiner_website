@@ -1,14 +1,18 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Button } from "./components/Button";
-import { clearCart, formatPrice, getCartSubtotalCents, useCart } from "./cartStore";
+import { useAuth } from "./authStore";
+import { clearCart, formatPrice, getCartSubtotalCents, getClubDiscountCents, useCart } from "./cartStore";
 
 export function CheckoutApp() {
   const { items } = useCart();
+  const { currentUser } = useAuth();
   const [isComplete, setIsComplete] = useState(false);
   const subtotalCents = getCartSubtotalCents(items);
+  const isClubMember = currentUser?.isClubMember ?? false;
+  const discountCents = isClubMember ? getClubDiscountCents(subtotalCents) : 0;
   const shippingCents = items.length > 0 ? 490 : 0;
-  const totalCents = subtotalCents + shippingCents;
+  const totalCents = subtotalCents - discountCents + shippingCents;
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -131,6 +135,12 @@ export function CheckoutApp() {
               <span>Zwischensumme</span>
               <strong>{formatPrice(subtotalCents)}</strong>
             </p>
+            {isClubMember && (
+              <p>
+                <span>Freundeclub-Rabatt (-10%)</span>
+                <strong>-{formatPrice(discountCents)}</strong>
+              </p>
+            )}
             <p>
               <span>Versand</span>
               <strong>{formatPrice(shippingCents)}</strong>

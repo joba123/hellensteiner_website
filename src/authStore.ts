@@ -2,14 +2,15 @@ import { useSyncExternalStore } from "react";
 
 const AUTH_STORAGE_KEY = "hellensteiner-auth";
 
-// Hinweis: Dies ist eine reine Demo-/Mock-Authentifizierung fuer ein
-// studentisches Projekt. Passwoerter werden im Klartext im localStorage
-// abgelegt und sind NICHT fuer den Produktiveinsatz geeignet.
+// Hinweis: Dies ist eine reine Demo-Authentifizierung für ein
+// studentisches Projekt. Passwörter werden im Klartext im localStorage
+// abgelegt und sind nicht für den Produktiveinsatz geeignet.
 
 export interface User {
   name: string;
   email: string;
   password: string;
+  isClubMember: boolean;
 }
 
 export type PublicUser = Omit<User, "password">;
@@ -38,7 +39,8 @@ interface AuthState {
 const TEST_USER: User = {
   name: "Max Mustermann",
   email: "test@hellensteiner.de",
-  password: "test1234"
+  password: "test1234",
+  isClubMember: false
 };
 
 const listeners = new Set<() => void>();
@@ -68,9 +70,9 @@ function readAuthState(): AuthState {
       return seedState();
     }
 
-    const sanitizedUsers = parsedAuth.users.filter(
-      (user) => user && typeof user.email === "string" && typeof user.password === "string"
-    );
+    const sanitizedUsers = parsedAuth.users
+      .filter((user) => user && typeof user.email === "string" && typeof user.password === "string")
+      .map((user) => ({ ...user, isClubMember: user.isClubMember === true }));
 
     // Test-User immer verfuegbar halten.
     const hasTestUser = sanitizedUsers.some((user) => user.email === TEST_USER.email);
@@ -138,7 +140,7 @@ function getCurrentUser(state: AuthState): PublicUser | null {
     return null;
   }
 
-  return { name: user.name, email: user.email };
+  return { name: user.name, email: user.email, isClubMember: user.isClubMember === true };
 }
 
 export function useAuth(): { currentUser: PublicUser | null } {
@@ -185,7 +187,7 @@ export function register({ name, email, password }: RegisterInput): AuthResult {
     return { success: false, error: "Fuer diese E-Mail existiert bereits ein Konto." };
   }
 
-  const newUser: User = { name: trimmedName, email: normalizedEmail, password };
+  const newUser: User = { name: trimmedName, email: normalizedEmail, password, isClubMember: false };
 
   writeAuthState({
     users: [...authState.users, newUser],
@@ -197,6 +199,31 @@ export function register({ name, email, password }: RegisterInput): AuthResult {
 
 export function logout() {
   writeAuthState({ ...authState, currentUserEmail: null });
+}
+
+export function joinClub(): AuthResult {
+  if (!authState.currentUserEmail) {
+    return { success: false, error: "Bitte melde dich zuerst an, um dem Freundeclub beizutreten." };
+  }
+
+  const user = authState.users.find((entry) => entry.email === authState.currentUserEmail);
+
+  if (!user) {
+    return { success: false, error: "Konto wurde nicht gefunden." };
+  }
+
+  if (user.isClubMember) {
+    return { success: false, error: "Du bist bereits Mitglied im Freundeclub." };
+  }
+
+  writeAuthState({
+    ...authState,
+    users: authState.users.map((entry) =>
+      entry.email === user.email ? { ...entry, isClubMember: true } : entry
+    )
+  });
+
+  return { success: true };
 }
 
 export function getUserInitials(name: string): string {

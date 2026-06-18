@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
 import { Card } from "./components/Card";
-import { UserWidget } from "./components/UserWidget";
+import { UserWidget } from "./components/Nutzersystem/UserWidget";
 
 const appRootElement = document.getElementById("app-root");
 

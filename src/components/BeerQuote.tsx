@@ -17,7 +17,7 @@ async function translateToGerman(text: string, signal: AbortSignal): Promise<str
       return cached;
     }
   } catch {
-    // sessionStorage kann in manchen Browser-Modi blockiert sein.
+
   }
 
   const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|de`;
@@ -35,7 +35,7 @@ async function translateToGerman(text: string, signal: AbortSignal): Promise<str
   try {
     sessionStorage.setItem(cacheKey, translated);
   } catch {
-    // Schreiben kann fehlschlagen, ist aber unkritisch.
+
   }
 
   return translated;
@@ -45,14 +45,13 @@ export function BeerQuote() {
   const [quote, setQuote] = useState<BeerQuoteItem>(getHourlyQuote);
   const [germanText, setGermanText] = useState<string | null>(null);
 
-  // Stündlicher Wechsel: Timer bis zur nächsten vollen Stunde.
   useEffect(() => {
     const msUntilNextHour = HOUR_MS - (Date.now() % HOUR_MS);
     const timeout = setTimeout(() => setQuote(getHourlyQuote()), msUntilNextHour + 1000);
     return () => clearTimeout(timeout);
   }, [quote]);
 
-  // Übersetzung ins Deutsche bei jedem neuen Zitat.
+  // Übersetzung der Zitate ins Deutsche 
   useEffect(() => {
     const controller = new AbortController();
     setGermanText(null);

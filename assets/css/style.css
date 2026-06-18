@@ -1012,6 +1012,14 @@ footer {
   transition: transform 0.9s ease;
 }
 
+.vorteile-grid > div {
+  display: flex;
+}
+
+.vorteile-grid > div > .club-card {
+  width: 100%;
+}
+
 .vorteile-grid-ordnung{
   display: flex;
   flex-direction: column;
@@ -1730,7 +1738,7 @@ footer > p {
 }
 
 /* Freunde Club redesign */
-.club-page {
+.FreundeClub {
   background:
     linear-gradient(180deg, rgba(245, 240, 230, 0.04) 0%, transparent 260px),
     var(--color-primary);
@@ -1743,14 +1751,14 @@ footer > p {
   margin: 0 auto;
 }
 
-.club-page h1,
-.club-page h2,
-.club-page h3,
-.club-page p {
+.FreundeClub h1,
+.FreundeClub h2,
+.FreundeClub h3,
+.FreundeClub p {
   text-align: center;
 }
 
-.club-page h1 {
+.FreundeClub h1 {
   max-width: 860px;
   margin: 0 auto 18px;
   color: var(--color-hover);
@@ -1758,14 +1766,14 @@ footer > p {
   line-height: 1.06;
 }
 
-.club-page h2 {
+.FreundeClub h2 {
   margin: 0 auto 14px;
   color: var(--color-hover);
   font-size: clamp(1.7rem, 2.8vw, 2.7rem);
   line-height: 1.14;
 }
 
-.club-page p {
+.FreundeClub p {
   max-width: 700px;
   margin: 0 auto;
   color: rgba(245, 240, 230, 0.86);
@@ -2032,6 +2040,165 @@ footer > p {
     padding: 20px 14px;
   }
 }
+
+/* Schwebende Trikot-Card (Landing Page) */
+.trikot-float-card {
+  position: fixed;
+  right: clamp(14px, 3vw, 28px);
+  bottom: clamp(14px, 3vw, 28px);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(320px, calc(100vw - 28px));
+  padding: 14px 18px 14px 14px;
+  border-radius: 16px;
+  background: var(--color-primary);
+  border: 1px solid rgba(230, 207, 161, 0.35);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+  color: var(--color-schrift);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trikot-float-card:hover,
+.trikot-float-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+.trikot-float-card__image {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.trikot-float-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.trikot-float-card__text strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-hover);
+}
+
+.trikot-float-card__badge {
+  align-self: flex-start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--color-schrift);
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.trikot-float-card__close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(230, 207, 161, 0.18);
+  color: var(--color-schrift);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.trikot-float-card__close:hover,
+.trikot-float-card__close:focus-visible {
+  background: rgba(230, 207, 161, 0.4);
+  outline: none;
+}
+
+/* Trikot-Bestellseite (Kassen-Layout) */
+.trikot-showcase {
+  text-align: center;
+}
+
+.trikot-showcase__media {
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  padding: clamp(16px, 3vw, 28px);
+  border-radius: 12px;
+  background: radial-gradient(circle at 50% 30%, rgba(245, 240, 230, 0.12), rgba(245, 240, 230, 0.02) 70%);
+}
+
+.trikot-showcase__media img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
+}
+
+.trikot-showcase h2 {
+  text-align: center;
+}
+
+.trikot-showcase__hint {
+  margin: 18px 0 0;
+  color: rgba(245, 240, 230, 0.7);
+  font-size: 0.86rem;
+}
+
+.trikot-auth__title {
+  margin: 0 0 12px;
+  color: var(--color-hover, #f5f0e6);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.trikot-auth__lead {
+  margin: 0 0 22px;
+  color: rgba(245, 240, 230, 0.82);
+  line-height: 1.6;
+}
+
+.checkout-form select {
+  width: 100%;
+  min-height: 52px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  color: var(--color-primary, #3b1e08);
+  border: 1px solid rgba(230, 207, 161, 0.62);
+  border-radius: 8px;
+  background: var(--color-hover, #f5f0e6);
+  font: inherit;
+  font-weight: 700;
+}
+
+@media (max-width: 560px) {
+  .trikot-float-card {
+    gap: 10px;
+    padding: 12px 14px 12px 12px;
+  }
+
+  .trikot-float-card__image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .trikot-float-card__text strong {
+    font-size: 0.85rem;
+  }
+}
+
 
 
 

@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
-import { Länderwahl } from "./Länderwahl";
-import { Datum } from "./Datum";
-import { ErrorMessage } from "./ErrorMessage";
+import { Länderwahl } from "../components/Länderwahl";
+import { Datum } from "../components/Datum";
+import { ErrorMessage } from "../components/ErrorMessage";
 
 const minimumAges: Record<string, number> = {
   DE: 16,
@@ -84,7 +84,7 @@ export function Altersabfrage() {
     try {
       sessionStorage.setItem("hellensteinerAgeVerified", "true");
     } catch {
-      // Session storage can be unavailable in some browser modes.
+
     }
 
     setIsVerified(true);

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "./Button";
-import { ErrorMessage } from "./ErrorMessage";
+import { Button } from "../Button";
+import { ErrorMessage } from "../ErrorMessage";
 import { StarRatingInput } from "./StarRatingInput";
-import { addReview, type Review } from "../reviewStore";
-import type { PublicUser } from "../authStore";
+import { addReview, type Review } from "../../reviewStore";
+import type { PublicUser } from "../../authStore";
 
 interface ReviewFormProps {
   productId: string;

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Button } from "./Button";
-import { ErrorMessage } from "./ErrorMessage";
-import { login } from "../authStore";
+import { Button } from "../Button";
+import { ErrorMessage } from "../ErrorMessage";
+import { Input } from "../Input";
+import { login } from "../../authStore";
 
 interface LoginFormProps {
   onSwitchToRegister: () => void;
@@ -29,29 +30,29 @@ export function LoginForm({ onSwitchToRegister, onSuccess }: LoginFormProps) {
 
   return (
     <form className="auth-form" onSubmit={handleSubmit} noValidate>
-      <label className="auth-form__field">
-        <span>E-Mail</span>
-        <input
-          type="email"
-          autoComplete="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="dein.name@beispiel.de"
-          required
-        />
-      </label>
+      <Input
+        label="E-Mail"
+        fieldClassName="auth-form__field"
+        labelInSpan
+        type="email"
+        autoComplete="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder="dein.name@beispiel.de"
+        required
+      />
 
-      <label className="auth-form__field">
-        <span>Passwort</span>
-        <input
-          type="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="••••••••"
-          required
-        />
-      </label>
+      <Input
+        label="Passwort"
+        fieldClassName="auth-form__field"
+        labelInSpan
+        type="password"
+        autoComplete="current-password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+        placeholder="••••••••"
+        required
+      />
 
       {error && <ErrorMessage message={error} className="auth-form__error" />}
 

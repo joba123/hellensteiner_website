@@ -1,4 +1,4 @@
-import { getUserInitials } from "../authStore";
+import { getUserInitials } from "../../authStore";
 
 interface UserAvatarProps {
   name: string;

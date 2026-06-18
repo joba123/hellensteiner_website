@@ -1,13 +1,13 @@
-import { Button } from "./Button";
+import { Button } from "../Button";
 import { UserAvatar } from "./UserAvatar";
-import { logout, type PublicUser } from "../authStore";
+import { logout, type PublicUser } from "../../authStore";
 
-interface AccountPanelProps {
+interface AccountLoginProps {
   user: PublicUser;
   onLogout?: () => void;
 }
 
-export function AccountPanel({ user, onLogout }: AccountPanelProps) {
+export function AccountLogin({ user, onLogout }: AccountLoginProps) {
   function handleLogout() {
     logout();
     onLogout?.();
@@ -31,6 +31,10 @@ export function AccountPanel({ user, onLogout }: AccountPanelProps) {
         <div>
           <dt>E-Mail</dt>
           <dd>{user.email}</dd>
+        </div>
+        <div>
+          <dt>Freundeclub</dt>
+          <dd>{user.isClubMember ? "Mitglied – 10 % Rabatt aktiv" : "Kein Mitglied"}</dd>
         </div>
       </dl>
 

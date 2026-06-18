@@ -1,7 +1,7 @@
-import { Button } from "./Button";
+import { Button } from "../Button";
 import { StarRating } from "./StarRating";
-import { formatReviewDate, type Review } from "../reviewStore";
-import { getUserInitials } from "../authStore";
+import { formatReviewDate, type Review } from "../../reviewStore";
+import { getUserInitials } from "../../authStore";
 
 interface ReviewItemProps {
   review: Review;

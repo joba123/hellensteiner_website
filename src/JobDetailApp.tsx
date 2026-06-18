@@ -1,34 +1,14 @@
-import { ApplicationForm } from "./components/ApplicationForm";
+import { Link, useParams } from "react-router";
 import { Button } from "./components/Button";
 import {
+  bewerbungUrl,
   findeJob,
-  jobKategorieInfos,
-  type Job
+  jobKategorieInfos
 } from "../assets/ts/jobs";
 
-function getJobAusUrl(): Job | undefined {
-  const params = new URLSearchParams(window.location.search);
-  const [, jobIdAusPfad] = window.location.pathname.match(/\/bewerbung\/([^/]+)/) ?? [];
-  const jobId = jobIdAusPfad ? decodeURIComponent(jobIdAusPfad) : params.get("id");
-
-  if (!jobId) {
-    return undefined;
-  }
-
-  return findeJob(jobId);
-}
-
-function mailtoHref(job: Job): string {
-  const subject = encodeURIComponent(job.mailSubject);
-  const body = encodeURIComponent(
-    `Hallo Hellensteiner Team,\n\nich interessiere mich für die Stelle "${job.titel}".\n\nViele Grüße`
-  );
-
-  return `mailto:karriere@hellensteiner.de?subject=${subject}&body=${body}`;
-}
-
 export function JobDetailApp() {
-  const job = getJobAusUrl();
+  const { id } = useParams();
+  const job = id ? findeJob(decodeURIComponent(id)) : undefined;
 
   if (!job) {
     return (
@@ -50,7 +30,7 @@ export function JobDetailApp() {
   return (
     <main className="application-page">
       <nav className="application-breadcrumb" aria-label="Bewerbungsnavigation">
-        <a href="/karriere">Karriere</a>
+        <Link to="/karriere">Karriere</Link>
         <span aria-hidden="true">&gt;</span>
         <span aria-current="page">{job.titel}</span>
       </nav>
@@ -74,6 +54,9 @@ export function JobDetailApp() {
             <span>Arbeitsmodell</span>
             {job.arbeitsmodell}
           </p>
+          <Button as="a" href={bewerbungUrl(job.id)} className="application-summary__apply">
+            Jetzt bewerben
+          </Button>
         </aside>
       </section>
 
@@ -116,17 +99,6 @@ export function JobDetailApp() {
             <p>{job.perspektive}</p>
           </article>
         </div>
-
-        <aside className="application-apply" aria-labelledby="apply-title">
-          <h2 id="apply-title">Jetzt bewerben</h2>
-          <p>
-            Fülle das Formular aus oder sende deine Unterlagen direkt per E-Mail an unser Karriere-Team.
-          </p>
-          <ApplicationForm job={job} />
-          <Button as="a" href={mailtoHref(job)} className="application-mail-button">
-            Per E-Mail bewerben
-          </Button>
-        </aside>
       </section>
     </main>
   );

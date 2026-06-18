@@ -1,7 +1,10 @@
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router";
 import { CheckoutApp } from "./CheckoutApp";
 import { CareerApp } from "./CareerApp";
 import { JobDetailApp } from "./JobDetailApp";
-import { ProductDetailApp } from "./ProductDetailApp";
+import { BewerbungApp } from "./BewerbungApp";
+import { ProduktDetailSeite } from "./pages/ProduktDetailSeite";
 import { Button } from "./components/Button";
 import { SiteLayout } from "./components/SiteLayout";
 import { AgbPage, DatenschutzPage, ImpressumPage } from "./pages/LegalPages";
@@ -9,13 +12,16 @@ import { FreundeClub } from "./pages/FreundeClub";
 import { Kontakt } from "./pages/Kontakt";
 import { LandingPage } from "./pages/LandingPage";
 import { Shop } from "./pages/Shop";
+import { TrikotBestellung } from "./pages/TrikotBestellung";
 
-function normalizePath(pathname: string): string {
-  if (pathname.length > 1 && pathname.endsWith("/")) {
-    return pathname.slice(0, -1);
-  }
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-  return pathname;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 function NotFoundPage() {
@@ -32,103 +38,127 @@ function NotFoundPage() {
 }
 
 export function App() {
-  const pathname = normalizePath(window.location.pathname);
-
-  if (pathname === "/") {
-    return (
-      <SiteLayout>
-        <LandingPage />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/shop") {
-    return (
-      <SiteLayout activeRoute="shop">
-        <Shop />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname.startsWith("/produkt/")) {
-    return (
-      <SiteLayout activeRoute="shop">
-        <main>
-          <ProductDetailApp />
-        </main>
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/freunde-club") {
-    return (
-      <SiteLayout activeRoute="freunde-club">
-        <FreundeClub />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/karriere") {
-    return (
-      <SiteLayout activeRoute="karriere" showCart={false}>
-        <CareerApp />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname.startsWith("/bewerbung/")) {
-    return (
-      <SiteLayout activeRoute="karriere" showCart={false}>
-        <JobDetailApp />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/checkout") {
-    return (
-      <SiteLayout activeRoute="shop">
-        <main>
-          <CheckoutApp />
-        </main>
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/kontakt") {
-    return (
-      <SiteLayout>
-        <Kontakt />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/impressum") {
-    return (
-      <SiteLayout>
-        <ImpressumPage />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/datenschutz") {
-    return (
-      <SiteLayout>
-        <DatenschutzPage />
-      </SiteLayout>
-    );
-  }
-
-  if (pathname === "/agb") {
-    return (
-      <SiteLayout>
-        <AgbPage />
-      </SiteLayout>
-    );
-  }
-
   return (
-    <SiteLayout showCart={false}>
-      <NotFoundPage />
-    </SiteLayout>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <SiteLayout>
+              <LandingPage />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/shop"
+          element={
+            <SiteLayout aktiveRoute="shop">
+              <Shop />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/produkt/:id"
+          element={
+            <SiteLayout aktiveRoute="shop">
+              <main>
+                <ProduktDetailSeite />
+              </main>
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/freunde-club"
+          element={
+            <SiteLayout aktiveRoute="freunde-club">
+              <FreundeClub />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/karriere"
+          element={
+            <SiteLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
+              <CareerApp />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/bewerbung/:id"
+          element={
+            <SiteLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
+              <JobDetailApp />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/bewerbung/:id/formular"
+          element={
+            <SiteLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
+              <BewerbungApp />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <SiteLayout aktiveRoute="shop">
+              <main>
+                <CheckoutApp />
+              </main>
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/trikot"
+          element={
+            <SiteLayout>
+              <TrikotBestellung />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/kontakt"
+          element={
+            <SiteLayout>
+              <Kontakt />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/impressum"
+          element={
+            <SiteLayout>
+              <ImpressumPage />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/datenschutz"
+          element={
+            <SiteLayout>
+              <DatenschutzPage />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/agb"
+          element={
+            <SiteLayout>
+              <AgbPage />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <SiteLayout warenkorbAnzeigen={false}>
+              <NotFoundPage />
+            </SiteLayout>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }

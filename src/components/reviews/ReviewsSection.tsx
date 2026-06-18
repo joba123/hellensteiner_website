@@ -1,8 +1,8 @@
 import { ReviewForm } from "./ReviewForm";
 import { ReviewList } from "./ReviewList";
 import { StarRating } from "./StarRating";
-import { useAuth } from "../authStore";
-import { getAverageRating, removeReview, useReviews, type Review } from "../reviewStore";
+import { useAuth } from "../../authStore";
+import { getAverageRating, removeReview, useReviews, type Review } from "../../reviewStore";
 
 interface ReviewsSectionProps {
   productId: string;

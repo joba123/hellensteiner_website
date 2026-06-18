@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { produktDetailUrl, type Produkt } from "../../assets/ts/produkte";
 import { Button } from "./Button";
 
@@ -32,13 +33,13 @@ export function ShopCard({ produkt }: ShopCardProps) {
       onFocus={() => setIsInteracting(true)}
       onBlur={() => setIsInteracting(false)}
     >
-      <a
+      <Link
         className="product-card__cover-link"
-        href={produktDetailUrl(produkt.id)}
+        to={produktDetailUrl(produkt.id)}
         aria-label={`${produkt.name} Produktseite öffnen`}
       >
         {produkt.name}
-      </a>
+      </Link>
 
       <div className="product-card__media" data-shop-slider={produkt.id}>
         <div

@@ -314,3 +314,7 @@ export function findeJob(id: string): Job | undefined {
 export function jobDetailUrl(id: string): string {
   return `/bewerbung/${encodeURIComponent(id)}`;
 }
+
+export function bewerbungUrl(id: string): string {
+  return `/bewerbung/${encodeURIComponent(id)}/formular`;
+}

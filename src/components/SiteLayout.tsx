@@ -1,24 +1,24 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 import { Card } from "./Card";
-import { UserWidget } from "./UserWidget";
+import { UserWidget } from "./Nutzersystem/UserWidget";
 
 interface SiteLayoutProps {
   children: ReactNode;
-  activeRoute?: string;
-  showCart?: boolean;
-  showBanner?: boolean;
-  headerVariant?: "default" | "career";
+  aktiveRoute?: string;
+  warenkorbAnzeigen?: boolean;
+  bannerAnzeigen?: boolean;
 }
 
 const navItems = [
   { href: "/shop", label: "Shop", key: "shop" },
-  { href: "/pages/historie.html", label: "Historie", key: "historie" },
-  { href: "/pages/biergarten.html", label: "Biergarten", key: "biergarten" },
+  { href: "/pages/historie.html", label: "Historie", key: "historie", external: true },
+  { href: "/pages/biergarten.html", label: "Biergarten", key: "biergarten", external: true },
   { href: "/freunde-club", label: "Freunde Club", key: "freunde-club" },
   { href: "/karriere", label: "Karriere", key: "karriere" }
 ];
 
-export function AttentionBanner() {
+export function AchtungBanner() {
   return (
     <div className="achtung-banner">
       <div className="achtung-banner-text">Studentisches Projekt - DHBW Heidenheim | Wirtschaftsinformatik</div>
@@ -26,35 +26,35 @@ export function AttentionBanner() {
   );
 }
 
-export function SiteHeader({
+export function Header({
   activeRoute,
-  showCart = true,
-  variant = "default"
+  showCart = true
 }: {
   activeRoute?: string;
   showCart?: boolean;
-  variant?: "default" | "career";
 }) {
-  const isCareerHeader = variant === "career";
-
   return (
-    <header className={isCareerHeader ? "career-site-header" : undefined}>
-      <a href="/">
+    <header>
+      <Link to="/">
         <div className="logo">
           <img src="/assets/images/logo_neu.png" alt="Hellensteiner Logo" />
         </div>
-      </a>
+      </Link>
       <input type="checkbox" id="menu-togglen" />
       <label htmlFor="menu-togglen" className="burger" aria-label="Menü öffnen oder schließen">
         <span></span>
         <span></span>
         <span></span>
       </label>
-      <nav className={isCareerHeader ? "career-site-nav" : undefined}>
+      <nav>
         <ul>
           {navItems.map((item) => (
             <li key={item.key}>
-              <a href={item.href}>{activeRoute === item.key ? <u>{item.label}</u> : item.label}</a>
+              {item.external ? (
+                <a href={item.href}>{activeRoute === item.key ? <u>{item.label}</u> : item.label}</a>
+              ) : (
+                <Link to={item.href}>{activeRoute === item.key ? <u>{item.label}</u> : item.label}</Link>
+              )}
             </li>
           ))}
         </ul>
@@ -67,7 +67,7 @@ export function SiteHeader({
   );
 }
 
-export function SiteFooter() {
+export function Footer() {
   return (
     <footer>
       <div className="foot-grid">
@@ -83,10 +83,10 @@ export function SiteFooter() {
           </a>
         </div>
         <div className="foot-row">
-          <h3><a href="/impressum">Impressum</a></h3>
-          <h3><a href="/kontakt">Kontakt</a></h3>
-          <h3><a href="/datenschutz">Datenschutz</a></h3>
-          <h3><a href="/agb">AGB's</a></h3>
+          <h3><Link to="/impressum">Impressum</Link></h3>
+          <h3><Link to="/kontakt">Kontakt</Link></h3>
+          <h3><Link to="/datenschutz">Datenschutz</Link></h3>
+          <h3><Link to="/agb">AGB's</Link></h3>
         </div>
         <div>
           <h3>Folge uns:</h3>
@@ -115,13 +115,13 @@ export function SiteFooter() {
   );
 }
 
-export function SiteLayout({ children, activeRoute, showCart = true, showBanner = true, headerVariant = "default" }: SiteLayoutProps) {
+export function SiteLayout({ children, aktiveRoute, warenkorbAnzeigen = true, bannerAnzeigen = true }: SiteLayoutProps) {
   return (
     <>
-      {showBanner && <AttentionBanner />}
-      <SiteHeader activeRoute={activeRoute} showCart={showCart} variant={headerVariant} />
+      {bannerAnzeigen && <AchtungBanner />}
+      <Header activeRoute={aktiveRoute} showCart={warenkorbAnzeigen} />
       {children}
-      <SiteFooter />
+      <Footer />
     </>
   );
 }

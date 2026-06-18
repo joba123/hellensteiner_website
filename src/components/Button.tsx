@@ -1,44 +1,69 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import { Link } from "react-router";
 
-type ButtonVariant = "primary" | "unstyled";
+type ButtonVariante = "primary" | "unstyled";
 
-type NativeButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+type NativerButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   as?: "button";
 };
 
-type AnchorButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+type LinkButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   as: "a";
   href: string;
 };
 
-type ButtonProps = (NativeButtonProps | AnchorButtonProps) & {
+type ButtonProps = (NativerButtonProps | LinkButtonProps) & {
   children?: ReactNode;
-  variant?: ButtonVariant;
+  variant?: ButtonVariante;
 };
 
-function getButtonClassName(variant: ButtonVariant, className?: string): string {
-  const baseClassName = variant === "primary" ? "club-submit" : "";
+function getButtonKlassenName(variante: ButtonVariante, klassenName?: string): string {
+  // Primary-Buttons bekommen die Standard-Klasse "club-submit", sonst keine Basis-Klasse.
+  const basisKlasse = variante === "primary" ? "club-submit" : "";
 
-  return [baseClassName, className].filter(Boolean).join(" ");
+  // Wenn keine zusätzliche Klasse übergeben wurde, reicht die Basis-Klasse.
+  if (!klassenName) {
+    return basisKlasse;
+  }
+
+  // Wenn keine Basis-Klasse vorhanden ist, nur die übergebene Klasse zurückgeben.
+  if (!basisKlasse) {
+    return klassenName;
+  }
+
+  // Beide Klassen mit einem Leerzeichen zusammensetzen.
+  return `${basisKlasse} ${klassenName}`;
 }
 
 export function Button({ as = "button", children, className, variant = "primary", ...props }: ButtonProps) {
-  const buttonClassName = getButtonClassName(variant, className);
+  const buttonKlassenName = getButtonKlassenName(variant, className);
 
   if (as === "a") {
-    const anchorProps = props as AnchorHTMLAttributes<HTMLAnchorElement>;
+    const linkProps = props as AnchorHTMLAttributes<HTMLAnchorElement>;
+    const ziel = linkProps.href ?? "";
+    const istInternerLink = ziel.startsWith("/") && !ziel.startsWith("//") && !ziel.endsWith(".html");
+
+    if (istInternerLink) {
+      const { href: _ignoriert, ...rest } = linkProps;
+
+      return (
+        <Link className={buttonKlassenName} to={ziel} {...rest}>
+          {children}
+        </Link>
+      );
+    }
 
     return (
-      <a className={buttonClassName} {...anchorProps}>
+      <a className={buttonKlassenName} {...linkProps}>
         {children}
       </a>
     );
   }
 
-  const buttonProps = props as ButtonHTMLAttributes<HTMLButtonElement>;
+  const nativeButtonProps = props as ButtonHTMLAttributes<HTMLButtonElement>;
 
   return (
-    <button className={buttonClassName} {...buttonProps}>
+    <button className={buttonKlassenName} {...nativeButtonProps}>
       {children}
     </button>
   );
