@@ -143,9 +143,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Frisch, mild und süffig - unser Klassiker (5,3%)",
     preis: "Ab 1,89 €",
     bilder: [
-      { src: "../assets/images/hefeweiss.png", alt: "Hefeweiß Flasche" },
-      { src: "../assets/images/hefeweiss_dose.png", alt: "Hefeweiß Dose" },
-      { src: "../assets/images/hefeweiss_partyfass.png", alt: "Hefeweiß Partyfass" }
+      { src: "../assets/images_converted/hefeweiss.jpg", alt: "Hefeweiß Flasche" },
+      { src: "../assets/images_converted/hefeweiss_dose.jpg", alt: "Hefeweiß Dose" },
+      { src: "../assets/images_converted/hefeweiss_partyfass.jpg", alt: "Hefeweiß Partyfass" }
     ],
     details: {
       titel: "Hefeweiß - 5,3 %",
@@ -177,9 +177,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Klar, feinperlig und erfrischend (5,0 %)",
     preis: "Ab 1,99 €",
     bilder: [
-      { src: "../assets/images/kristallweiss.png", alt: "Kristallweiß Flasche" },
-      { src: "../assets/images/kristallweiss_dose.png", alt: "Kristallweiß Dose" },
-      { src: "../assets/images/kristallweiss_partyfass.png", alt: "Kristallweiß Partyfass" }
+      { src: "../assets/images_converted/kristallweiss.jpg", alt: "Kristallweiß Flasche" },
+      { src: "../assets/images_converted/kristallweiss_dose.jpg", alt: "Kristallweiß Dose" },
+      { src: "../assets/images_converted/kristallweiss_partyfass.jpg", alt: "Kristallweiß Partyfass" }
     ],
     details: {
       titel: "Kristallweiß - 5,0 %",
@@ -211,9 +211,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Malzig, karamellig und rund im Geschmack (5,4 %)",
     preis: "Ab 2,09 €",
     bilder: [
-      { src: "../assets/images/dunkelweiss.png", alt: "Dunkelweiß Flasche" },
-      { src: "../assets/images/dunkelweiss_dose.png", alt: "Dunkelweiß Dose" },
-      { src: "../assets/images/dunkelweiss_partyfass.png", alt: "Dunkelweiß Partyfass" }
+      { src: "../assets/images_converted/dunkelweiss.jpg", alt: "Dunkelweiß Flasche" },
+      { src: "../assets/images_converted/dunkelweiss_dose.jpg", alt: "Dunkelweiß Dose" },
+      { src: "../assets/images_converted/dunkelweiss_partyfass.jpg", alt: "Dunkelweiß Partyfass" }
     ],
     details: {
       titel: "Dunkelweiß - 5,4 %",
@@ -245,9 +245,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Spritzig mit Zitronennote, perfekt für den Sommer (2,5 %)",
     preis: "Ab 1,79 €",
     bilder: [
-      { src: "../assets/images/weiss_radler.png", alt: "Weiß-Radler Flasche" },
-      { src: "../assets/images/weiss_radler_dose.png", alt: "Weiß-Radler Dose" },
-      { src: "../assets/images/weiss_radler_partyfass.png", alt: "Weiß-Radler Partyfass" }
+      { src: "../assets/images_converted/weiss_radler.jpg", alt: "Weiß-Radler Flasche" },
+      { src: "../assets/images_converted/weiss_radler_dose.jpg", alt: "Weiß-Radler Dose" },
+      { src: "../assets/images_converted/weiss_radler_partyfass.jpg", alt: "Weiß-Radler Partyfass" }
     ],
     details: {
       titel: "Weiß-Radler - 2,5 %",
@@ -282,9 +282,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Mild, ausgewogen, typisch süddeutsch (5,0 %)",
     preis: "Ab 1,79 €",
     bilder: [
-      { src: "../assets/images/helles_original.png", alt: "Helles Original Flasche" },
-      { src: "../assets/images/helles_original_dose.png", alt: "Helles Original Dose" },
-      { src: "../assets/images/helles_original_partyfass.png", alt: "Helles Original Partyfass" }
+      { src: "../assets/images_converted/helles_original.jpg", alt: "Helles Original Flasche" },
+      { src: "../assets/images_converted/helles_original_dose.jpg", alt: "Helles Original Dose" },
+      { src: "../assets/images_converted/helles_original_partyfass.jpg", alt: "Helles Original Partyfass" }
     ],
     details: {
       titel: "Helles Original - 5,0 %",
@@ -316,9 +316,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Unfiltriert, leicht hefetrüb mit frischem Charakter (5,1 %)",
     preis: "Ab 1,99 €",
     bilder: [
-      { src: "../assets/images/zwickl_hell.png", alt: "Zwickl Hell Flasche" },
-      { src: "../assets/images/zwickl_hell_dose.png", alt: "Zwickl Hell Dose" },
-      { src: "../assets/images/zwickl_hell_partyfass.png", alt: "Zwickl Hell Partyfass" }
+      { src: "../assets/images_converted/zwickl_hell.jpg", alt: "Zwickl Hell Flasche" },
+      { src: "../assets/images_converted/zwickl_hell_dose.jpg", alt: "Zwickl Hell Dose" },
+      { src: "../assets/images_converted/zwickl_hell_partyfass.jpg", alt: "Zwickl Hell Partyfass" }
     ],
     details: {
       titel: "Zwickl Hell - 5,1 %",
@@ -350,9 +350,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Kräftiger im Körper, angenehm würzig (5,4 %)",
     preis: "Ab 2,09 €",
     bilder: [
-      { src: "../assets/images/export_hell.png", alt: "Export Hell Flasche" },
-      { src: "../assets/images/export_hell_dose.png", alt: "Export Hell Dose" },
-      { src: "../assets/images/export_hell_partyfass.png", alt: "Export Hell Partyfass" }
+      { src: "../assets/images_converted/export_hell.jpg", alt: "Export Hell Flasche" },
+      { src: "../assets/images_converted/export_hell_dose.jpg", alt: "Export Hell Dose" },
+      { src: "../assets/images_converted/export_hell_partyfass.jpg", alt: "Export Hell Partyfass" }
     ],
     details: {
       titel: "Export Hell - 5,4 %",
@@ -384,9 +384,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Goldgelb, erfrischend, leicht süßlich (2,4 %)",
     preis: "Ab 1,79 €",
     bilder: [
-      { src: "../assets/images/helles_radler.png", alt: "Helles Radler Flasche" },
-      { src: "../assets/images/helles_radler_dose.png", alt: "Helles Radler Dose" },
-      { src: "../assets/images/helles_radler_partyfass.png", alt: "Helles Radler Partyfass" }
+      { src: "../assets/images_converted/helles_radler.jpg", alt: "Helles Radler Flasche" },
+      { src: "../assets/images_converted/helles_radler_dose.jpg", alt: "Helles Radler Dose" },
+      { src: "../assets/images_converted/helles_radler_partyfass.jpg", alt: "Helles Radler Partyfass" }
     ],
     details: {
       titel: "Helles Radler - 2,4 %",
@@ -421,11 +421,11 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Malz trifft Energie - gesund genießen",
     preis: "Ab 2,29 €",
     bilder: [
-      { src: "../assets/images/malztonic_shop.png", alt: "Malztonic" },
-      { src: "../assets/images/malztonic_green.png", alt: "Malztonic grün" },
-      { src: "../assets/images/malztonic_rot.png", alt: "Malztonic rot" },
-      { src: "../assets/images/malztonic_yellow.png", alt: "Malztonic gelb" },
-      { src: "../assets/images/malztonic_orange.png", alt: "Malztonic orange" }
+      { src: "../assets/images_converted/malztonic_shop.jpg", alt: "Malztonic" },
+      { src: "../assets/images_converted/malztonic_green.jpg", alt: "Malztonic grün" },
+      { src: "../assets/images_converted/malztonic_rot.jpg", alt: "Malztonic rot" },
+      { src: "../assets/images_converted/malztonic_yellow.jpg", alt: "Malztonic gelb" },
+      { src: "../assets/images_converted/malztonic_orange.jpg", alt: "Malztonic orange" }
     ],
     details: {
       titel: "Malztonic - 0,0 %",
@@ -469,9 +469,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Vollmundig trotz 0,0 %",
     preis: "Ab 1,59 €",
     bilder: [
-      { src: "../assets/images/helles_alkoholfrei.png", alt: "Helles Alkoholfrei Flasche" },
-      { src: "../assets/images/helles_alkoholfrei_dose.png", alt: "Helles Alkoholfrei Dose" },
-      { src: "../assets/images/helles_alkoholfrei_partyfass.png", alt: "Helles Alkoholfrei Partyfass" }
+      { src: "../assets/images_converted/helles_alkoholfrei.jpg", alt: "Helles Alkoholfrei Flasche" },
+      { src: "../assets/images_converted/helles_alkoholfrei_dose.jpg", alt: "Helles Alkoholfrei Dose" },
+      { src: "../assets/images_converted/helles_alkoholfrei_partyfass.jpg", alt: "Helles Alkoholfrei Partyfass" }
     ],
     details: {
       titel: "Helles Alkoholfrei - 0,0 %",
@@ -503,9 +503,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Isotonisch & fruchtig (0,0%)",
     preis: "Ab 1,79 €",
     bilder: [
-      { src: "../assets/images/weizen_alkoholfrei.png", alt: "Weizen Alkoholfrei Flasche" },
-      { src: "../assets/images/weizen_alkoholfrei_dose.png", alt: "Weizen Alkoholfrei Dose" },
-      { src: "../assets/images/weizen_alkoholfrei_partyfass.png", alt: "Weizen Alkoholfrei Partyfass" }
+      { src: "../assets/images_converted/weizen_alkoholfrei.jpg", alt: "Weizen Alkoholfrei Flasche" },
+      { src: "../assets/images_converted/weizen_alkoholfrei_dose.jpg", alt: "Weizen Alkoholfrei Dose" },
+      { src: "../assets/images_converted/weizen_alkoholfrei_partyfass.jpg", alt: "Weizen Alkoholfrei Partyfass" }
     ],
     details: {
       titel: "Weizen Alkoholfrei - 0,0 %",
@@ -537,9 +537,9 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Spritzig & durstlöschend (0,0%)",
     preis: "Ab 1,69 €",
     bilder: [
-      { src: "../assets/images/helles_radler_alkoholfrei.png", alt: "Helles Radler Alkoholfrei Flasche" },
-      { src: "../assets/images/helles_radler_alkoholfrei_dose.png", alt: "Helles Radler Alkoholfrei Dose" },
-      { src: "../assets/images/helles_radler_alkoholfrei_partyfass.png", alt: "Helles Radler Alkoholfrei Partyfass" }
+      { src: "../assets/images_converted/helles_radler_alkoholfrei.jpg", alt: "Helles Radler Alkoholfrei Flasche" },
+      { src: "../assets/images_converted/helles_radler_alkoholfrei_dose.jpg", alt: "Helles Radler Alkoholfrei Dose" },
+      { src: "../assets/images_converted/helles_radler_alkoholfrei_partyfass.jpg", alt: "Helles Radler Alkoholfrei Partyfass" }
     ],
     details: {
       titel: "Helles Radler Alkoholfrei - 0,0 %",
@@ -574,8 +574,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Robust. Kultig. Dein Bier schmeckt hier am besten",
     preis: "19,90 €",
     bilder: [
-      { src: "../assets/images/hellensteiner_masskrug.png", alt: "Masskrug Bild 1" },
-      { src: "../assets/images/hellensteiner_masskrug2.png", alt: "Masskrug Bild 2" }
+      { src: "../assets/images_converted/hellensteiner_masskrug.jpg", alt: "Masskrug Bild 1" },
+      { src: "../assets/images_converted/hellensteiner_masskrug2.jpg", alt: "Masskrug Bild 2" }
     ],
     details: {
       titel: "Hellensteiner Maßkrug - 1,0 Liter",
@@ -609,8 +609,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Öffne dein Bier - stilecht mit Brauereikraft",
     preis: "9,90 €",
     bilder: [
-      { src: "../assets/images/flaschenoeffner_gravur.png", alt: "Flaschenöffner Bild 1" },
-      { src: "../assets/images/flaschenoeffner_gravur1.png", alt: "Flaschenöffner Bild 2" }
+      { src: "../assets/images_converted/flaschenoeffner_gravur.jpg", alt: "Flaschenöffner Bild 1" },
+      { src: "../assets/images_converted/flaschenoeffner_gravur1.jpg", alt: "Flaschenöffner Bild 2" }
     ],
     details: {
       titel: "Flaschenöffner mit Gravur",
@@ -642,8 +642,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Brotzeit? Nur mit deiner Lieblingsbrauerei",
     preis: "18,90 €",
     bilder: [
-      { src: "../assets/images/biergarten_brett.png", alt: "Biergarten-Brett Bild 1" },
-      { src: "../assets/images/biergarten_brett1.png", alt: "Biergarten-Brett Bild 2" }
+      { src: "../assets/images_converted/biergarten_brett.jpg", alt: "Biergarten-Brett Bild 1" },
+      { src: "../assets/images_converted/biergarten_brett1.jpg", alt: "Biergarten-Brett Bild 2" }
     ],
     details: {
       titel: "Biergarten-Brett",
@@ -675,8 +675,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Tradition zum Abstellen - handgemacht und edel",
     preis: "12,90 €",
     bilder: [
-      { src: "../assets/images/holz_bierdeckelset.png", alt: "Holz Bierdeckelset Bild 1" },
-      { src: "../assets/images/holz_bierdeckelset1.png", alt: "Holz Bierdeckelset Bild 2" }
+      { src: "../assets/images_converted/holz_bierdeckelset.jpg", alt: "Holz Bierdeckelset Bild 1" },
+      { src: "../assets/images_converted/holz_bierdeckelset1.jpg", alt: "Holz Bierdeckelset Bild 2" }
     ],
     details: {
       titel: "Holz-Bierdeckel-Set (4 Stück)",
@@ -707,8 +707,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Gemütlich. Stylisch. 100 % Brauereigefühl",
     preis: "39,90 €",
     bilder: [
-      { src: "../assets/images/hoodie.png", alt: "Hoodie Bild 1" },
-      { src: "../assets/images/hoodie1.png", alt: "Hoodie Bild 2" }
+      { src: "../assets/images_converted/hoodie.jpg", alt: "Hoodie Bild 1" },
+      { src: "../assets/images_converted/hoodie1.jpg", alt: "Hoodie Bild 2" }
     ],
     details: {
       titel: "Hoodie mit Retro-Brauerei-Schriftzug",
@@ -741,8 +741,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Trag den Geschmack deiner Lieblingsbrauerei - mit Stil",
     preis: "24,90 €",
     bilder: [
-      { src: "../assets/images/poloshirt.png", alt: "Poloshirt Bild 1" },
-      { src: "../assets/images/poloshirt1.png", alt: "Poloshirt Bild 2" }
+      { src: "../assets/images_converted/poloshirt.jpg", alt: "Poloshirt Bild 1" },
+      { src: "../assets/images_converted/poloshirt1.jpg", alt: "Poloshirt Bild 2" }
     ],
     details: {
       titel: "Baumwoll-Poloshirt mit Brauerei-Design",
@@ -775,8 +775,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Warm. Echt. Und mit Stolz getragen",
     preis: "59,90 €",
     bilder: [
-      { src: "../assets/images/strickjacke.png", alt: "Rustikale Strickjacke mit Brauerei-Stickerei Bild 1" },
-      { src: "../assets/images/strickjacke1.png", alt: "Rustikale Strickjacke mit Brauerei-Stickerei Bild 2" }
+      { src: "../assets/images_converted/strickjacke.jpg", alt: "Rustikale Strickjacke mit Brauerei-Stickerei Bild 1" },
+      { src: "../assets/images_converted/strickjacke1.jpg", alt: "Rustikale Strickjacke mit Brauerei-Stickerei Bild 2" }
     ],
     details: {
       titel: "Rustikale Strickjacke mit Brauerei-Stickerei",
@@ -809,8 +809,8 @@ export const produkte: readonly Produkt[] = [
     kurzbeschreibung: "Tradition auf dem Kopf - schlicht & echt",
     preis: "19,90 €",
     bilder: [
-      { src: "../assets/images/kappe.png", alt: "Brauerei-Kappe aus Canvas Bild 1" },
-      { src: "../assets/images/kappe1.png", alt: "Brauerei-Kappe aus Canvas Bild 2" }
+      { src: "../assets/images_converted/kappe.jpg", alt: "Brauerei-Kappe aus Canvas Bild 1" },
+      { src: "../assets/images_converted/kappe1.jpg", alt: "Brauerei-Kappe aus Canvas Bild 2" }
     ],
     details: {
       titel: "Brauerei-Kappe aus Canvas",

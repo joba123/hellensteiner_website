@@ -3,7 +3,7 @@ interface ErrorMessageInterface {
   className?: string;
 }
 
-export function ErrorMessage({ message, className = "alter-error" }: ErrorMessageInterface) {
+export function ErrorMessage({ message, className = "altersfehler" }: ErrorMessageInterface) {
   return (
     <p className={className} aria-live="polite">{message}</p>
   );

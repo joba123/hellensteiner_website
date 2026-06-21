@@ -20,11 +20,11 @@ header .burger {
   margin-left: 12px;
 }
 
-.cart-widget {
+.cart-anzeige {
   position: relative;
 }
 
-.cart-widget__button {
+.cart-anzeige__button {
   position: relative;
   display: inline-flex;
   width: 44px;
@@ -40,14 +40,14 @@ header .burger {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.cart-widget__button:hover,
-.cart-widget__button:focus-visible {
+.cart-anzeige__button:hover,
+.cart-anzeige__button:focus-visible {
   background: rgba(230, 207, 161, 0.24);
   transform: translateY(-1px);
   outline: none;
 }
 
-.cart-widget__button svg {
+.cart-anzeige__button svg {
   width: 23px;
   height: 23px;
   fill: none;
@@ -57,7 +57,7 @@ header .burger {
   stroke-linejoin: round;
 }
 
-.cart-widget__badge {
+.cart-anzeige__kennzeichen {
   position: absolute;
   top: -7px;
   right: -6px;
@@ -75,7 +75,7 @@ header .burger {
   text-align: center;
 }
 
-.cart-drawer__backdrop {
+.cart-seitenleiste__hintergrund {
   position: fixed;
   inset: 0;
   z-index: 180;
@@ -85,7 +85,7 @@ header .burger {
   cursor: pointer;
 }
 
-.cart-drawer {
+.cart-seitenleiste {
   position: fixed;
   top: 0;
   right: 0;
@@ -104,34 +104,34 @@ header .burger {
   transition: transform 0.24s ease;
 }
 
-.cart-drawer.is-open {
+.cart-seitenleiste.ist-offen {
   transform: translateX(0);
 }
 
-.cart-drawer__header,
-.cart-drawer__footer {
+.cart-seitenleiste__header,
+.cart-seitenleiste__footer {
   padding: 22px;
 }
 
-.cart-drawer__header {
+.cart-seitenleiste__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(230, 207, 161, 0.18);
 }
 
-.cart-drawer__header p {
+.cart-seitenleiste__header p {
   margin: 0 0 3px;
   color: rgba(245, 240, 230, 0.72);
   font-size: 0.9rem;
 }
 
-.cart-drawer__header strong {
+.cart-seitenleiste__header strong {
   color: var(--color-schrift, #e6cfa1);
   font-size: 1.15rem;
 }
 
-.cart-drawer__close {
+.cart-seitenleiste__schliessen {
   width: 38px;
   height: 38px;
   color: var(--color-schrift, #e6cfa1);
@@ -143,12 +143,12 @@ header .burger {
   line-height: 1;
 }
 
-.cart-drawer__body {
+.cart-seitenleiste__inhalt {
   overflow-y: auto;
   padding: 18px 18px 8px;
 }
 
-.cart-drawer__empty {
+.cart-seitenleiste__leer {
   display: grid;
   min-height: 220px;
   place-items: center;
@@ -157,17 +157,17 @@ header .burger {
   text-align: center;
 }
 
-.cart-drawer__empty p {
+.cart-seitenleiste__leer p {
   margin: 0;
   color: rgba(245, 240, 230, 0.8);
 }
 
-.cart-drawer__empty a {
+.cart-seitenleiste__leer a {
   color: var(--color-schrift, #e6cfa1);
   font-weight: 800;
 }
 
-.cart-drawer__item {
+.cart-seitenleiste__eintrag {
   display: grid;
   grid-template-columns: 84px minmax(0, 1fr) auto;
   gap: 13px;
@@ -175,7 +175,7 @@ header .burger {
   border-bottom: 1px solid rgba(230, 207, 161, 0.14);
 }
 
-.cart-drawer__item img {
+.cart-seitenleiste__eintrag img {
   width: 84px;
   height: 84px;
   border-radius: 8px;
@@ -183,23 +183,23 @@ header .burger {
   background: rgba(245, 240, 230, 0.08);
 }
 
-.cart-drawer__item-info h3 {
+.cart-seitenleiste__eintrag-info h3 {
   margin: 0 0 6px;
   color: var(--color-schrift, #e6cfa1);
   font-size: 0.98rem;
   line-height: 1.25;
 }
 
-.cart-drawer__item-info p,
-.cart-drawer__item-info span,
-.cart-drawer__footer p {
+.cart-seitenleiste__eintrag-info p,
+.cart-seitenleiste__eintrag-info span,
+.cart-seitenleiste__footer p {
   margin: 0;
   color: rgba(245, 240, 230, 0.72);
   font-size: 0.86rem;
   line-height: 1.45;
 }
 
-.cart-drawer__quantity {
+.cart-seitenleiste__menge {
   display: inline-grid;
   grid-template-columns: 30px 34px 30px;
   align-items: center;
@@ -209,7 +209,7 @@ header .burger {
   border-radius: 999px;
 }
 
-.cart-drawer__quantity button {
+.cart-seitenleiste__menge button {
   width: 30px;
   height: 30px;
   color: var(--color-schrift, #e6cfa1);
@@ -219,13 +219,13 @@ header .burger {
   font-weight: 900;
 }
 
-.cart-drawer__quantity strong {
+.cart-seitenleiste__menge strong {
   color: #f5f0e6;
   text-align: center;
   font-size: 0.92rem;
 }
 
-.cart-drawer__item-actions {
+.cart-seitenleiste__eintrag-aktionen {
   display: grid;
   justify-items: end;
   align-content: space-between;
@@ -233,12 +233,12 @@ header .burger {
   min-width: 74px;
 }
 
-.cart-drawer__item-actions strong {
+.cart-seitenleiste__eintrag-aktionen strong {
   color: #f5f0e6;
   font-size: 0.95rem;
 }
 
-.cart-drawer__item-actions button {
+.cart-seitenleiste__eintrag-aktionen button {
   padding: 0;
   color: rgba(245, 240, 230, 0.72);
   border: 0;
@@ -249,14 +249,14 @@ header .burger {
   text-decoration: underline;
 }
 
-.cart-drawer__footer {
+.cart-seitenleiste__footer {
   display: grid;
   gap: 14px;
   border-top: 1px solid rgba(230, 207, 161, 0.18);
   background: rgba(18, 7, 2, 0.24);
 }
 
-.cart-drawer__sum {
+.cart-seitenleiste__summe {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -265,7 +265,7 @@ header .burger {
   font-weight: 900;
 }
 
-.cart-drawer__checkout {
+.cart-seitenleiste__kasse {
   width: 100%;
   box-sizing: border-box;
   text-align: center;
@@ -273,12 +273,12 @@ header .burger {
   text-decoration: none;
 }
 
-.cart-drawer__checkout.is-disabled {
+.cart-seitenleiste__kasse.ist-deaktiviert {
   opacity: 0.52;
   pointer-events: none;
 }
 
-.checkout-page {
+.kassenseite {
   min-height: 70vh;
   padding: clamp(42px, 6vw, 82px) clamp(16px, 4vw, 48px);
   background:
@@ -287,19 +287,19 @@ header .burger {
   color: var(--color-schrift, #e6cfa1);
 }
 
-.checkout-page--center {
+.kassenseite--zentriert {
   display: grid;
   place-items: center;
 }
 
-.checkout-page__header,
-.checkout-layout,
-.checkout-confirmation {
+.kassenseite__header,
+.kassenanordnung,
+.kassenbestaetigung {
   width: min(100%, 1120px);
   margin: 0 auto;
 }
 
-.checkout-eyebrow {
+.kasse-ueberzeile {
   margin: 0 0 8px;
   color: var(--color-secondary, #a88f6b);
   font-size: 0.82rem;
@@ -308,36 +308,36 @@ header .burger {
   text-transform: uppercase;
 }
 
-.checkout-page h1 {
+.kassenseite h1 {
   margin: 0 0 26px;
   color: var(--color-hover, #f5f0e6);
   font-size: clamp(2.2rem, 5vw, 4.2rem);
   line-height: 1.06;
 }
 
-.checkout-layout {
+.kassenanordnung {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.48fr);
   gap: clamp(24px, 4vw, 44px);
   align-items: start;
 }
 
-.checkout-form,
-.checkout-summary,
-.checkout-confirmation {
+.kassenformular,
+.kassenzusammenfassung,
+.kassenbestaetigung {
   border: 1px solid rgba(230, 207, 161, 0.26);
   border-radius: 8px;
   background: rgba(18, 7, 2, 0.28);
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.24);
 }
 
-.checkout-form,
-.checkout-summary,
-.checkout-confirmation {
+.kassenformular,
+.kassenzusammenfassung,
+.kassenbestaetigung {
   padding: clamp(22px, 3vw, 34px);
 }
 
-.checkout-form fieldset {
+.kassenformular fieldset {
   display: grid;
   gap: 16px;
   margin: 0 0 26px;
@@ -345,22 +345,22 @@ header .burger {
   border: 0;
 }
 
-.checkout-form legend,
-.checkout-summary h2 {
+.kassenformular legend,
+.kassenzusammenfassung h2 {
   margin: 0 0 14px;
   color: var(--color-hover, #f5f0e6);
   font-size: 1.35rem;
   font-weight: 900;
 }
 
-.checkout-form label {
+.kassenformular label {
   display: grid;
   gap: 8px;
   color: #f5f0e6;
   font-weight: 800;
 }
 
-.checkout-form input {
+.kassenformular input {
   width: 100%;
   min-height: 52px;
   box-sizing: border-box;
@@ -373,44 +373,44 @@ header .burger {
   font-weight: 700;
 }
 
-.checkout-form__grid {
+.kassenformular__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.checkout-radio {
+.kassen-optionsfeld {
   display: flex !important;
   grid-template-columns: none;
   align-items: center;
   gap: 10px;
 }
 
-.checkout-radio input {
+.kassen-optionsfeld input {
   width: 18px;
   min-height: 18px;
   accent-color: var(--color-schrift, #e6cfa1);
 }
 
-.checkout-summary {
+.kassenzusammenfassung {
   position: sticky;
   top: 96px;
 }
 
-.checkout-summary__items {
+.kassenzusammenfassung__eintraege {
   display: grid;
   gap: 14px;
   margin-bottom: 22px;
 }
 
-.checkout-summary__item {
+.kassenzusammenfassung__eintrag {
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
 }
 
-.checkout-summary__item img {
+.kassenzusammenfassung__eintrag img {
   width: 64px;
   height: 64px;
   border-radius: 8px;
@@ -418,20 +418,20 @@ header .burger {
   background: rgba(245, 240, 230, 0.08);
 }
 
-.checkout-summary__item h3 {
+.kassenzusammenfassung__eintrag h3 {
   margin: 0 0 4px;
   color: var(--color-schrift, #e6cfa1);
   font-size: 0.95rem;
 }
 
-.checkout-summary__item p,
-.checkout-summary__item span {
+.kassenzusammenfassung__eintrag p,
+.kassenzusammenfassung__eintrag span {
   margin: 0;
   color: rgba(245, 240, 230, 0.72);
   font-size: 0.84rem;
 }
 
-.checkout-summary__totals {
+.kassenzusammenfassung__summen {
   display: grid;
   gap: 10px;
   margin: 22px 0;
@@ -439,7 +439,7 @@ header .burger {
   border-top: 1px solid rgba(230, 207, 161, 0.18);
 }
 
-.checkout-summary__totals p {
+.kassenzusammenfassung__summen p {
   display: flex;
   justify-content: space-between;
   gap: 18px;
@@ -447,17 +447,17 @@ header .burger {
   color: rgba(245, 240, 230, 0.82);
 }
 
-.checkout-summary__total {
+.kassenzusammenfassung__gesamt {
   color: var(--color-hover, #f5f0e6) !important;
   font-size: 1.18rem;
   font-weight: 900;
 }
 
-.checkout-confirmation {
+.kassenbestaetigung {
   text-align: center;
 }
 
-.checkout-confirmation p {
+.kassenbestaetigung p {
   color: rgba(245, 240, 230, 0.82);
   line-height: 1.65;
 }
@@ -475,31 +475,31 @@ header .burger {
     grid-column: 4 !important;
   }
 
-  .checkout-layout {
+  .kassenanordnung {
     grid-template-columns: 1fr;
   }
 
-  .checkout-summary {
+  .kassenzusammenfassung {
     position: static;
   }
 }
 
 @media (max-width: 560px) {
-  .cart-drawer {
+  .cart-seitenleiste {
     width: 100vw;
   }
 
-  .cart-drawer__item {
+  .cart-seitenleiste__eintrag {
     grid-template-columns: 72px minmax(0, 1fr);
   }
 
-  .cart-drawer__item-actions {
+  .cart-seitenleiste__eintrag-aktionen {
     grid-column: 2;
     grid-template-columns: 1fr auto;
     justify-items: start;
   }
 
-  .checkout-form__grid {
+  .kassenformular__grid {
     grid-template-columns: 1fr;
   }
 }

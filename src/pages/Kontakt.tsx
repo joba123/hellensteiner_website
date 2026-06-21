@@ -1,8 +1,8 @@
 export function Kontakt() {
   return (
     <main>
-      <section className="kt">
-        <div className="kt-links">
+      <section className="kontaktbereich">
+        <div className="kontaktbereich-links">
           <h1>Kontaktieren Sie uns</h1>
           <p>
             Hellensteiner Bräu<br />
@@ -13,7 +13,7 @@ export function Kontakt() {
             Paypal-Zahlungen an: <a href="mailto:paypal@hellensteiner.de"><b>paypal@hellensteiner.de</b></a>
           </p>
         </div>
-        <div className="kt-rechts"></div>
+        <div className="kontaktbereich-rechts"></div>
       </section>
     </main>
   );

@@ -51,7 +51,7 @@ p.header {
   padding-left: 2%;
 }
 
-.nav-menu {
+.navigationsmenue {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -64,7 +64,7 @@ p.header {
   padding: 10px;
 }
 
-.nav-menu a {
+.navigationsmenue a {
     text-decoration: none;
     color: var(--Dunkelblau);
     font-weight: 600;
@@ -72,7 +72,7 @@ p.header {
     transition: color 0.3s ease;
 }
 
-.nav-menu a:hover {
+.navigationsmenue a:hover {
   color: var(--Goldbraun);
   text-decoration: underline;
 }
@@ -84,7 +84,7 @@ main.Startseite {
   margin-left: 17%;
 }    
 
-h1.title {
+h1.seitentitel {
   font-size: 1.4rem;
   color: #8a671c;
   margin-top: 2.5rem;
@@ -95,7 +95,7 @@ h1.title {
   padding-bottom: 0.25rem;  
 }
 
-.job {
+.stelle {
   border: 1px solid #eee;
   border-radius: 12px;
   padding: 1.5rem;
@@ -106,26 +106,26 @@ h1.title {
   margin-left: 1%;
 }
 
-.job h2 {
+.stelle h2 {
     font-weight: 900;
     margin-bottom: 5px;
     font-size: 1.2rem;
     margin-top: 10px;
 }
 
-.job p.p1 {
+.stelle p.absatz-eins {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1rem;
 }
 
-.job p.p2 {
+.stelle p.absatz-zwei {
     margin-top: 0;
     margin-bottom: 25px;
     font-size: 1.1rem;
 }
 
-.job:hover {
+.stelle:hover {
     box-shadow: 0px 2px 7px;
     transform: translateY(-2px);
     transition: all 0.3s ease;
@@ -159,13 +159,13 @@ h1.titel {
     margin-top: 10px;
 }
 
-.info p.p1 {
+.info p.absatz-eins {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1rem;
 }
 
-.info p.p2 {
+.info p.absatz-zwei {
     margin-top: 0;
     margin-bottom: 25px;
     font-size: 1.1rem;
@@ -193,24 +193,24 @@ a.button:hover {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.career-page,
-.application-page {
+.karriere-seite,
+.bewerbung-seite {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
   padding: clamp(32px, 6vw, 74px) 0;
 }
 
-.career-site-header {
+.karriere-seiten-header {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(59, 30, 8, 0.14);
   background:
     linear-gradient(135deg, rgba(245, 240, 230, 0.97), rgba(255, 255, 255, 0.88)),
-    url("../images/hellenstein_braeu_img.png") center 36%/cover;
+    url("../images_converted/hellenstein_braeu_img.jpg") center 36%/cover;
   box-shadow: 0 18px 52px rgba(46, 58, 79, 0.08);
 }
 
-.career-site-header::before {
+.karriere-seiten-header::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -220,27 +220,27 @@ a.button:hover {
   pointer-events: none;
 }
 
-.career-site-header .header-top,
-.career-site-header > p,
-.career-site-header nav {
+.karriere-seiten-header .header-oben,
+.karriere-seiten-header > p,
+.karriere-seiten-header nav {
   position: relative;
   z-index: 1;
 }
 
-.career-site-header .header-top {
+.karriere-seiten-header .header-oben {
   display: grid;
   justify-items: center;
   gap: 10px;
   padding: 26px 18px 8px;
 }
 
-.career-site-header img.logo {
+.karriere-seiten-header img.logo {
   height: clamp(82px, 11vw, 126px);
   margin: 0;
   filter: drop-shadow(0 10px 18px rgba(59, 30, 8, 0.1));
 }
 
-.career-site-header h1.header {
+.karriere-seiten-header h1.header {
   margin: 0;
   color: #263247;
   font-size: clamp(1.9rem, 3vw, 3rem);
@@ -248,7 +248,7 @@ a.button:hover {
   line-height: 1.05;
 }
 
-.career-site-header p.header {
+.karriere-seiten-header p.header {
   max-width: 780px;
   margin: 12px auto 20px;
   padding: 0 20px;
@@ -258,20 +258,20 @@ a.button:hover {
   line-height: 1.55;
 }
 
-.career-site-nav {
+.karriere-seiten-navigation {
   border-top: 1px solid rgba(59, 30, 8, 0.1);
   background: rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(14px);
 }
 
-.career-site-nav .nav-menu {
+.karriere-seiten-navigation .navigationsmenue {
   width: min(900px, calc(100% - 28px));
   margin: 0 auto;
   padding: 12px 0;
   gap: 8px;
 }
 
-.career-site-nav .nav-menu a {
+.karriere-seiten-navigation .navigationsmenue a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -283,14 +283,14 @@ a.button:hover {
   text-decoration: none;
 }
 
-.career-site-nav .nav-menu a:hover,
-.career-site-nav .nav-menu a:focus-visible {
+.karriere-seiten-navigation .navigationsmenue a:hover,
+.karriere-seiten-navigation .navigationsmenue a:focus-visible {
   background: #263247;
   color: #f7f3ea;
   text-decoration: none;
 }
 
-.career-eyebrow {
+.karriere-ueberzeile {
   margin: 0 0 10px;
   color: #6f7f42;
   font-size: 0.82rem;
@@ -299,7 +299,7 @@ a.button:hover {
   text-transform: uppercase;
 }
 
-.career-hero {
+.karriere-aufmacher {
   display: grid;
   gap: 20px;
   padding: clamp(32px, 6vw, 72px);
@@ -307,11 +307,11 @@ a.button:hover {
   border-radius: 8px;
   background:
     linear-gradient(135deg, rgba(245, 240, 230, 0.78), rgba(255, 255, 255, 0.94)),
-    url("../images/brauerei_innen.png") center/cover;
+    url("../images_converted/brauerei_innen.jpg") center/cover;
   box-shadow: 0 22px 56px rgba(46, 58, 79, 0.11);
 }
 
-.career-hero::before {
+.karriere-aufmacher::before {
   content: "";
   width: 74px;
   height: 5px;
@@ -319,8 +319,8 @@ a.button:hover {
   background: linear-gradient(90deg, #6f7f42, #c49a6c);
 }
 
-.career-hero h1,
-.application-hero h1 {
+.karriere-aufmacher h1,
+.bewerbung-aufmacher h1 {
   max-width: 780px;
   margin: 0;
   color: #263247;
@@ -329,8 +329,8 @@ a.button:hover {
   font-weight: 800;
 }
 
-.career-hero p:not(.career-eyebrow),
-.application-hero p {
+.karriere-aufmacher p:not(.karriere-ueberzeile),
+.bewerbung-aufmacher p {
   max-width: 720px;
   margin: 0;
   color: #3d4656;
@@ -338,13 +338,13 @@ a.button:hover {
   line-height: 1.7;
 }
 
-.career-hero__facts {
+.karriere-aufmacher__fakten {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.career-hero__facts span {
+.karriere-aufmacher__fakten span {
   padding: 10px 14px;
   border: 1px solid rgba(111, 127, 66, 0.24);
   border-radius: 999px;
@@ -354,7 +354,7 @@ a.button:hover {
   font-weight: 800;
 }
 
-.career-section {
+.karriere-abschnitt {
   margin-top: clamp(38px, 7vw, 80px);
   padding: clamp(24px, 4vw, 38px);
   border: 1px solid rgba(46, 58, 79, 0.1);
@@ -364,56 +364,56 @@ a.button:hover {
   scroll-margin-top: 24px;
 }
 
-.career-section__intro {
+.karriere-abschnitt__einleitung {
   display: grid;
   gap: 10px;
   max-width: 780px;
   margin-bottom: 20px;
 }
 
-.career-section__intro h2,
-.application-block h2,
-.application-apply h2,
-.application-empty h1 {
+.karriere-abschnitt__einleitung h2,
+.bewerbung-block h2,
+.bewerbung-bereich h2,
+.bewerbung-leer h1 {
   margin: 0;
   color: #263247;
   font-size: clamp(1.7rem, 3vw, 2.5rem);
   line-height: 1.15;
 }
 
-.career-section__intro p:not(.career-eyebrow) {
+.karriere-abschnitt__einleitung p:not(.karriere-ueberzeile) {
   margin: 0;
   color: #4c5563;
   font-size: 1.05rem;
   line-height: 1.65;
 }
 
-.career-benefits {
+.karriere-vorteile {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 22px 0;
 }
 
-.career-benefit,
-.application-summary,
-.application-block,
-.application-apply,
-.application-empty {
+.karriere-vorteil,
+.bewerbung-zusammenfassung,
+.bewerbung-block,
+.bewerbung-bereich,
+.bewerbung-leer {
   border: 1px solid rgba(46, 58, 79, 0.11);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 18px 42px rgba(46, 58, 79, 0.08);
 }
 
-.career-benefit {
+.karriere-vorteil {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   padding: 18px;
 }
 
-.career-benefit span {
+.karriere-vorteil span {
   display: grid;
   flex: 0 0 28px;
   width: 28px;
@@ -425,20 +425,20 @@ a.button:hover {
   font-weight: 800;
 }
 
-.career-benefit p {
+.karriere-vorteil p {
   margin: 0;
   color: #344054;
   font-weight: 700;
   line-height: 1.45;
 }
 
-.career-job-grid {
+.karriere-stellen-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.career-job-card {
+.karriere-stellenkarte {
   display: flex;
   min-height: 260px;
   flex-direction: column;
@@ -452,34 +452,34 @@ a.button:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.career-job-card:hover {
+.karriere-stellenkarte:hover {
   transform: translateY(-3px);
   border-color: rgba(111, 127, 66, 0.4);
   box-shadow: 0 24px 58px rgba(46, 58, 79, 0.13);
 }
 
-.career-job-card__meta,
-.career-job-card__location {
+.karriere-stellenkarte__metadaten,
+.karriere-stellenkarte__standort {
   margin: 0;
   color: #6f7f42;
   font-size: 0.9rem;
   font-weight: 800;
 }
 
-.career-job-card h3 {
+.karriere-stellenkarte h3 {
   margin: 10px 0 8px;
   color: #263247;
   font-size: clamp(1.25rem, 2vw, 1.6rem);
   line-height: 1.2;
 }
 
-.career-job-card p:not(.career-job-card__meta):not(.career-job-card__location) {
+.karriere-stellenkarte p:not(.karriere-stellenkarte__metadaten):not(.karriere-stellenkarte__standort) {
   margin: 14px 0 0;
   color: #4c5563;
   line-height: 1.6;
 }
 
-.club-submit {
+.club-absenden {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -498,15 +498,15 @@ a.button:hover {
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.club-submit:hover,
-.club-submit:focus-visible {
+.club-absenden:hover,
+.club-absenden:focus-visible {
   background: #6f7f42;
   color: #fff;
   transform: translateY(-1px);
   box-shadow: 0 14px 28px rgba(46, 58, 79, 0.18);
 }
 
-.application-breadcrumb {
+.bewerbung-navigation {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -516,17 +516,17 @@ a.button:hover {
   font-weight: 700;
 }
 
-.application-breadcrumb a {
+.bewerbung-navigation a {
   color: #263247;
   text-decoration: none;
 }
 
-.application-breadcrumb a:hover,
-.application-breadcrumb a:focus-visible {
+.bewerbung-navigation a:hover,
+.bewerbung-navigation a:focus-visible {
   color: #6f7f42;
 }
 
-.application-hero {
+.bewerbung-aufmacher {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
   gap: 26px;
@@ -534,7 +534,7 @@ a.button:hover {
   margin-bottom: 28px;
 }
 
-.application-hero > div {
+.bewerbung-aufmacher > div {
   display: grid;
   gap: 16px;
   padding: clamp(28px, 5vw, 54px);
@@ -544,14 +544,14 @@ a.button:hover {
   box-shadow: 0 22px 56px rgba(46, 58, 79, 0.1);
 }
 
-.application-summary {
+.bewerbung-zusammenfassung {
   display: grid;
   align-content: center;
   gap: 16px;
   padding: 24px;
 }
 
-.application-summary p {
+.bewerbung-zusammenfassung p {
   display: grid;
   gap: 4px;
   margin: 0;
@@ -559,78 +559,78 @@ a.button:hover {
   font-weight: 800;
 }
 
-.application-summary span {
+.bewerbung-zusammenfassung span {
   color: #6f7f42;
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.application-summary__apply {
+.bewerbung-zusammenfassung__bewerben {
   margin-top: 8px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.application-layout {
+.bewerbung-anordnung {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 24px;
   align-items: start;
 }
 
-.application-content {
+.bewerbung-inhalt {
   display: grid;
   gap: 16px;
 }
 
-.application-block,
-.application-apply,
-.application-empty {
+.bewerbung-block,
+.bewerbung-bereich,
+.bewerbung-leer {
   padding: clamp(22px, 3vw, 32px);
 }
 
-.application-block p,
-.application-block li,
-.application-apply p,
-.application-empty p {
+.bewerbung-block p,
+.bewerbung-block li,
+.bewerbung-bereich p,
+.bewerbung-leer p {
   color: #4c5563;
   line-height: 1.65;
 }
 
-.application-block ul {
+.bewerbung-block ul {
   display: grid;
   gap: 9px;
   margin: 16px 0 0;
   padding-left: 20px;
 }
 
-.application-apply {
+.bewerbung-bereich {
   position: sticky;
   top: 18px;
 }
 
-.application-form {
+.bewerbung-formular {
   display: grid;
   gap: 14px;
   margin-top: 18px;
 }
 
-.application-form__grid {
+.bewerbung-formular__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.application-form label {
+.bewerbung-formular label {
   display: grid;
   gap: 7px;
   color: #263247;
   font-weight: 800;
 }
 
-.application-form input,
-.application-form textarea {
+.bewerbung-formular input,
+.bewerbung-formular textarea {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(46, 58, 79, 0.18);
@@ -641,11 +641,11 @@ a.button:hover {
   font: inherit;
 }
 
-.application-form textarea {
+.bewerbung-formular textarea {
   resize: vertical;
 }
 
-.application-form__check {
+.bewerbung-formular__bestaetigung {
   display: flex !important;
   grid-template-columns: none;
   align-items: flex-start;
@@ -653,13 +653,13 @@ a.button:hover {
   font-weight: 600 !important;
 }
 
-.application-form__check input {
+.bewerbung-formular__bestaetigung input {
   width: 18px;
   height: 18px;
   margin-top: 2px;
 }
 
-.application-form__files {
+.bewerbung-formular__dateien {
   width: 100%;
   box-sizing: border-box;
   border: 1px dashed rgba(46, 58, 79, 0.3);
@@ -671,17 +671,17 @@ a.button:hover {
   cursor: pointer;
 }
 
-.application-form__submit {
+.bewerbung-formular__absenden {
   width: 100%;
 }
 
-.application-form__status {
+.bewerbung-formular__status {
   margin: 0;
   color: #3f6c3b;
   font-weight: 800;
 }
 
-.application-apply-page {
+.bewerbung-formularseite {
   display: grid;
   gap: 6px;
   padding: clamp(22px, 3vw, 32px);
@@ -691,13 +691,13 @@ a.button:hover {
   box-shadow: 0 18px 42px rgba(46, 58, 79, 0.08);
 }
 
-.application-page--empty {
+.bewerbung-seite--leer {
   min-height: 46vh;
   display: grid;
   place-items: center;
 }
 
-.application-empty {
+.bewerbung-leer {
   max-width: 620px;
   text-align: center;
 }
@@ -737,7 +737,7 @@ header img {
   margin: 0;
 }
 
-.header-top {
+.header-oben {
   margin-top: 10px;
   text-align: center;
   display:flex;
@@ -750,11 +750,11 @@ h1.header {
   font-size: 1.5rem;
 }
 
-h1.title{
+h1.seitentitel{
   margin-left: 2%;
 }
 
-.nav-menu {
+.navigationsmenue {
   flex-direction: column;
   align-items: center;
 }
@@ -774,44 +774,44 @@ a.button {
 }
 
 @media (max-width: 900px) {
-  .career-benefits,
-  .career-job-grid,
-  .application-hero,
-  .application-layout {
+  .karriere-vorteile,
+  .karriere-stellen-grid,
+  .bewerbung-aufmacher,
+  .bewerbung-anordnung {
     grid-template-columns: 1fr;
   }
 
-  .application-apply {
+  .bewerbung-bereich {
     position: static;
   }
 }
 
 @media (max-width: 620px) {
-  .career-page,
-  .application-page {
+  .karriere-seite,
+  .bewerbung-seite {
     width: min(100% - 24px, 1120px);
     padding: 24px 0 42px;
   }
 
-  .career-hero,
-  .application-hero > div,
-  .application-block,
-  .application-apply,
-  .application-empty,
-  .career-job-card {
+  .karriere-aufmacher,
+  .bewerbung-aufmacher > div,
+  .bewerbung-block,
+  .bewerbung-bereich,
+  .bewerbung-leer,
+  .karriere-stellenkarte {
     padding: 20px;
   }
 
-  .career-hero h1,
-  .application-hero h1 {
+  .karriere-aufmacher h1,
+  .bewerbung-aufmacher h1 {
     font-size: clamp(2rem, 12vw, 3rem);
   }
 
-  .application-form__grid {
+  .bewerbung-formular__grid {
     grid-template-columns: 1fr;
   }
 
-  .club-submit {
+  .club-absenden {
     width: 100%;
   }
 }
@@ -828,7 +828,7 @@ footer {
     font-weight: bold;
 }
 
-.foot-grid {
+.footer-grid {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr; 
   justify-content: center;
@@ -850,19 +850,19 @@ footer {
   border-radius: 10px;
 }
 
-.foot-row {
+.footer-zeile {
   display:grid;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 40px;
   font-family: var(--font-main);
 }
 
-.foot-row a{
+.footer-zeile a{
   font-family: var(--font-main);
   color: var(--color-primary);
 }
 
-.foot-row a:hover {
+.footer-zeile a:hover {
   color: var(--color-light);
 }
 
@@ -875,7 +875,7 @@ footer {
     color: var(--color-light);
 }
 
-.social-link{
+.sozial-link{
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -883,11 +883,11 @@ footer {
 }
 
 
-.social-link svg {
+.sozial-link svg {
   transition: stroke 0.3s;
 }
 
-.social-link:hover svg {
+.sozial-link:hover svg {
   stroke: var(--color-schrift);
 }
 
@@ -915,7 +915,7 @@ footer::before {
   background: linear-gradient(90deg, var(--color-secondary, #a88f6b), var(--color-schrift, #e6cfa1), var(--color-secondary, #a88f6b));
 }
 
-footer .foot-grid {
+footer .footer-grid {
   position: relative;
   display: grid;
   grid-template-columns: minmax(260px, 1.2fr) minmax(160px, 0.75fr) minmax(180px, 0.75fr);
@@ -927,16 +927,16 @@ footer .foot-grid {
   background: none;
 }
 
-footer .foot-grid > div {
+footer .footer-grid > div {
   min-width: 0;
 }
 
-footer .foot-grid > div:nth-child(2),
-footer .foot-grid > div:nth-child(3) {
+footer .footer-grid > div:nth-child(2),
+footer .footer-grid > div:nth-child(3) {
   padding-top: 8px;
 }
 
-footer .foot-grid h3 {
+footer .footer-grid h3 {
   margin: 0 0 16px;
   color: var(--color-schrift, #e6cfa1);
   font-size: clamp(1rem, 1.2vw, 1.15rem);
@@ -979,7 +979,7 @@ footer .karte-link:focus-visible {
   color: var(--color-schrift, #e6cfa1);
 }
 
-footer .foot-row {
+footer .footer-zeile {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -987,12 +987,12 @@ footer .foot-row {
   font-family: inherit;
 }
 
-footer .foot-row h3 {
+footer .footer-zeile h3 {
   margin: 0;
   font-size: 1rem;
 }
 
-footer .foot-row a {
+footer .footer-zeile a {
   position: relative;
   display: inline-flex;
   padding: 8px 0;
@@ -1002,7 +1002,7 @@ footer .foot-row a {
   font-weight: 700;
 }
 
-footer .foot-row a::after {
+footer .footer-zeile a::after {
   content: "";
   position: absolute;
   right: 0;
@@ -1015,17 +1015,17 @@ footer .foot-row a::after {
   transition: transform 0.2s ease;
 }
 
-footer .foot-row a:hover,
-footer .foot-row a:focus-visible {
+footer .footer-zeile a:hover,
+footer .footer-zeile a:focus-visible {
   color: var(--color-schrift, #e6cfa1);
 }
 
-footer .foot-row a:hover::after,
-footer .foot-row a:focus-visible::after {
+footer .footer-zeile a:hover::after,
+footer .footer-zeile a:focus-visible::after {
   transform: scaleX(1);
 }
 
-footer .social-link {
+footer .sozial-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1039,22 +1039,22 @@ footer .social-link {
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-footer .social-link svg {
+footer .sozial-link svg {
   width: 22px;
   height: 22px;
   stroke: currentColor;
   transition: transform 0.2s ease;
 }
 
-footer .social-link:hover,
-footer .social-link:focus-visible {
+footer .sozial-link:hover,
+footer .sozial-link:focus-visible {
   color: var(--color-primary, #3b1e08);
   background: var(--color-schrift, #e6cfa1);
   transform: translateY(-2px);
 }
 
-footer .social-link:hover svg,
-footer .social-link:focus-visible svg {
+footer .sozial-link:hover svg,
+footer .sozial-link:focus-visible svg {
   transform: scale(1.04);
   stroke: currentColor;
 }
@@ -1076,7 +1076,7 @@ footer > p {
     text-align: center;
   }
 
-  footer .foot-grid {
+  footer .footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -1085,11 +1085,11 @@ footer > p {
     margin: 0 auto;
   }
 
-  footer .foot-row {
+  footer .footer-zeile {
     align-items: center;
   }
 
-  footer .social-link {
+  footer .sozial-link {
     margin: 0 5px 10px;
   }
 }

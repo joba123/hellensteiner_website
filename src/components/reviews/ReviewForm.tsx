@@ -1,9 +1,11 @@
+//AI-Tool - siehe AI-Tool Doku - 
+
 import { useState } from "react";
 import { Button } from "../Button";
 import { ErrorMessage } from "../ErrorMessage";
 import { StarRatingInput } from "./StarRatingInput";
-import { addReview, type Review } from "../../reviewStore";
-import type { PublicUser } from "../../authStore";
+import { addReview, type Review } from "../../../assets/ts/reviewStore";
+import type { PublicUser } from "../../../assets/ts/authStore";
 
 interface ReviewFormProps {
   productId: string;
@@ -45,20 +47,20 @@ export function ReviewForm({ productId, user, existingReview }: ReviewFormProps)
   }
 
   return (
-    <form className="review-form" onSubmit={handleSubmit} noValidate>
-      <h3 className="review-form__title">
+    <form className="bewertungsformular" onSubmit={handleSubmit} noValidate>
+      <h3 className="bewertungsformular__titel">
         {existingReview ? "Deine Bewertung bearbeiten" : "Bewertung schreiben"}
       </h3>
 
-      <div className="review-form__field">
-        <span className="review-form__label">Deine Sterne</span>
+      <div className="bewertungsformular__feld">
+        <span className="bewertungsformular__beschriftung">Deine Sterne</span>
         <StarRatingInput value={rating} onChange={setRating} />
       </div>
 
-      <label className="review-form__field">
-        <span className="review-form__label">Dein Kommentar</span>
+      <label className="bewertungsformular__feld">
+        <span className="bewertungsformular__beschriftung">Dein Kommentar</span>
         <textarea
-          className="review-form__textarea"
+          className="bewertungsformular__textfeld"
           value={text}
           onChange={(event) => setText(event.target.value)}
           rows={4}
@@ -68,16 +70,18 @@ export function ReviewForm({ productId, user, existingReview }: ReviewFormProps)
         />
       </label>
 
-      {error && <ErrorMessage message={error} className="review-form__error" />}
+      {error && <ErrorMessage message={error} className="bewertungsformular__fehler" />}
       {status && (
-        <p className="review-form__status" role="status" aria-live="polite">
+        <p className="bewertungsformular__status" role="status" aria-live="polite">
           {status}
         </p>
       )}
 
-      <Button type="submit" className="review-form__submit">
+      <Button type="submit" className="bewertungsformular__absenden">
         {existingReview ? "Bewertung aktualisieren" : "Bewertung absenden"}
       </Button>
     </form>
   );
 }
+
+//AI-Tool - siehe AI-Tool Doku - 

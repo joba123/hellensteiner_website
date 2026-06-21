@@ -1,8 +1,9 @@
+//AI-Tool - siehe AI-Tool Doku - 
 import { useState } from "react";
 import { Button } from "../Button";
 import { ErrorMessage } from "../ErrorMessage";
 import { Input } from "../Input";
-import { register } from "../../authStore";
+import { register } from "../../../assets/ts/authStore";
 
 interface RegisterFormProps {
   onSwitchToLogin: () => void;
@@ -100,3 +101,6 @@ export function RegisterForm({ onSwitchToLogin, onSuccess }: RegisterFormProps) 
     </form>
   );
 }
+
+
+//AI-Tool - siehe AI-Tool Doku - 

@@ -4,7 +4,7 @@ import { Button } from "../components/Button";
 import { Reveal } from "../components/Reveal";
 import { kategorieReihenfolge, produkte, produktKategorieLabels, type Produkt } from "../../assets/ts/produkte";
 
-function normalizeSearchText(value: string): string {
+function sucheNormieren(value: string): string {
   return value
     .toLocaleLowerCase("de-DE")
     .normalize("NFD")
@@ -16,7 +16,7 @@ function produktPasstZurSuche(produkt: Produkt, suchbegriff: string): boolean {
     return true;
   }
 
-  const suchText = normalizeSearchText(
+  const suchText = sucheNormieren(
     [
       produkt.name,
       produkt.kurzbeschreibung,
@@ -35,32 +35,32 @@ function produktPasstZurSuche(produkt: Produkt, suchbegriff: string): boolean {
 }
 
 export function Shop() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const normalizedSearchTerm = normalizeSearchText(searchTerm.trim());
+  const [suche, setSuche] = useState("");
+  const sucheNormiert = sucheNormieren(suche.trim());
   const gefilterteProdukte = useMemo(
-    () => produkte.filter((produkt) => produktPasstZurSuche(produkt, normalizedSearchTerm)),
-    [normalizedSearchTerm]
+    () => produkte.filter((produkt) => produktPasstZurSuche(produkt, sucheNormiert)),
+    [sucheNormiert]
   );
-  const isSearching = normalizedSearchTerm.length > 0;
+  const suchtGerade = sucheNormiert.length > 0;
 
   return (
     <main className="shop-page">
       <Reveal>
-        <section className="shop-search" aria-labelledby="shop-search-title">
+        <section className="shop-suche" aria-labelledby="shop-search-title">
           <label className="shop-search__label" htmlFor="shop-search-input" id="shop-search-title">
             Shop durchsuchen
           </label>
           <input
-            className="shop-search__input"
+            className="shop-suche__eingabe"
             id="shop-search-input"
             type="search"
             placeholder="Produkt, Kategorie oder Geschmack suchen"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
+            value={suche}
+            onChange={(event) => setSuche(event.target.value)}
           />
           <p className="shop-search__meta" aria-live="polite">
-            {isSearching
-              ? `${gefilterteProdukte.length} Treffer für "${searchTerm.trim()}"`
+            {suchtGerade
+              ? `${gefilterteProdukte.length} Treffer für "${suche.trim()}"`
               : "Alle Produkte anzeigen"}
           </p>
         </section>
@@ -77,7 +77,7 @@ export function Shop() {
           <section className="shop" key={kategorie}>
             <h3>{produktKategorieLabels[kategorie]}</h3>
             <br />
-            <div className="product-grid">
+            <div className="produkt-grid">
               {produkteDerKategorie.map((produkt, index) => (
                 <Reveal key={produkt.id} delay={index * 0.07}>
                   <ShopCard produkt={produkt} />
@@ -92,7 +92,7 @@ export function Shop() {
         <section className="shop-empty" aria-live="polite">
           <h2>Keine Produkte gefunden</h2>
           <p>Versuche es mit einem anderen Suchbegriff oder setze die Suche zurück.</p>
-          <Button type="button" onClick={() => setSearchTerm("")}>
+          <Button type="button" onClick={() => setSuche("")}>
             Suche zurücksetzen
           </Button>
         </section>

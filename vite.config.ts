@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [
     react(),
     {
-      name: "copy-static-image-assets",
+      name: "copy-converted-image-assets",
       closeBundle() {
-        const source = resolve(__dirname, "assets", "images");
-        const target = resolve(__dirname, "dist", "assets", "images");
+        const source = resolve(__dirname, "assets", "images_converted");
+        const target = resolve(__dirname, "dist", "assets", "images_converted");
 
         if (existsSync(source)) {
           cpSync(source, target, { recursive: true });
@@ -22,9 +22,7 @@ export default defineConfig({
     outDir: "dist",
     rollupOptions: {
       input: {
-        index: resolve(__dirname, "index.html"),
-        historie: resolve(__dirname, "pages", "historie.html"),
-        biergarten: resolve(__dirname, "pages", "biergarten.html")
+        index: resolve(__dirname, "index.html")
       }
     }
   }

@@ -119,7 +119,7 @@
   transition: transform 0.24s ease;
 }
 
-.auth-drawer.is-open {
+.auth-drawer.ist-offen {
   transform: translateX(0);
 }
 

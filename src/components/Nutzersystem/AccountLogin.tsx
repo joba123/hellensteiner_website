@@ -1,6 +1,7 @@
+//AI-Tool - siehe AI-Tool Doku - 
 import { Button } from "../Button";
 import { UserAvatar } from "./UserAvatar";
-import { logout, type PublicUser } from "../../authStore";
+import { logout, type PublicUser } from "../../../assets/ts/authStore";
 
 interface AccountLoginProps {
   user: PublicUser;
@@ -44,3 +45,4 @@ export function AccountLogin({ user, onLogout }: AccountLoginProps) {
     </div>
   );
 }
+//AI-Tool Ende - siehe AI-Tool Doku - 

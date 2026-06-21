@@ -1,3 +1,4 @@
+//AI-Tool - siehe AI-Tool Doku - 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "../Button";
@@ -5,7 +6,7 @@ import { AccountLogin } from "./AccountLogin";
 import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";
 import { UserAvatar } from "./UserAvatar";
-import { useAuth } from "../../authStore";
+import { useAuth } from "../../../assets/ts/authStore";
 
 type AuthMode = "login" | "register";
 
@@ -60,7 +61,7 @@ export function UserWidget() {
           <>
             <button className="auth-drawer__backdrop" type="button" aria-label="Konto schließen" onClick={closeDrawer} />
 
-            <aside className="auth-drawer is-open" aria-label="Konto">
+            <aside className="auth-drawer ist-offen" aria-label="Konto">
               <div className="auth-drawer__header">
                 <div>
                   <p>{isLoggedIn ? "Willkommen zurück" : "Hellensteiner Konto"}</p>
@@ -87,3 +88,6 @@ export function UserWidget() {
     </div>
   );
 }
+
+//AI-Tool Ende- siehe AI-Tool Doku - 
+

@@ -3,7 +3,8 @@ import { Länderwahl } from "../components/Länderwahl";
 import { Datum } from "../components/Datum";
 import { ErrorMessage } from "../components/ErrorMessage";
 
-const minimumAges: Record<string, number> = {
+//Mindestalter für Bierkonsum in verschiedenen Ländern
+const mindestAlter: Record<string, number> = {  
   DE: 16,
   AT: 16,
   CH: 16,
@@ -16,7 +17,8 @@ const minimumAges: Record<string, number> = {
   CZ: 18
 };
 
-const countryNames: Record<string, string> = {
+//Ländernamen
+const laenderNamen: Record<string, string> = { 
   DE: "Deutschland",
   AT: "Österreich",
   CH: "Schweiz",
@@ -29,7 +31,7 @@ const countryNames: Record<string, string> = {
   CZ: "Tschechien"
 };
 
-function getAltersabfrageInitialState() {
+function leseFreigabe() { 
   try {
     return sessionStorage.getItem("hellensteinerAgeVerified") === "true";
   } catch {
@@ -38,46 +40,46 @@ function getAltersabfrageInitialState() {
 }
 
 export function Altersabfrage() {
-  const [isVerified, setIsVerified] = useState(getAltersabfrageInitialState);
+  const [istBestaetigt, setIstBestaetigt] = useState(leseFreigabe);
   const [error, setError] = useState("");
-  const [country, setCountry] = useState("DE");
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
+  const [land, setLand] = useState("DE");
+  const [tag, setTag] = useState("");
+  const [monat, setMonat] = useState("");
+  const [jahr, setJahr] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const minimumAge = minimumAges[country];
-    const dayNumber = Number(day);
-    const monthNumber = Number(month);
-    const yearNumber = Number(year);
-    const birthdate = new Date(yearNumber, monthNumber - 1, dayNumber);
+    const altersgrenze = mindestAlter[land];
+    const tagZahl = Number(tag);
+    const monatZahl = Number(monat);
+    const jahrZahl = Number(jahr);
+    const geburtsdatum = new Date(jahrZahl, monatZahl - 1, tagZahl);
 
-    if (!country || !minimumAge || !day || !month || !year) {
+    if (!land || !altersgrenze || !tag || !monat || !jahr) {
       setError("Bitte wählen Sie ein Land aus und geben Sie Ihr vollständiges Geburtsdatum ein.");
       return;
     }
 
     if (
-      Number.isNaN(dayNumber) ||
-      Number.isNaN(monthNumber) ||
-      Number.isNaN(yearNumber) ||
-      birthdate.getFullYear() !== yearNumber ||
-      birthdate.getMonth() !== monthNumber - 1 ||
-      birthdate.getDate() !== dayNumber ||
-      birthdate > new Date()
+      Number.isNaN(tagZahl) ||
+      Number.isNaN(monatZahl) ||
+      Number.isNaN(jahrZahl) ||
+      geburtsdatum.getFullYear() !== jahrZahl ||
+      geburtsdatum.getMonth() !== monatZahl - 1 ||
+      geburtsdatum.getDate() !== tagZahl ||
+      geburtsdatum > new Date()
     ) {
       setError("Bitte geben Sie ein gültiges Geburtsdatum ein.");
       return;
     }
 
-    const today = new Date();
-    const minimumBirthday = new Date(yearNumber + minimumAge, monthNumber - 1, dayNumber);
-    today.setHours(0, 0, 0, 0);
+    const heute = new Date();
+    const stichtag = new Date(jahrZahl + altersgrenze, monatZahl - 1, tagZahl);
+    heute.setHours(0, 0, 0, 0);
 
-    if (minimumBirthday > today) {
-      setError(`Für ${countryNames[country]} müssen Sie mindestens ${minimumAge} Jahre alt sein.`);
+    if (stichtag > heute) {
+      setError(`Für ${laenderNamen[land]} müssen Sie mindestens ${altersgrenze} Jahre alt sein.`);
       return;
     }
 
@@ -87,36 +89,36 @@ export function Altersabfrage() {
 
     }
 
-    setIsVerified(true);
+    setIstBestaetigt(true);
     setError("");
   }
 
-  if (isVerified) {
+  if (istBestaetigt) {
     return null;
   }
 
   return (
-    <div className="alter-overlay" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
-      <div className="age-gate-card">
-        <img src="/assets/images/logo_neu_2.png" alt="Hellensteiner Bräu Logo" />
-        <p className="age-gate-eyebrow">Altersprüfung</p>
+    <div className="altersabfrage-hintergrund" role="dialog" aria-modal="true" aria-labelledby="age-gate-title">
+      <div className="altersabfrage-karte">
+        <img src="/assets/images_converted/transparent/logo_neu_2.png" alt="Hellensteiner Bräu Logo" />
+        <p className="altersabfrage-vortitel">Altersprüfung</p>
         <h2 id="age-gate-title">Bitte sag uns,<br />wann du geboren bist.</h2>
-        <form className="alter-form" onSubmit={handleSubmit} noValidate>
+        <form className="altersabfrage-formular" onSubmit={handleSubmit} noValidate>
           <Länderwahl
             id="age-country"
             label="Land auswählen"
-            options={countryNames}
-            value={country}
-            onChange={setCountry}
+            options={laenderNamen}
+            value={land}
+            onChange={setLand}
           />
-          <fieldset className="age-date-fields">
+          <fieldset className="geburtsdatum-felder">
             <legend>Geburtsdatum</legend>
-            <Datum id="age-day" label="Tag" placeholder="TT" maxLength={2} value={day} onChange={setDay} />
-            <Datum id="age-month" label="Monat" placeholder="MM" maxLength={2} value={month} onChange={setMonth} />
-            <Datum id="age-year" label="Jahr" placeholder="JJJJ" maxLength={4} value={year} onChange={setYear} />
+            <Datum id="age-day" label="Tag" placeholder="TT" maxLength={2} value={tag} onChange={setTag} />
+            <Datum id="age-month" label="Monat" placeholder="MM" maxLength={2} value={monat} onChange={setMonat} />
+            <Datum id="age-year" label="Jahr" placeholder="JJJJ" maxLength={4} value={jahr} onChange={setJahr} />
           </fieldset>
-          <button type="submit" className="btn_check">WEITER</button>
-          <p className="age-gate-note">Bitte genieße verantwortungsvoll.</p>
+          <button type="submit" className="bestaetigen-knopf">WEITER</button>
+          <p className="altersabfrage-hinweis">Bitte genieße verantwortungsvoll.</p>
           <ErrorMessage message={error} />
         </form>
       </div>

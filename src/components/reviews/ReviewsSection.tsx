@@ -1,8 +1,10 @@
+//AI-Tool - siehe AI-Tool Doku - 
+
 import { ReviewForm } from "./ReviewForm";
 import { ReviewList } from "./ReviewList";
 import { StarRating } from "./StarRating";
-import { useAuth } from "../../authStore";
-import { getAverageRating, removeReview, useReviews, type Review } from "../../reviewStore";
+import { useAuth } from "../../../assets/ts/authStore";
+import { getAverageRating, removeReview, useReviews, type Review } from "../../../assets/ts/reviewStore";
 
 interface ReviewsSectionProps {
   productId: string;
@@ -24,11 +26,11 @@ export function ReviewsSection({ productId }: ReviewsSectionProps) {
   }
 
   return (
-    <section className="product-reviews" aria-labelledby="product-reviews-title">
-      <div className="product-reviews__header">
+    <section className="produkt-bewertungen" aria-labelledby="product-reviews-title">
+      <div className="produkt-bewertungen__header">
         <h2 id="product-reviews-title">Bewertungen</h2>
         {reviewCount > 0 && (
-          <div className="product-reviews__summary">
+          <div className="produkt-bewertungen__zusammenfassung">
             <StarRating rating={averageRating} ariaLabel={`Durchschnitt ${averageRating.toFixed(1)} von 5 Sternen`} />
             <strong>{averageRating.toFixed(1)}</strong>
             <span>
@@ -38,7 +40,7 @@ export function ReviewsSection({ productId }: ReviewsSectionProps) {
         )}
       </div>
 
-      <div className="product-reviews__layout">
+      <div className="produkt-bewertungen__anordnung">
         <ReviewList
           reviews={reviews}
           currentUserEmail={currentUser?.email ?? null}
@@ -48,10 +50,10 @@ export function ReviewsSection({ productId }: ReviewsSectionProps) {
         {currentUser ? (
           <ReviewForm productId={productId} user={currentUser} existingReview={existingReview} />
         ) : (
-          <div className="product-reviews__login-hint">
+          <div className="produkt-bewertungen__anmeldehinweis">
             <h3>Eigene Bewertung abgeben</h3>
             <p>Bitte melde dich an, um dieses Produkt zu bewerten.</p>
-            <p className="product-reviews__login-note">
+            <p className="produkt-bewertungen__anmeldezusatz">
               Nutze den Anmelden-Button oben rechts, um dich einzuloggen.
             </p>
           </div>
@@ -60,3 +62,6 @@ export function ReviewsSection({ productId }: ReviewsSectionProps) {
     </section>
   );
 }
+
+//AI-Tool - siehe AI-Tool Doku - 
+

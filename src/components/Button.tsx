@@ -18,20 +18,17 @@ type ButtonProps = (NativerButtonProps | LinkButtonProps) & {
 };
 
 function getButtonKlassenName(variante: ButtonVariante, klassenName?: string): string {
-  // Primary-Buttons bekommen die Standard-Klasse "club-submit", sonst keine Basis-Klasse.
-  const basisKlasse = variante === "primary" ? "club-submit" : "";
+  // Primary-Buttons bekommen die Standard-Klasse "club-absenden", sonst keine Basis-Klasse.
+  const basisKlasse = variante === "primary" ? "club-absenden" : "";
 
-  // Wenn keine zusätzliche Klasse übergeben wurde, reicht die Basis-Klasse.
   if (!klassenName) {
     return basisKlasse;
   }
 
-  // Wenn keine Basis-Klasse vorhanden ist, nur die übergebene Klasse zurückgeben.
   if (!basisKlasse) {
     return klassenName;
   }
 
-  // Beide Klassen mit einem Leerzeichen zusammensetzen.
   return `${basisKlasse} ${klassenName}`;
 }
 

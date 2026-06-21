@@ -10,23 +10,23 @@ export function CareerSection({ kategorie }: { kategorie: JobKategorie }) {
   const sectionJobs = jobs.filter((job) => job.kategorie === kategorie);
 
   return (
-    <section className="career-section" id={info.id} aria-labelledby={`${info.id}-title`}>
-      <div className="career-section__intro">
-        <p className="career-eyebrow">{info.navigationLabel}</p>
+    <section className="karriere-abschnitt" id={info.id} aria-labelledby={`${info.id}-title`}>
+      <div className="karriere-abschnitt__einleitung">
+        <p className="karriere-ueberzeile">{info.navigationLabel}</p>
         <h2 id={`${info.id}-title`}>{info.headline}</h2>
         <p>{info.intro}</p>
       </div>
 
-      <div className="career-benefits" aria-label={`Vorteile ${info.navigationLabel}`}>
+      <div className="karriere-vorteile" aria-label={`Vorteile ${info.navigationLabel}`}>
         {info.vorteile.map((vorteil) => (
-          <div className="career-benefit" key={vorteil}>
+          <div className="karriere-vorteil" key={vorteil}>
             <span aria-hidden="true">✓</span>
             <p>{vorteil}</p>
           </div>
         ))}
       </div>
 
-      <div className="career-job-grid">
+      <div className="karriere-stellen-grid">
         {sectionJobs.map((job) => (
           <JobCard job={job} key={job.id} />
         ))}

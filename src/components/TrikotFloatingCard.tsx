@@ -1,60 +1,59 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link } from "react-router";
 
-const DISMISS_STORAGE_KEY = "trikot-card-dismissed";
+const VERBERGEN_SCHLUESSEL = "trikot-card-dismissed";
 
-function readDismissed(): boolean {
+function hide(): boolean {
   if (typeof window === "undefined") {
     return false;
   }
 
   try {
-    return window.sessionStorage.getItem(DISMISS_STORAGE_KEY) === "true";
+    return window.sessionStorage.getItem(VERBERGEN_SCHLUESSEL) === "true";
   } catch {
     return false;
   }
 }
 
 export function TrikotFloatingCard() {
-  const [dismissed, setDismissed] = useState(readDismissed);
+  const [verborgen, setVerborgen] = useState(hide);
 
   useEffect(() => {
-    setDismissed(readDismissed());
+    setVerborgen(hide());
   }, []);
 
   function handleClose(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     event.stopPropagation();
-    setDismissed(true);
+    setVerborgen(true);
 
     try {
-      window.sessionStorage.setItem(DISMISS_STORAGE_KEY, "true");
+      window.sessionStorage.setItem(VERBERGEN_SCHLUESSEL, "true");
     } catch {
       // sessionStorage nicht verfügbar – Card bleibt nur für diesen Moment ausgeblendet.
     }
   }
 
-  if (dismissed) {
+  if (verborgen) {
     return null;
   }
 
   return (
-    <Link className="trikot-float-card" to="/trikot" aria-label="Sichere dir jetzt dein Deutschland Trikot">
+    <Link className="trikot-schwebekarte" to="/trikot" aria-label="Sichere dir jetzt dein Deutschland Trikot">
       <button
-        className="trikot-float-card__close"
+        className="trikot-schwebekarte__schliessen"
         type="button"
         aria-label="Hinweis schließen"
         onClick={handleClose}
       >
-        ×
       </button>
       <img
-        className="trikot-float-card__image"
-        src="/assets/images/deutschland_trikot.png"
+        className="trikot-schwebekarte__bild"
+        src="/assets/images_converted/transparent/deutschland_trikot.png"
         alt="Hellensteiner Bräu Deutschland Trikot"
       />
-      <div className="trikot-float-card__text">
-        <span className="trikot-float-card__badge">Gratis</span>
+      <div className="trikot-schwebekarte__text">
+        <span className="trikot-schwebekarte__kennzeichen">Gratis</span>
         <strong>Sichere dir jetzt dein Deutschland Trikot</strong>
       </div>
     </Link>

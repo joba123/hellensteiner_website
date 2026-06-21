@@ -1,4 +1,6 @@
-import { getUserInitials } from "../../authStore";
+//AI-Tool - siehe AI-Tool Doku - 
+
+import { getUserInitials } from "../../../assets/ts/authStore";
 
 interface UserAvatarProps {
   name: string;
@@ -14,3 +16,4 @@ export function UserAvatar({ name, className }: UserAvatarProps) {
     </span>
   );
 }
+//AI-Tool Ende - siehe AI-Tool Doku - 

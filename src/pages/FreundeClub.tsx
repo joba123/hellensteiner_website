@@ -4,41 +4,49 @@ import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { FClubCard } from "../components/FClubCard";
 import { Reveal } from "../components/Reveal";
-import { joinClub, useAuth } from "../authStore";
+import { joinClub, useAuth } from "../../assets/ts/authStore";
+import { Hero } from "../components/Hero";
+
+const FREUNDECLUB_SPRUECHE = [
+  "Genieße als Mitglied exklusive Vorteile und Aktionen.",
+  "Freibier, Brauereiführungen und gemeinsame Feste.",
+  "Werde Teil unserer Hellensteiner Gemeinschaft.",
+  "10 % Rabatt im Shop – nur für Clubmitglieder."
+];
 
 const clubVorteile = [
   {
-    imageSrc: "/assets/images/starterpaket.png",
+    imageSrc: "/assets/images_converted/starterpaket.jpg",
     imageAlt: "Starterpaket mit Hellensteiner Bräu Flasche, Glas und Shirt",
     title: "Dein Starterpaket",
     text: "Zum Start bekommst du ein exklusives Starterpaket mit Hellensteiner-Merch, einem Glas und kleinen Überraschungen."
   },
   {
-    imageSrc: "/assets/images/freibier.png",
+    imageSrc: "/assets/images_converted/freibier.jpg",
     imageAlt: "Frisch gezapftes Bier als Freibier-Vorteil",
     title: "Freibier",
     text: "Als Mitglied erwartet dich regelmäßig ein kühles Freibier. Einfach vorbeikommen, genießen und gemeinsam anstoßen."
   },
   {
-    imageSrc: "/assets/images/aktionen.png",
+    imageSrc: "/assets/images_converted/aktionen.jpg",
     imageAlt: "Freundeclub-Aktionen mit Rabatten und besonderen Angeboten",
     title: "Aktionen",
     text: "Profitiere von exklusiven Freundeclub-Aktionen, Sonderrabatten, limitierten Editionen und besonderen Angeboten."
   },
   {
-    imageSrc: "/assets/images/aktivitaeten.png",
+    imageSrc: "/assets/images_converted/aktivitaeten.jpg",
     imageAlt: "Gemeinsame Aktivität im Freundeclub",
     title: "Gemeinsame Aktivitäten",
     text: "Ob Sommerfest, Biergarten-Abend oder Ausflug: Du bist dabei, wenn wir zusammen feiern und genießen."
   },
   {
-    imageSrc: "/assets/images/geb_geschenk.png",
+    imageSrc: "/assets/images_converted/geb_geschenk.jpg",
     imageAlt: "Geburtstagsgeschenk neben einem Hellensteiner Bräu Bier",
     title: "Geburtstagsgeschenk",
     text: "An deinem Geburtstag stoßen wir mit dir an und überraschen dich mit einem besonderen Hellensteiner Geschenk."
   },
   {
-    imageSrc: "/assets/images/brF.png",
+    imageSrc: "/assets/images_converted/brF.jpg",
     imageAlt: "Brauereiführung mit Gästen in der Brauerei",
     title: "Brauereiführungen",
     text: "Erhalte spannende Einblicke hinter die Kulissen und lerne, wie unser Hellensteiner Bräu entsteht."
@@ -48,14 +56,14 @@ const clubVorteile = [
 function ClubVorteile() {
   return (
     <div className="vorteile-grid">
-      {clubVorteile.map((benefit, index) => (
-        <Reveal key={benefit.title} delay={index * 0.07}>
+      {clubVorteile.map((vorteil, index) => (
+        <Reveal key={vorteil.title} delay={index * 0.07}>
           <FClubCard
-            imageSrc={benefit.imageSrc}
-            imageAlt={benefit.imageAlt}
-            title={benefit.title}
+            imageSrc={vorteil.imageSrc}
+            imageAlt={vorteil.imageAlt}
+            title={vorteil.title}
           >
-            {benefit.text}
+            {vorteil.text}
           </FClubCard>
         </Reveal>
       ))}
@@ -64,11 +72,11 @@ function ClubVorteile() {
 }
 
 export function FreundeClub() {
-  const { currentUser: User } = useAuth();
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
-  const [statusType, setStatusType] = useState<"success" | "error">("success");
+  const { currentUser: nutzer } = useAuth();
+  const [statusText, setStatusText] = useState<string | null>(null);
+  const [statusArt, setStatusArt] = useState<"success" | "error">("success");
 
-  function Mitglied_werden(event: FormEvent<HTMLFormElement>) {
+  function mitgliedWerden(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!event.currentTarget.checkValidity()) {
@@ -76,43 +84,43 @@ export function FreundeClub() {
       return;
     }
 
-    if (!User) {
-      setStatusType("error");
-      setStatusMessage("Bitte melde dich zuerst über das Konto-Symbol oben rechts an, um dem Freundeclub beizutreten und 10 % Rabatt zu erhalten.");
+    if (!nutzer) {
+      setStatusArt("error");
+      setStatusText("Bitte melde dich zuerst über das Konto-Symbol oben rechts an, um dem Freundeclub beizutreten und 10 % Rabatt zu erhalten.");
       return;
     }
 
-    if (User.isClubMember) {
-      setStatusType("success");
-      setStatusMessage("Du bist bereits Mitglied im Freundeclub und erhältst 10 % Rabatt im Shop.");
+    if (nutzer.isClubMember) {
+      setStatusArt("success");
+      setStatusText("Du bist bereits Mitglied im Freundeclub und erhältst 10 % Rabatt im Shop.");
       return;
     }
 
-    const result = joinClub();
+    const ergebnis = joinClub();
 
-    if (!result.success) {
-      setStatusType("error");
-      setStatusMessage(result.error ?? "Beitritt fehlgeschlagen.");
+    if (!ergebnis.success) {
+      setStatusArt("error");
+      setStatusText(ergebnis.error ?? "Beitritt fehlgeschlagen.");
       return;
     }
 
-    setStatusType("success");
-    setStatusMessage("Willkommen im Freundeclub! Du erhältst ab sofort 10 % Rabatt im Shop.");
+    setStatusArt("success");
+    setStatusText("Willkommen im Freundeclub! Du erhältst ab sofort 10 % Rabatt im Shop.");
     event.currentTarget.reset();
   }
 
   return (
-    <main className="FreundeClub">
-      <section className="hero-fc" aria-labelledby="club-title">
-        <Reveal className="club-section-inner">
-          <h1 id="club-title">Willkommen im Hellensteiner Bräu Freundeclub</h1>
-          <p>Werde Teil unserer Hellensteiner Gemeinschaft voller Genuss, Geselligkeit und echter Freundschaft. Im Freundeclub erwarten dich exklusive Vorteile, besondere Aktionen und unvergessliche Erlebnisse rund um unser Hellensteiner Bräu.</p>
-          <img src="/assets/images/fc.png" alt="Hellensteiner Bräu mit Brauereigebäude, Biergarten und Bierglas" className="club-hero-image" />
-        </Reveal>
-      </section>
+    <main className="freundeclub">
+      <Hero
+        bild="/assets/images_converted/brauerei_innen.jpg"
+        bildAlt="Blick in die Hellensteiner Brauerei von innen"
+        titel="Hellensteiner Freundeclub"
+        sprueche={FREUNDECLUB_SPRUECHE}
+        badge={<span className="seit-badge">Gemeinschaft · Genuss · Vorteile</span>}
+      />
 
       <section className="vorteile" aria-labelledby="benefits-title">
-        <div className="club-section-inner">
+        <div className="club-abschnitt-innen">
           <Reveal>
             <h2 id="benefits-title">Warum mitmachen?</h2>
             <p>Als Mitglied unseres Freundeclubs genießt du zahlreiche Vorteile.</p>
@@ -122,12 +130,12 @@ export function FreundeClub() {
       </section>
 
       <section className="mitglied" aria-labelledby="join-title">
-        <Reveal className="club-section-inner">
+        <Reveal className="club-abschnitt-innen">
           <h2 id="join-title">Jetzt Mitglied werden</h2>
           <p>Melde dich direkt an und werde Teil der Hellensteiner Bräu Gemeinschaft. Das Formular sendet noch keine echten Daten.</p>
 
-          <form className="club-form" onSubmit={Mitglied_werden}>
-            <div className="club-form-grid">
+          <form className="club-formular" onSubmit={mitgliedWerden}>
+            <div className="club-formular-grid">
               <label>Anrede
                 <select name="anrede" required>
                   <option value="">Bitte wählen</option>
@@ -156,23 +164,23 @@ export function FreundeClub() {
               <Input label="Geworben von" type="text" name="geworben_von" placeholder="Optional" />
             </div>
 
-            <label className="club-checkbox">
+            <label className="club-kontrollkaestchen">
               <input type="checkbox" name="newsletter" />
               <span>Ich möchte den Freundeclub-Newsletter erhalten.</span>
             </label>
-            <label className="club-checkbox">
+            <label className="club-kontrollkaestchen">
               <input type="checkbox" name="datenschutz" required />
               <span>Ich habe die <Link to="/datenschutz">Datenschutzhinweise</Link> gelesen und stimme der Verarbeitung meiner Angaben für die Club-Anmeldung zu.</span>
             </label>
 
             <Button type="submit">Anmeldung absenden</Button>
-            {statusMessage && (
+            {statusText && (
               <p
-                className={`club-form-message is-visible${statusType === "error" ? " club-form-message--error" : ""}`}
+                className={`club-formular-meldung ist-sichtbar${statusArt === "error" ? " club-formular-meldung--fehler" : ""}`}
                 role="status"
                 aria-live="polite"
               >
-                {statusMessage}
+                {statusText}
               </p>
             )}
           </form>

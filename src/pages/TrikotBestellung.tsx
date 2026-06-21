@@ -2,11 +2,11 @@ import { useState, type FormEvent } from "react";
 import { Button } from "../components/Button";
 import { LoginForm } from "../components/Nutzersystem/LoginForm";
 import { RegisterForm } from "../components/Nutzersystem/RegisterForm";
-import { useAuth } from "../authStore";
+import { useAuth } from "../../assets/ts/authStore";
 
-type AuthMode = "login" | "register";
+type Modus = "login" | "register";
 
-const TRIKOT_IMAGE = "/assets/images/deutschland_trikot.png";
+const TRIKOT_IMAGE = "/assets/images_converted/transparent/deutschland_trikot.png";
 
 const trikotGroessen = [
   "Herren-S",
@@ -23,12 +23,12 @@ const trikotGroessen = [
 
 function TrikotShowcase() {
   return (
-    <aside className="checkout-summary trikot-showcase" aria-label="Dein Deutschland Trikot">
-      <div className="trikot-showcase__media">
+    <aside className="kassenzusammenfassung trikot-vorschau" aria-label="Dein Deutschland Trikot">
+      <div className="trikot-vorschau__bildbereich">
         <img src={TRIKOT_IMAGE} alt="Hellensteiner Bräu Deutschland Trikot" />
       </div>
       <h2>Deutschland Trikot</h2>
-      <div className="checkout-summary__totals">
+      <div className="kassenzusammenfassung__summen">
         <p>
           <span>Preis</span>
           <strong>Kostenlos</strong>
@@ -37,43 +37,43 @@ function TrikotShowcase() {
           <span>Versand</span>
           <strong>Gratis</strong>
         </p>
-        <p className="checkout-summary__total">
+        <p className="kassenzusammenfassung__gesamt">
           <span>Gesamt</span>
           <strong>0,00 €</strong>
         </p>
       </div>
-      <p className="trikot-showcase__hint">Exklusiv für registrierte Hellensteiner Nutzer.</p>
+      <p className="trikot-vorschau__hinweis">Exklusiv für registrierte Hellensteiner Nutzer.</p>
     </aside>
   );
 }
 
 function TrikotAuthGate() {
-  const [mode, setMode] = useState<AuthMode>("login");
+  const [modus, setModus] = useState<Modus>("login");
 
   return (
-    <section className="checkout-page" aria-labelledby="trikot-title">
-      <div className="checkout-page__header">
-        <p className="checkout-eyebrow">Aktion</p>
+    <section className="kassenseite" aria-labelledby="trikot-title">
+      <div className="kassenseite__header">
+        <p className="kasse-ueberzeile">Aktion</p>
         <h1 id="trikot-title">Dein kostenloses Deutschland Trikot</h1>
       </div>
 
-      <div className="checkout-layout">
-        <div className="checkout-form trikot-auth">
-          <h2 className="trikot-auth__title">
-            {mode === "login" ? "Melde dich an, um dein Trikot zu sichern" : "Registriere dich für dein Trikot"}
+      <div className="kassenanordnung">
+        <div className="kassenformular trikot-anmeldung">
+          <h2 className="trikot-anmeldung__titel">
+            {modus === "login" ? "Melde dich an, um dein Trikot zu sichern" : "Registriere dich für dein Trikot"}
           </h2>
-          <p className="trikot-auth__lead">
+          <p className="trikot-anmeldung__einleitung">
             Dein kostenloses Deutschland Trikot gibt es exklusiv für registrierte Nutzer.
-            {mode === "login"
+            {modus === "login"
               ? " Melde dich mit deinem Konto an oder erstelle ein neues."
               : " Erstelle dein kostenloses Konto und bestelle danach direkt dein Trikot."}
           </p>
 
-          <div className="trikot-auth__form">
-            {mode === "login" ? (
-              <LoginForm onSwitchToRegister={() => setMode("register")} />
+          <div className="trikot-anmeldung__formular">
+            {modus === "login" ? (
+              <LoginForm onSwitchToRegister={() => setModus("register")} />
             ) : (
-              <RegisterForm onSwitchToLogin={() => setMode("login")} />
+              <RegisterForm onSwitchToLogin={() => setModus("login")} />
             )}
           </div>
         </div>
@@ -100,9 +100,9 @@ function TrikotBestellformular({ vorname, nachname }: { vorname: string; nachnam
 
   if (bestellt) {
     return (
-      <section className="checkout-page checkout-page--center">
-        <div className="checkout-confirmation">
-          <p className="checkout-eyebrow">Bestellung</p>
+      <section className="kassenseite kassenseite--zentriert">
+        <div className="kassenbestaetigung">
+          <p className="kasse-ueberzeile">Bestellung</p>
           <h1>Dein Deutschland Trikot ist bestellt!</h1>
           <p>
             Vielen Dank! Wir haben deine Bestellung erhalten und schicken dir dein kostenloses Trikot
@@ -117,14 +117,14 @@ function TrikotBestellformular({ vorname, nachname }: { vorname: string; nachnam
   }
 
   return (
-    <section className="checkout-page" aria-labelledby="trikot-title">
-      <div className="checkout-page__header">
-        <p className="checkout-eyebrow">Aktion</p>
+    <section className="kassenseite" aria-labelledby="trikot-title">
+      <div className="kassenseite__header">
+        <p className="kasse-ueberzeile">Aktion</p>
         <h1 id="trikot-title">Dein kostenloses Deutschland Trikot</h1>
       </div>
 
-      <form className="checkout-layout" onSubmit={handleSubmit}>
-        <div className="checkout-form">
+      <form className="kassenanordnung" onSubmit={handleSubmit}>
+        <div className="kassenformular">
           <fieldset>
             <legend>Trikot-Größe</legend>
             <label>
@@ -140,7 +140,7 @@ function TrikotBestellformular({ vorname, nachname }: { vorname: string; nachnam
 
           <fieldset>
             <legend>Lieferadresse</legend>
-            <div className="checkout-form__grid">
+            <div className="kassenformular__grid">
               <label>
                 Vorname
                 <input type="text" name="firstName" autoComplete="given-name" defaultValue={vorname} required />
@@ -154,7 +154,7 @@ function TrikotBestellformular({ vorname, nachname }: { vorname: string; nachnam
               Straße und Hausnummer
               <input type="text" name="street" autoComplete="address-line1" required />
             </label>
-            <div className="checkout-form__grid">
+            <div className="kassenformular__grid">
               <label>
                 PLZ
                 <input
@@ -174,7 +174,7 @@ function TrikotBestellformular({ vorname, nachname }: { vorname: string; nachnam
             </div>
           </fieldset>
 
-          <label className="checkout-radio">
+          <label className="kassen-optionsfeld">
             <input type="checkbox" name="datenschutz" required />
             <span>Ich stimme der Verarbeitung meiner Angaben für die Trikot-Bestellung zu.</span>
           </label>

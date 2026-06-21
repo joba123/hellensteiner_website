@@ -3,16 +3,16 @@ import { Button } from "./Button";
 
 export function JobCard({ job }: { job: Job }) {
   return (
-    <article className="career-job-card">
+    <article className="karriere-stellenkarte">
       <div>
-        <p className="career-job-card__meta">{job.arbeitsmodell}</p>
+        <p className="karriere-stellenkarte__metadaten">{job.arbeitsmodell}</p>
         <h3>{job.titel}</h3>
-        <p className="career-job-card__location">
+        <p className="karriere-stellenkarte__standort">
           {job.standort} · {job.start}
         </p>
         <p>{job.kurzbeschreibung}</p>
       </div>
-      <Button as="a" href={jobDetailUrl(job.id)} className="career-job-card__button">
+      <Button as="a" href={jobDetailUrl(job.id)} className="karriere-stellenkarte__button">
         Ausschreibung ansehen
       </Button>
     </article>

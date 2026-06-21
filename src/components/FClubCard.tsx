@@ -7,9 +7,9 @@ interface FClubCardProps {
 
 export function FClubCard({ imageSrc, imageAlt, title, children }: FClubCardProps) {
   return (
-    <article className="club-card">
+    <article className="club-karte">
       <img src={imageSrc} alt={imageAlt} />
-      <div className="club-card-content">
+      <div className="club-karte-inhalt">
         <h3>{title}</h3>
         <p>{children}</p>
       </div>

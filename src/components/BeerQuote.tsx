@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { BeerQuote as createBeerQuote, type BeerQuoteItem } from "beerq";
 
-const HOUR_MS = 3_600_000;
+const stundeInMs = 3_600_000;
 
-function getHourlyQuote(): BeerQuoteItem {
-  const allQuotes = createBeerQuote("eng").getAllQuotes();
-  const hourIndex = Math.floor(Date.now() / HOUR_MS) % allQuotes.length;
-  return allQuotes[hourIndex];
+function zitatAktualisieren(): BeerQuoteItem {  //Aktuell stündlich
+  const alleQuotes = createBeerQuote("eng").getAllQuotes();
+  const stundenIndex = Math.floor(Date.now() / stundeInMs) % alleQuotes.length;
+  return alleQuotes[stundenIndex];
 }
 
-async function translateToGerman(text: string, signal: AbortSignal): Promise<string> {
-  const cacheKey = `beerQuoteDe:${text}`;
+async function uebersetzen(text: string, signal: AbortSignal): Promise<string> {
+  const cacheSchluessel = `beerQuoteDe:${text}`;
   try {
-    const cached = sessionStorage.getItem(cacheKey);
+    const cached = sessionStorage.getItem(cacheSchluessel);
     if (cached) {
       return cached;
     }
@@ -27,48 +27,48 @@ async function translateToGerman(text: string, signal: AbortSignal): Promise<str
   }
 
   const data = await response.json();
-  const translated: unknown = data?.responseData?.translatedText;
-  if (typeof translated !== "string" || translated.trim() === "") {
+  const uebersetzt: unknown = data?.responseData?.translatedText;
+  if (typeof uebersetzt !== "string" || uebersetzt.trim() === "") {
     throw new Error("Keine Übersetzung erhalten.");
   }
 
   try {
-    sessionStorage.setItem(cacheKey, translated);
+    sessionStorage.setItem(cacheSchluessel, uebersetzt);
   } catch {
 
   }
 
-  return translated;
+  return uebersetzt;
 }
 
 export function BeerQuote() {
-  const [quote, setQuote] = useState<BeerQuoteItem>(getHourlyQuote);
-  const [germanText, setGermanText] = useState<string | null>(null);
+  const [quote, setQuote] = useState<BeerQuoteItem>(zitatAktualisieren);
+  const [germanText, setText] = useState<string | null>(null);
 
   useEffect(() => {
-    const msUntilNextHour = HOUR_MS - (Date.now() % HOUR_MS);
-    const timeout = setTimeout(() => setQuote(getHourlyQuote()), msUntilNextHour + 1000);
+    const msBisNaechsteStunde = stundeInMs - (Date.now() % stundeInMs);
+    const timeout = setTimeout(() => setQuote(zitatAktualisieren()), msBisNaechsteStunde + 1000);
     return () => clearTimeout(timeout);
   }, [quote]);
 
-  // Übersetzung der Zitate ins Deutsche 
+  // Übersetzt Zitate auf Deutsche 
   useEffect(() => {
     const controller = new AbortController();
-    setGermanText(null);
+    setText(null);
 
-    translateToGerman(quote.quote, controller.signal)
-      .then(setGermanText)
-      .catch(() => setGermanText(null));
+    uebersetzen(quote.quote, controller.signal)
+      .then(setText)
+      .catch(() => setText(null));
 
     return () => controller.abort();
   }, [quote.quote]);
 
-  const displayText = germanText ?? quote.quote;
+  const anzeigeText = germanText ?? quote.quote;
 
   return (
-    <figure className="beer-quote">
-      <blockquote className="beer-quote__text">„{displayText}"</blockquote>
-      <figcaption className="beer-quote__author">– {quote.author}</figcaption>
+    <figure className="bierzitat">
+      <blockquote className="bierzitat__text">„{anzeigeText}"</blockquote>
+      <figcaption className="bierzitat__autor">– {quote.author}</figcaption>
     </figure>
   );
 }

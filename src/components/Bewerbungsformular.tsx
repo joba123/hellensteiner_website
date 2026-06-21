@@ -3,12 +3,12 @@ import type { Job } from "../../assets/ts/jobs";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
-interface BewerbungsformularProps {
+interface Bewerbungsformular_interface {
   job: Job;
   onAbgeschickt: () => void;
 }
 
-export function Bewerbungsformular({ job, onAbgeschickt }: BewerbungsformularProps) {
+export function Bewerbungsformular({ job, onAbgeschickt }: Bewerbungsformular_interface) {
   function bewerbungAbschicken(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -21,8 +21,8 @@ export function Bewerbungsformular({ job, onAbgeschickt }: BewerbungsformularPro
   }
 
   return (
-    <form className="application-form" onSubmit={bewerbungAbschicken}>
-      <div className="application-form__grid">
+    <form className="bewerbung-formular" onSubmit={bewerbungAbschicken}>
+      <div className="bewerbung-formular__grid">
         <Input label="Vorname *" labelInSpan type="text" name="vorname" autoComplete="given-name" required />
         <Input label="Nachname *" labelInSpan type="text" name="nachname" autoComplete="family-name" required />
         <Input label="E-Mail *" labelInSpan type="email" name="email" autoComplete="email" required />
@@ -44,7 +44,7 @@ export function Bewerbungsformular({ job, onAbgeschickt }: BewerbungsformularPro
       <label>
         <span>Unterlagen (Lebenslauf, Zeugnisse)</span>
         <input
-          className="application-form__files"
+          className="bewerbung-formular__dateien"
           type="file"
           name="dateien"
           multiple
@@ -52,12 +52,12 @@ export function Bewerbungsformular({ job, onAbgeschickt }: BewerbungsformularPro
         />
       </label>
 
-      <label className="application-form__check">
+      <label className="bewerbung-formular__bestaetigung">
         <input type="checkbox" name="datenschutz" required />
         <span>Ich stimme der Verarbeitung meiner Angaben zur Bearbeitung meiner Bewerbung zu. *</span>
       </label>
 
-      <Button type="submit" className="application-form__submit">
+      <Button type="submit" className="bewerbung-formular__absenden">
         Bewerbung absenden
       </Button>
     </form>

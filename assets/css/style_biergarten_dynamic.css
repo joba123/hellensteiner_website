@@ -1,0 +1,486 @@
+/* Dynamische Biergarten-Seite – nutzt die Farbvariablen aus style.css */
+
+/* ---------- Abschnitte mit beigem Strich oben ---------- */
+.dyn-section {
+  background: linear-gradient(var(--color-secondary) 2px, transparent 1px);
+  color: var(--color-schrift);
+  padding: 60px clamp(15px, 6vw, 90px);
+  text-align: center;
+}
+.dyn-section h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 10px; }
+.dyn-section .dyn-intro {
+  max-width: 720px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  color: var(--color-secondary);
+}
+
+/* ---------- Hero ---------- */
+.ueber_uns {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-primary);
+}
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform 4s ease, filter 0.5s ease;
+}
+.ueber_uns:hover .story-img { transform: scale(1.06); filter: brightness(0.55); }
+
+/* Overlay ist verborgen und erscheint beim Hovern */
+.story-overlay--dynamic {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(18, 7, 2, 0.85) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.35) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.ueber_uns:hover .story-overlay--dynamic { opacity: 1; }
+
+.story-overlay--dynamic h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-schrift);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+#hero-spruch {
+  margin: 0 auto;
+  max-width: 620px;
+  min-height: 1.6em;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--color-schrift);
+  transition: opacity 0.4s ease;
+}
+#hero-uhr {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--color-hover);
+  opacity: 0.85;
+  text-transform: capitalize;
+}
+.hero-aktionen { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 10px; }
+.hero-btn {
+  background: var(--color-schrift);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.hero-btn:hover { transform: translateY(-2px); background: var(--color-hover); }
+.hero-btn.sekundaer { background: transparent; color: var(--color-hover); border: 1px solid rgba(245, 240, 230, 0.6); }
+.hero-btn.sekundaer:hover { background: rgba(245, 240, 230, 0.12); }
+
+/* ---------- Live-Öffnungsstatus ---------- */
+.oeffnungs-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto 0;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid rgba(230, 207, 161, 0.4);
+  background: rgba(18, 7, 2, 0.35);
+}
+.oeffnungs-status .status-punkt { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; }
+.oeffnungs-status.status-offen { color: #7bd88f; }
+.oeffnungs-status.status-offen .status-punkt { background: #4caf50; animation: status-puls 1.8s infinite; }
+.oeffnungs-status.status-zu { color: #e88a7d; }
+.oeffnungs-status.status-zu .status-punkt { background: #dd2b14; }
+@keyframes status-puls {
+  0%   { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+/* ---------- Highlight-Kacheln ---------- */
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 36px;
+  margin: 10px 0 30px;
+}
+.highlight {
+  width: 220px;
+  box-sizing: border-box;
+  text-align: center;
+  background: var(--color-schrift);
+  border-radius: 18px;
+  padding: 22px 18px 24px;
+  min-height: 300px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.highlight:hover { transform: translateY(-8px); box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45); }
+.highlight img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 8px;
+  border: 4px solid var(--color-secondary);
+}
+.highlight h3 {
+  color: var(--color-primary) !important;
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  min-height: 3.75em;   /* Platz für bis zu 3 Zeilen -> Text startet überall gleich */
+}
+.highlight p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: #5b4326; }
+
+.rules-section {
+  max-width: 1100px;
+  margin: 0 auto 36px;
+}
+.rules-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.rules-divider {
+  width: 100%;
+  height: 2px;
+  background: var(--color-secondary);
+}
+.rules-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 1.6rem);
+  color: var(--color-schrift);
+  font-weight: 700;
+}
+
+/* ---------- 4 Regeln als Flip-Karten -------- */
+.regeln-titel {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  color: var(--color-schrift);
+  font-size: clamp(1.8rem, 4vw, 1.6rem);
+  font-weight: 700;
+  margin: 20px 0 26px;
+  padding-top: 34px;
+  border-top: 2px solid var(--color-secondary);
+}
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 26px;
+  max-width: 1100px;
+  margin: 30px auto 10px;
+  perspective: 1000px;
+}
+.rule-card {
+  position: relative;
+  height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+.rule-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+.rule-card:hover .rule-inner { transform: rotateY(180deg); }
+.rule-front,
+.rule-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 26px;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--color-schrift);
+  color: var(--color-primary);
+}
+.rule-front h3 { margin: 8px 0 0; font-size: 1.35rem; color: var(--color-primary); letter-spacing: 0.02em; }
+.rule-number { position: absolute; top: 14px; right: 20px; font-size: 3.2rem; font-weight: 700; color: rgba(59, 30, 8, 0.12); }
+.rule-back { transform: rotateY(180deg); }
+.rule-back p { margin: 0; font-size: 0.98rem; line-height: 1.5; color: #5b4326; }
+
+/* ---------- Öffnungszeiten-Block (zwischen zwei Strichen) ---------- */
+.oeffnungszeiten-band { border-top: 2px solid var(--color-secondary); padding-top: 42px; margin-top: 16px; }
+.oeffnungszeiten-box {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  padding: 30px 40px;
+  background: rgba(18, 7, 2, 0.28);
+  border: 1px solid rgba(230, 207, 161, 0.25);
+  border-radius: 18px;
+  color: var(--color-schrift);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.oeffnungszeiten-box h3 { margin: 0 0 14px; font-size: 1.6rem; }
+.oeffnungszeiten-box .hint { margin: 14px 0 0; font-size: 0.95rem; color: var(--color-secondary); }
+/* Zwei Spalten: Tag (fett) links, Zeit rechts – Werte beginnen bündig */
+.oeff-zeilen {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  column-gap: 34px;
+  row-gap: 8px;
+  text-align: left;
+  font-size: 1.2rem;
+}
+.oeff-zeilen span { white-space: nowrap; }
+.oeff-zeilen span:nth-child(odd) { font-weight: 600; }
+
+/* ---------- Speisekarte ---------- */
+.karte-werkzeuge { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center; margin-bottom: 8px; }
+.karte-filter { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.karte-filter-btn {
+  background: rgba(18, 7, 2, 0.3);
+  color: var(--color-schrift);
+  border: 1px solid rgba(230, 207, 161, 0.4);
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.karte-filter-btn:hover { transform: translateY(-1px); }
+.karte-filter-btn.aktiv { background: var(--color-schrift); color: var(--color-primary); }
+.karte-suche {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(230, 207, 161, 0.4);
+  background: var(--color-hover);
+  color: var(--color-primary);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  min-width: 220px;
+}
+.karte-suche::placeholder { color: #8a7a5e; }
+.karte-treffer { display: block; margin: 4px 0 24px; font-size: 0.85rem; color: var(--color-secondary); }
+.karte-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+.karte-item {
+  background: var(--color-schrift);
+  color: var(--color-primary);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.karte-item:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28); }
+.karte-item-kopf { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.karte-item-kopf h4 { margin: 0; font-size: 1.1rem; color: var(--color-primary); }
+.karte-preis { font-weight: 700; color: #8a4b1d; white-space: nowrap; }
+.karte-beschreibung { margin: 0; font-size: 0.92rem; line-height: 1.45; color: #5b4326; flex: 1; }
+.karte-item-fuss { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+.karte-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+.karte-tag-bier { background: #c8861f; }
+.karte-tag-alkoholfrei { background: #3d8b6f; }
+.karte-tag-speise { background: #a8521f; }
+.karte-groesse { font-size: 0.82rem; color: #7a6342; font-weight: 600; }
+.karte-leer { grid-column: 1 / -1; text-align: center; color: var(--color-secondary); padding: 30px; }
+
+/* ---------- Reservierung ---------- */
+.res-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  align-items: start;
+}
+.res-block {
+  background: rgba(18, 7, 2, 0.28);
+  border: 1px solid rgba(230, 207, 161, 0.25);
+  border-radius: 16px;
+  padding: 24px;
+}
+.res-block h3 { margin: 0 0 16px; color: var(--color-schrift); }
+.res-meine { max-width: 1000px; margin: 36px auto 0; }
+
+/* Kalender */
+.kal-kopf { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.kal-kopf button {
+  background: var(--color-schrift);
+  color: var(--color-primary);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.kal-kopf button:hover { background: var(--color-hover); }
+#kal-titel { font-weight: 700; font-size: 1.1rem; color: var(--color-schrift); }
+.kal-grid-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.kal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.kal-wochentag { text-align: center; font-size: 0.78rem; font-weight: 700; color: var(--color-secondary); padding-bottom: 4px; }
+.kal-tag {
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(230, 207, 161, 0.25);
+  background: var(--color-hover);
+  color: var(--color-primary);
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.kal-tag:hover:not(.deaktiviert):not(.leer) { background: var(--color-schrift); transform: scale(1.06); }
+.kal-tag.ausgewaehlt { background: #8a4b1d; color: #fff; border-color: #8a4b1d; }
+.kal-tag.deaktiviert { background: rgba(168, 143, 107, 0.18); color: rgba(168, 143, 107, 0.55); cursor: not-allowed; border-color: transparent; }
+.kal-tag.leer { background: transparent; border: none; cursor: default; }
+.kal-legende { margin-top: 14px; font-size: 0.78rem; color: var(--color-secondary); line-height: 1.5; }
+
+/* Formular */
+.res-feld { margin-bottom: 16px; }
+.res-feld label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 0.9rem; color: var(--color-schrift); }
+.res-feld input,
+.res-feld select,
+.res-feld textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(230, 207, 161, 0.4);
+  background: var(--color-hover);
+  color: var(--color-primary);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+}
+.res-feld textarea { resize: vertical; min-height: 70px; }
+.res-feld input.feld-fehler { border-color: #dd2b14; background: rgba(221, 43, 20, 0.12); }
+#res-datum-anzeige {
+  display: block;
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: rgba(138, 75, 29, 0.18);
+  border: 1px dashed rgba(230, 207, 161, 0.5);
+  color: var(--color-secondary);
+  font-size: 0.92rem;
+}
+#res-datum-anzeige.gewaehlt { color: var(--color-schrift); font-weight: 700; border-style: solid; background: rgba(138, 75, 29, 0.3); }
+#res-submit {
+  width: 100%;
+  background: var(--color-schrift);
+  color: var(--color-primary);
+  border: none;
+  padding: 14px;
+  border-radius: 30px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+#res-submit:hover:not(:disabled) { background: var(--color-hover); }
+#res-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.res-meldung { margin-top: 16px; padding: 14px 16px; border-radius: 12px; line-height: 1.5; font-size: 0.95rem; }
+.res-meldung:empty { display: none; }
+.res-meldung.erfolg { background: rgba(76, 175, 80, 0.18); border: 1px solid #4caf50; color: #cdeccf; }
+.res-meldung.fehler { background: rgba(221, 43, 20, 0.18); border: 1px solid #dd2b14; color: #f1c2bb; }
+
+/* Meine Reservierungen */
+.res-liste { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.res-eintrag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-hover);
+  color: var(--color-primary);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.res-eintrag-info { display: flex; flex-direction: column; gap: 2px; }
+.res-eintrag-info strong { font-size: 0.98rem; }
+.res-eintrag-info span { font-size: 0.85rem; color: #5b4326; }
+.res-eintrag-info em { font-size: 0.82rem; color: #7a6342; }
+.res-loeschen {
+  background: transparent;
+  border: 1px solid #dd2b14;
+  color: #dd2b14;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.res-loeschen:hover { background: #dd2b14; color: #fff; }
+.res-leer { color: var(--color-secondary); font-size: 0.9rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .res-wrapper { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .ueber_uns { height: 55vh; }
+}
+@media (max-width: 480px) {
+  .dyn-section { padding: 40px 12px; }
+  .karte-suche { min-width: 0; width: 100%; }
+  .karte-liste { grid-template-columns: 1fr; }
+  .res-block { padding: 18px; }
+  .kal-tag { font-size: 0.8rem; }
+  .ueber_uns { height: 50vh; }
+}

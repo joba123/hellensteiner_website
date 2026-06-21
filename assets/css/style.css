@@ -5,6 +5,17 @@
     --color-hover: #F5F0E6; 
     --color-schrift: #E6CFA1;
     --font-main: 'Montserrat', Montserrat;
+    --landing-ink: var(--color-schrift);
+    --landing-muted: rgba(230, 207, 161, 0.72);
+    --landing-line: rgba(230, 207, 161, 0.18);
+}
+
+/* Dunkle Unterseiten teilen sich den gleichen Seitenhintergrund wie Landing/Shop,
+   damit der helle Karriere body Verlauf nicht durchscheint */
+.biergarten-seite,
+.historie-seite,
+.freundeclub {
+  background-color: var(--color-primary);
 }
 
 body {
@@ -14,7 +25,7 @@ body {
   background-color: var(--color-primary);
 }
 
-.alter-overlay {
+.altersabfrage-hintergrund {
   position: fixed;
   inset: 0;
   padding: clamp(16px, 4vmin, 40px);
@@ -29,11 +40,11 @@ body {
   z-index: 9999;
 }
 
-.alter-overlay.is-hidden {
+.altersabfrage-hintergrund.ist-versteckt {
   display: none;
 }
 
-.age-gate-card {
+.altersabfrage-karte {
   width: min(100%, 560px);
   margin: auto;
   font-family: var(--font-main);
@@ -42,13 +53,13 @@ body {
   padding: 0;
 }
 
-.age-gate-card img {
+.altersabfrage-karte img {
   height: clamp(72px, 12vmin, 142px);
   display: block;
   margin: 0 auto clamp(16px, 3vmin, 28px);
 }
 
-.age-gate-eyebrow {
+.altersabfrage-vortitel {
   margin: 0 0 10px;
   color: var(--color-secondary);
   font-size: 0.82rem;
@@ -57,7 +68,7 @@ body {
   text-transform: uppercase;
 }
 
-.age-gate-card h2 {
+.altersabfrage-karte h2 {
   margin: 0 auto clamp(18px, 3.4vmin, 30px);
   max-width: 520px;
   color: var(--color-hover);
@@ -66,22 +77,22 @@ body {
   font-weight: 700;
 }
 
-.alter-form {
+.altersabfrage-formular {
   display: grid;
   gap: clamp(10px, 2vmin, 16px);
   max-width: 520px;
   margin: 0 auto;
 }
 
-.alter-form label {
+.altersabfrage-formular label {
   color: rgba(245, 240, 230, 0.88);
   text-align: left;
   font-weight: 700;
   font-size: 0.9rem;
 }
 
-.alter-form select,
-.alter-form input {
+.altersabfrage-formular select,
+.altersabfrage-formular input {
   width: 100%;
   box-sizing: border-box;
   min-height: 52px;
@@ -94,13 +105,13 @@ body {
   font-weight: 700;
 }
 
-.alter-form select:focus,
-.alter-form input:focus {
+.altersabfrage-formular select:focus,
+.altersabfrage-formular input:focus {
   outline: 3px solid rgba(230, 207, 161, 0.36);
   outline-offset: 2px;
 }
 
-.age-date-fields {
+.geburtsdatum-felder {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
@@ -109,7 +120,7 @@ body {
   border: 0;
 }
 
-.age-date-fields legend {
+.geburtsdatum-felder legend {
   grid-column: 1 / -1;
   padding: 0 0 8px;
   color: rgba(245, 240, 230, 0.88);
@@ -118,18 +129,18 @@ body {
   font-size: 0.9rem;
 }
 
-.age-date-fields label {
+.geburtsdatum-felder label {
   display: grid;
   gap: 7px;
 }
 
-.age-date-fields span {
+.geburtsdatum-felder span {
   color: rgba(245, 240, 230, 0.78);
   font-size: 0.78rem;
   text-transform: uppercase;
 }
 
-.btn_check {
+.bestaetigen-knopf {
   background-color: var(--color-schrift);
   color: var(--color-primary);
   min-height: 54px;
@@ -143,12 +154,12 @@ body {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.btn_check:hover {
+.bestaetigen-knopf:hover {
   background-color: var(--color-hover);
   transform: translateY(-1px);
 }
 
-.age-gate-note {
+.altersabfrage-hinweis {
   max-width: 360px;
   margin: 0 auto;
   color: rgba(245, 240, 230, 0.76);
@@ -156,7 +167,7 @@ body {
   line-height: 1.5;
 }
 
-.alter-error {
+.altersfehler {
   min-height: 1.4em;
   margin: 0;
   color: #ffdfd7;
@@ -165,11 +176,11 @@ body {
 }
 
 @media (max-width: 640px) {
-  .age-gate-card img {
+  .altersabfrage-karte img {
     height: clamp(64px, 18vw, 96px);
   }
 
-  .age-date-fields {
+  .geburtsdatum-felder {
     grid-template-columns: 1fr;
   }
 }
@@ -239,7 +250,7 @@ nav a:hover {
   color: var(--color-light);
 }
 
-.landing-page {
+.startseite {
   --landing-ink: var(--color-schrift);
   --landing-muted: rgba(230, 207, 161, 0.72);
   --landing-line: rgba(230, 207, 161, 0.18);
@@ -248,11 +259,11 @@ nav a:hover {
   overflow: hidden;
 }
 
-.landing-page * {
+.startseite * {
   box-sizing: border-box;
 }
 
-.landing-eyebrow {
+.startseite-ueberzeile {
   margin: 0 0 14px;
   color: var(--color-secondary);
   font-size: 0.78rem;
@@ -262,7 +273,7 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-.landing-hero {
+.startseiten-aufmacher {
   position: relative;
   min-height: min(680px, calc(100vh - 76px));
   display: grid;
@@ -272,7 +283,7 @@ nav a:hover {
   overflow: hidden;
 }
 
-.landing-hero::before {
+.startseiten-aufmacher::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -282,7 +293,7 @@ nav a:hover {
     linear-gradient(180deg, transparent 48%, rgba(59, 30, 8, 0.96) 100%);
 }
 
-.landing-hero__background {
+.startseiten-aufmacher__hintergrund {
   position: absolute;
   inset: -7% 0 0;
   z-index: -2;
@@ -291,11 +302,11 @@ nav a:hover {
   object-fit: cover;
 }
 
-.landing-hero__content {
+.startseiten-aufmacher__inhalt {
   width: min(880px, 100%);
 }
 
-.landing-hero h1 {
+.startseiten-aufmacher h1 {
   max-width: 760px;
   margin: 0;
   color: var(--color-hover);
@@ -305,7 +316,7 @@ nav a:hover {
   letter-spacing: 0;
 }
 
-.landing-hero p:not(.landing-eyebrow) {
+.startseiten-aufmacher p:not(.startseite-ueberzeile) {
   max-width: 580px;
   margin: 20px 0 0;
   color: rgba(245, 240, 230, 0.86);
@@ -313,7 +324,7 @@ nav a:hover {
   line-height: 1.55;
 }
 
-.landing-final__actions {
+.startseiten-abschluss__aktionen {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -321,14 +332,14 @@ nav a:hover {
   margin-top: 30px;
 }
 
-.landing-hero__ticker {
+.startseiten-aufmacher__lauftext {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: clamp(44px, 8vw, 92px);
 }
 
-.landing-hero__ticker span {
+.startseiten-aufmacher__lauftext span {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
@@ -342,20 +353,20 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-.landing-classics,
-.landing-stats,
-.landing-values,
-.landing-final {
+.startseiten-klassiker,
+.startseiten-kennzahlen,
+.startseiten-werte,
+.startseiten-abschluss {
   width: min(1080px, calc(100% - clamp(40px, 11vw, 150px)));
   margin: 0 auto;
 }
 
-.beer-quote {
+.bierzitat {
   margin: 0 auto clamp(20px, 4vmin, 32px);
   max-width: 820px;
 }
 
-.beer-quote__text {
+.bierzitat__text {
   margin: 0 0 16px;
   color: var(--color-hover);
   font-size: clamp(1.5rem, 3vw, 2.8rem);
@@ -363,14 +374,14 @@ nav a:hover {
   font-weight: 900;
 }
 
-.beer-quote__author {
+.bierzitat__autor {
   color: var(--color-schrift);
   font-size: clamp(0.95rem, 2vw, 1.2rem);
   font-weight: 700;
   letter-spacing: 0.04em;
 }
 
-.sr-only {
+.nur-screenreader {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -382,9 +393,9 @@ nav a:hover {
   border: 0;
 }
 
-.landing-section-heading h2,
-.landing-values h2,
-.landing-final h2 {
+.startseiten-abschnittsueberschrift h2,
+.startseiten-werte h2,
+.startseiten-abschluss h2 {
   margin: 0;
   color: var(--color-hover);
   font-size: clamp(1.9rem, 3.6vw, 3.6rem);
@@ -393,8 +404,8 @@ nav a:hover {
   letter-spacing: 0;
 }
 
-.landing-section-heading p:not(.landing-eyebrow),
-.landing-final p {
+.startseiten-abschnittsueberschrift p:not(.startseite-ueberzeile),
+.startseiten-abschluss p {
   max-width: 640px;
   margin: 18px 0 0;
   color: var(--landing-muted);
@@ -402,35 +413,35 @@ nav a:hover {
   line-height: 1.65;
 }
 
-.landing-classics,
-.landing-stats,
-.landing-values,
-.landing-final {
+.startseiten-klassiker,
+.startseiten-kennzahlen,
+.startseiten-werte,
+.startseiten-abschluss {
   padding: clamp(40px, 5vw, 72px) 0;
   border-top: 1px solid var(--landing-line);
 }
 
-.landing-section-heading {
+.startseiten-abschnittsueberschrift {
   max-width: 820px;
   margin-bottom: clamp(22px, 4vw, 42px);
 }
 
-.landing-section-heading--center {
+.startseiten-abschnittsueberschrift--zentriert {
   margin-inline: auto;
   text-align: center;
 }
 
-.landing-section-heading--center p {
+.startseiten-abschnittsueberschrift--zentriert p {
   margin-inline: auto;
 }
 
-.landing-stats__grid {
+.startseiten-kennzahlen__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
-.landing-stat {
+.startseiten-kennzahl {
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -443,7 +454,7 @@ nav a:hover {
     rgba(245, 240, 230, 0.04);
 }
 
-.landing-stat strong {
+.startseiten-kennzahl strong {
   color: var(--color-hover);
   font-family: var(--font-main);
   font-size: clamp(2.2rem, 3.4vw, 3.4rem);
@@ -455,14 +466,14 @@ nav a:hover {
   hyphens: auto;
 }
 
-.landing-stat strong span {
+.startseiten-kennzahl strong span {
   color: inherit;
   font: inherit;
   letter-spacing: inherit;
   text-transform: none;
 }
 
-.landing-stat > span {
+.startseiten-kennzahl > span {
   color: var(--color-secondary);
   font-size: 0.78rem;
   font-weight: 900;
@@ -470,21 +481,21 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-.landing-stat p {
+.startseiten-kennzahl p {
   margin: 0;
   color: var(--landing-muted);
   line-height: 1.55;
 }
 
-.landing-classics__viewport {
+.startseiten-klassiker__sichtbereich {
   position: relative;
   margin-inline: -16px;
   overflow: hidden;
   padding-inline: 16px;
 }
 
-.landing-classics__viewport::before,
-.landing-classics__viewport::after {
+.startseiten-klassiker__sichtbereich::before,
+.startseiten-klassiker__sichtbereich::after {
   content: "";
   position: absolute;
   top: 0;
@@ -494,17 +505,17 @@ nav a:hover {
   pointer-events: none;
 }
 
-.landing-classics__viewport::before {
+.startseiten-klassiker__sichtbereich::before {
   left: 0;
   background: linear-gradient(90deg, var(--color-primary), rgba(59, 30, 8, 0));
 }
 
-.landing-classics__viewport::after {
+.startseiten-klassiker__sichtbereich::after {
   right: 0;
   background: linear-gradient(270deg, var(--color-primary), rgba(59, 30, 8, 0));
 }
 
-.landing-classics__scroll {
+.startseiten-klassiker__scrollbereich {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: clamp(240px, 26vw, 310px);
@@ -517,41 +528,41 @@ nav a:hover {
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: rgba(230, 207, 161, 0.66) rgba(245, 240, 230, 0.08);
-  touch-action: pan-y;
+  touch-action: pan-x pan-y;
   cursor: grab;
 }
 
-.landing-classics__scroll.is-dragging {
+.startseiten-klassiker__scrollbereich.wird-gezogen {
   cursor: grabbing;
   scroll-snap-type: none;
 }
 
-.landing-classics__scroll::-webkit-scrollbar {
+.startseiten-klassiker__scrollbereich::-webkit-scrollbar {
   height: 8px;
 }
 
-.landing-classics__scroll::-webkit-scrollbar-button {
+.startseiten-klassiker__scrollbereich::-webkit-scrollbar-button {
   display: none;
   width: 0;
   height: 0;
 }
 
-.landing-classics__scroll::-webkit-scrollbar-track {
+.startseiten-klassiker__scrollbereich::-webkit-scrollbar-track {
   margin-inline: 16px;
   border-radius: 999px;
   background: rgba(245, 240, 230, 0.07);
 }
 
-.landing-classics__scroll::-webkit-scrollbar-thumb {
+.startseiten-klassiker__scrollbereich::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(230, 207, 161, 0.58), rgba(245, 240, 230, 0.86));
 }
 
-.landing-classics__scroll::-webkit-scrollbar-thumb:hover {
+.startseiten-klassiker__scrollbereich::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(90deg, rgba(230, 207, 161, 0.78), rgba(245, 240, 230, 0.96));
 }
 
-.landing-classic-card {
+.startseiten-klassiker-karte {
   min-height: 380px;
   display: grid;
   grid-template-rows: minmax(180px, auto) 1fr;
@@ -574,15 +585,15 @@ nav a:hover {
   transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.landing-classic-card:hover,
-.landing-classic-card:focus-visible {
+.startseiten-klassiker-karte:hover,
+.startseiten-klassiker-karte:focus-visible {
   transform: translateY(-3px);
   border-color: rgba(230, 207, 161, 0.48);
   background-color: rgba(245, 240, 230, 0.035);
   outline: none;
 }
 
-.landing-classic-card img {
+.startseiten-klassiker-karte img {
   width: min(100%, 200px);
   height: 190px;
   object-fit: contain;
@@ -592,14 +603,14 @@ nav a:hover {
   user-select: none;
 }
 
-.landing-classic-card > div {
+.startseiten-klassiker-karte > div {
   min-width: 0;
   display: grid;
   align-content: start;
   justify-items: start;
 }
 
-.landing-classic-card span {
+.startseiten-klassiker-karte span {
   display: inline-flex;
   margin-bottom: 10px;
   color: var(--color-secondary);
@@ -609,7 +620,7 @@ nav a:hover {
   text-transform: uppercase;
 }
 
-.landing-classic-card h3 {
+.startseiten-klassiker-karte h3 {
   margin: 0;
   color: var(--color-hover);
   font-size: clamp(1.35rem, 1.8vw, 1.9rem);
@@ -618,7 +629,7 @@ nav a:hover {
   hyphens: auto;
 }
 
-.landing-classic-card p {
+.startseiten-klassiker-karte p {
   max-width: 28ch;
   margin: 10px 0 0;
   color: var(--landing-muted);
@@ -626,11 +637,11 @@ nav a:hover {
   line-height: 1.45;
 }
 
-.landing-values {
+.startseiten-werte {
   display: block;
 }
 
-.landing-values__list {
+.startseiten-werte__liste {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-content: center;
@@ -639,7 +650,7 @@ nav a:hover {
   margin: 0 auto;
 }
 
-.landing-value-card {
+.startseiten-wertekarte {
   min-height: 190px;
   border: 0;
   border-radius: 8px;
@@ -648,7 +659,7 @@ nav a:hover {
   outline: none;
 }
 
-.landing-value-card__inner {
+.startseiten-wertekarte__innen {
   position: relative;
   min-height: 190px;
   border-radius: 8px;
@@ -656,12 +667,12 @@ nav a:hover {
   transition: transform 0.55s ease;
 }
 
-.landing-value-card:hover .landing-value-card__inner,
-.landing-value-card:focus-visible .landing-value-card__inner {
+.startseiten-wertekarte:hover .startseiten-wertekarte__innen,
+.startseiten-wertekarte:focus-visible .startseiten-wertekarte__innen {
   transform: rotateY(180deg);
 }
 
-.landing-value-card__face {
+.startseiten-wertekarte__seite {
   position: absolute;
   inset: 0;
   display: grid;
@@ -678,160 +689,162 @@ nav a:hover {
   text-align: center;
 }
 
-.landing-value-card__front h3 {
+.startseiten-wertekarte__vorderseite h3 {
   margin: 0;
   color: var(--color-hover);
   font-size: 1.18rem;
 }
 
-.landing-value-card__back {
+.startseiten-wertekarte__rueckseite {
   transform: rotateY(180deg);
   background:
     radial-gradient(circle at 50% 100%, rgba(168, 143, 107, 0.18), transparent 45%),
     rgb(33, 14, 4);
 }
 
-.landing-value-card__back p {
+.startseiten-wertekarte__rueckseite p {
   margin: 0;
   color: var(--landing-muted);
   line-height: 1.6;
 }
 
-.landing-final {
+.startseiten-abschluss {
   width: 100%;
   padding-inline: max(clamp(40px, 11vw, 150px), calc((100vw - 1080px) / 2));
   background:
     linear-gradient(90deg, rgba(25, 10, 3, 0.94), rgba(25, 10, 3, 0.54)),
-    url("../images/hellenstein_braeu_img.png") center/cover;
+    url("../images_converted/hellenstein_braeu_img.jpg") center/cover;
 }
 
-.landing-final > div {
+.startseiten-abschluss > div {
   max-width: 820px;
 }
 
-.landing-final h2 {
+.startseiten-abschluss h2 {
   max-width: 820px;
 }
 
 @media (max-width: 1080px) {
-  .landing-stats__grid {
+  .startseiten-kennzahlen__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .landing-values__list {
+  .startseiten-werte__liste {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 860px) {
-  .landing-hero {
+  .startseiten-aufmacher {
     min-height: 760px;
     align-items: end;
   }
 
-  .landing-stats__grid {
+  .startseiten-kennzahlen__grid {
     grid-template-columns: 1fr;
   }
 
-  .landing-classics__scroll {
+  .startseiten-klassiker__scrollbereich {
     grid-auto-columns: minmax(280px, 76%);
+    scroll-snap-type: x proximity;
   }
 
-  .landing-classic-card {
+  .startseiten-klassiker-karte {
     min-height: 410px;
+    scroll-snap-stop: normal;
   }
 
-  .landing-classic-card p {
+  .startseiten-klassiker-karte p {
     margin-inline: auto;
   }
 
-  .landing-values__list {
+  .startseiten-werte__liste {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 560px) {
-  .landing-hero {
+  .startseiten-aufmacher {
     min-height: 680px;
     padding: 76px 16px 30px;
   }
 
-  .landing-hero h1,
-  .landing-section-heading h2,
-  .landing-values h2,
-  .landing-final h2 {
+  .startseiten-aufmacher h1,
+  .startseiten-abschnittsueberschrift h2,
+  .startseiten-werte h2,
+  .startseiten-abschluss h2 {
     overflow-wrap: anywhere;
   }
 
-  .landing-final__actions {
+  .startseiten-abschluss__aktionen {
     align-items: stretch;
     flex-direction: column;
   }
 
-  .landing-final__actions .club-submit {
+  .startseiten-abschluss__aktionen .club-absenden {
     width: 100%;
   }
 
-  .landing-stat {
+  .startseiten-kennzahl {
     min-height: 190px;
   }
 
-  .landing-stat strong {
+  .startseiten-kennzahl strong {
     font-size: clamp(2.6rem, 15vw, 4rem);
   }
 
-  .landing-classics__scroll {
+  .startseiten-klassiker__scrollbereich {
     grid-auto-columns: minmax(250px, 88%);
     padding-bottom: 18px;
   }
 
-  .landing-classic-card {
+  .startseiten-klassiker-karte {
     min-height: 390px;
     grid-template-rows: minmax(180px, auto) 1fr;
     padding: 20px;
   }
 
-  .landing-classic-card img {
+  .startseiten-klassiker-karte img {
     width: min(100%, 200px);
     height: 190px;
   }
 
-  .landing-values__list {
+  .startseiten-werte__liste {
     grid-template-columns: 1fr;
   }
 
-  .landing-value-card,
-  .landing-value-card__inner {
+  .startseiten-wertekarte,
+  .startseiten-wertekarte__innen {
     min-height: auto;
   }
 
-  .landing-value-card__inner {
+  .startseiten-wertekarte__innen {
     display: grid;
     gap: 0;
     transform: none !important;
   }
 
-  .landing-value-card__face {
+  .startseiten-wertekarte__seite {
     position: static;
     min-height: 130px;
     transform: none;
     backface-visibility: visible;
   }
 
-  .landing-value-card__back {
+  .startseiten-wertekarte__rueckseite {
     border-top: 0;
     border-radius: 0 0 8px 8px;
   }
 
-  .landing-value-card__front {
+  .startseiten-wertekarte__vorderseite {
     border-radius: 8px 8px 0 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .landing-page *,
-  .landing-page *::before,
-  .landing-page *::after {
+  .startseite *,
+  .startseite *::before,
+  .startseite *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
@@ -842,7 +855,7 @@ nav a:hover {
 
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 
@@ -853,7 +866,7 @@ footer {
     font-weight: bold;
 }
 
-.foot-grid {
+.footer-grid {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr; 
   justify-content: center;
@@ -875,19 +888,19 @@ footer {
   border-radius: 10px;
 }
 
-.foot-row {   /* Hier dan auch Schriftart font etc für die footer Links*/
+.footer-zeile {   /* Hier dan auch Schriftart font etc für die footer Links*/
   display:grid;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 40 px;
   font-family: var(--font-main);
 }
 
-.foot-row a{
+.footer-zeile a{
   font-family: var(--font-main);
   color: var(--color-primary);
 }
 
-.foot-row a:hover {
+.footer-zeile a:hover {
   color: var(--color-light);
 }
 
@@ -900,7 +913,7 @@ footer {
     color: var(--color-light);
 }
 
-.social-link{
+.sozial-link{
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -908,11 +921,11 @@ footer {
 }
 
 
-.social-link svg {
+.sozial-link svg {
   transition: stroke 0.3s;
 }
 
-.social-link:hover svg {
+.sozial-link:hover svg {
   stroke: var(--color-schrift);
 }
 
@@ -937,13 +950,13 @@ footer {
 }
 
 /*Freunde Club Code*/
-.hero-fc {
+.freundeclub-aufmacher {
   background-size: cover;
   background-position: center;
   text-align: center;
   padding: 260px 20px;
   justify-content: center;
-  background-image: url(../images/starterpaket.png);
+  background-image: url(../images_converted/starterpaket.jpg);
 }
 
 .club {
@@ -954,7 +967,7 @@ footer {
   background: linear-gradient(var(--color-secondary) 2px, transparent 1px);
 }
 
-.club-left {
+.club-links {
   color: var(--color-schrift);
   padding-top: 50px;
   margin-left: 300px;
@@ -962,13 +975,13 @@ footer {
   font-size: larger;
 }
 
-.club-right {
+.club-rechts {
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.club-right img {
+.club-rechts img {
   width:100%;
   height: auto;
   object-fit: cover;
@@ -1016,7 +1029,7 @@ footer {
   display: flex;
 }
 
-.vorteile-grid > div > .club-card {
+.vorteile-grid > div > .club-karte {
   width: 100%;
 }
 
@@ -1063,13 +1076,13 @@ margin-bottom: 50px;}
 margin-right: 300px;}
 
 /*Kontakt Seite*/
-.kt {
+.kontaktbereich {
     display: flex;
     width: 100%;
     min-height: 100vh;
 }
 
-.kt-links {
+.kontaktbereich-links {
     width: 65%;
     padding-left: 180px;
     padding-top: 100px;
@@ -1080,28 +1093,28 @@ margin-right: 300px;}
     color: var(--color-schrift);
 }
 
-.kt-links h1 {
+.kontaktbereich-links h1 {
     font-size: 54px;
     margin-bottom: 20px;
 }
 
-.kt-links p {
+.kontaktbereich-links p {
     font-size: 24px;
     line-height: 1.6;
 }
 
-.kt-links a {
+.kontaktbereich-links a {
     color: var(--color-schrift); 
     text-decoration: none;
 }
 
-.kt-links a:hover {
+.kontaktbereich-links a:hover {
   color: var(--color-hover);
 }
 
-.kt-rechts {
+.kontaktbereich-rechts {
     width: 35%;
-    background-image: url('../images/freibier.png');
+    background-image: url('../images_converted/freibier.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1126,7 +1139,7 @@ margin-right: 300px;}
     background: linear-gradient(var(--color-secondary) 2px, transparent 1px);
   }
 
-  .club-left {
+  .club-links {
     color: var(--color-schrift);
     padding-top: 50px;
     margin-left: 50px;
@@ -1134,7 +1147,7 @@ margin-right: 300px;}
     font-size: larger;
   }
   
-  .club-right {
+  .club-rechts {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1166,7 +1179,7 @@ margin-right: 300px;}
     margin-left: 50px;
     margin-right: 50px;}
 
-  .kt-links {
+  .kontaktbereich-links {
     width: 65%;
     padding-left: 80px;
     padding-top: 50px;
@@ -1179,7 +1192,7 @@ margin-right: 300px;}
 }
 
 @media (max-width: 1050px) {
-  .foot-grid {
+  .footer-grid {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr; 
     justify-content: center;
@@ -1222,7 +1235,7 @@ margin-right: 300px;}
     text-align: left;
   }
 
-  .foot-grid{
+  .footer-grid{
     grid-template-columns: 1fr;
     background: none;
   }
@@ -1244,8 +1257,8 @@ margin-right: 300px;}
   }
 
   /*Fc ab hier*/
-  .hero-fc {
-    background-image: url(../images/freibier.png);
+  .freundeclub-aufmacher {
+    background-image: url(../images_converted/freibier.jpg);
   }
   .club {
     display: grid;
@@ -1255,7 +1268,7 @@ margin-right: 300px;}
     background: linear-gradient(var(--color-secondary) 2px, transparent 1px);
   }
 
-  .club-left {
+  .club-links {
     color: var(--color-schrift);
     padding-top: 50px;
     margin-left: 50px;
@@ -1263,7 +1276,7 @@ margin-right: 300px;}
     font-size: larger;
   }
 
-  .club-right {
+  .club-rechts {
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -1295,21 +1308,21 @@ margin-right: 300px;}
     margin-right: 50px;}
 
     /*Kt ab hier*/
-    .kt {
+    .kontaktbereich {
         flex-direction: column;
     }
 
-    .kt-links {
+    .kontaktbereich-links {
         width: auto;
         padding: 40px;
         border-right: none;
         background-image: none;
     }
 
-    .kt-rechts {
+    .kontaktbereich-rechts {
         width: auto;
         height: 550px; 
-        background-image: url('../images/biere.png');
+        background-image: url('../images_converted/biere.jpg');
         padding-bottom: 0px;
         margin-bottom: 0px;
     }
@@ -1467,13 +1480,19 @@ header .burger:focus-visible {
 
 @media (max-width: 960px) {
   header {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    column-gap: 12px;
     row-gap: 0;
     min-height: 70px;
     padding: 10px 16px;
   }
 
+  header .header-actions {
+    grid-column: 3;
+  }
+
   header .burger {
+    grid-column: 4;
     display: inline-flex;
   }
 
@@ -1548,7 +1567,7 @@ footer::before {
   background: linear-gradient(90deg, var(--color-secondary, #a88f6b), var(--color-schrift, #e6cfa1), var(--color-secondary, #a88f6b));
 }
 
-footer .foot-grid {
+footer .footer-grid {
   position: relative;
   display: grid;
   grid-template-columns: minmax(260px, 1.2fr) minmax(160px, 0.75fr) minmax(180px, 0.75fr);
@@ -1560,16 +1579,16 @@ footer .foot-grid {
   background: none;
 }
 
-footer .foot-grid > div {
+footer .footer-grid > div {
   min-width: 0;
 }
 
-footer .foot-grid > div:nth-child(2),
-footer .foot-grid > div:nth-child(3) {
+footer .footer-grid > div:nth-child(2),
+footer .footer-grid > div:nth-child(3) {
   padding-top: 8px;
 }
 
-footer .foot-grid h3 {
+footer .footer-grid h3 {
   margin: 0 0 16px;
   color: var(--color-schrift, #e6cfa1);
   font-size: clamp(1rem, 1.2vw, 1.15rem);
@@ -1612,7 +1631,7 @@ footer .karte-link:focus-visible {
   color: var(--color-schrift, #e6cfa1);
 }
 
-footer .foot-row {
+footer .footer-zeile {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1620,12 +1639,12 @@ footer .foot-row {
   font-family: inherit;
 }
 
-footer .foot-row h3 {
+footer .footer-zeile h3 {
   margin: 0;
   font-size: 1rem;
 }
 
-footer .foot-row a {
+footer .footer-zeile a {
   position: relative;
   display: inline-flex;
   padding: 8px 0;
@@ -1635,7 +1654,7 @@ footer .foot-row a {
   font-weight: 700;
 }
 
-footer .foot-row a::after {
+footer .footer-zeile a::after {
   content: "";
   position: absolute;
   right: 0;
@@ -1648,17 +1667,17 @@ footer .foot-row a::after {
   transition: transform 0.2s ease;
 }
 
-footer .foot-row a:hover,
-footer .foot-row a:focus-visible {
+footer .footer-zeile a:hover,
+footer .footer-zeile a:focus-visible {
   color: var(--color-schrift, #e6cfa1);
 }
 
-footer .foot-row a:hover::after,
-footer .foot-row a:focus-visible::after {
+footer .footer-zeile a:hover::after,
+footer .footer-zeile a:focus-visible::after {
   transform: scaleX(1);
 }
 
-footer .social-link {
+footer .sozial-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1672,22 +1691,22 @@ footer .social-link {
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-footer .social-link svg {
+footer .sozial-link svg {
   width: 22px;
   height: 22px;
   stroke: currentColor;
   transition: transform 0.2s ease;
 }
 
-footer .social-link:hover,
-footer .social-link:focus-visible {
+footer .sozial-link:hover,
+footer .sozial-link:focus-visible {
   color: var(--color-primary, #3b1e08);
   background: var(--color-schrift, #e6cfa1);
   transform: translateY(-2px);
 }
 
-footer .social-link:hover svg,
-footer .social-link:focus-visible svg {
+footer .sozial-link:hover svg,
+footer .sozial-link:focus-visible svg {
   transform: scale(1.04);
   stroke: currentColor;
 }
@@ -1709,7 +1728,7 @@ footer > p {
     text-align: center;
   }
 
-  footer .foot-grid {
+  footer .footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -1718,11 +1737,11 @@ footer > p {
     margin: 0 auto;
   }
 
-  footer .foot-row {
+  footer .footer-zeile {
     align-items: center;
   }
 
-  footer .social-link {
+  footer .sozial-link {
     margin: 0 5px 10px;
   }
 }
@@ -1738,7 +1757,7 @@ footer > p {
 }
 
 /* Freunde Club redesign */
-.FreundeClub {
+.freundeclub {
   background:
     linear-gradient(180deg, rgba(245, 240, 230, 0.04) 0%, transparent 260px),
     var(--color-primary);
@@ -1746,19 +1765,19 @@ footer > p {
   text-align: center;
 }
 
-.club-section-inner {
+.club-abschnitt-innen {
   width: min(calc(100% - clamp(40px, 11vw, 150px)), 1080px);
   margin: 0 auto;
 }
 
-.FreundeClub h1,
-.FreundeClub h2,
-.FreundeClub h3,
-.FreundeClub p {
+.freundeclub h1,
+.freundeclub h2,
+.freundeclub h3,
+.freundeclub p {
   text-align: center;
 }
 
-.FreundeClub h1 {
+.freundeclub h1 {
   max-width: 860px;
   margin: 0 auto 18px;
   color: var(--color-hover);
@@ -1766,14 +1785,14 @@ footer > p {
   line-height: 1.06;
 }
 
-.FreundeClub h2 {
+.freundeclub h2 {
   margin: 0 auto 14px;
   color: var(--color-hover);
   font-size: clamp(1.7rem, 2.8vw, 2.7rem);
   line-height: 1.14;
 }
 
-.FreundeClub p {
+.freundeclub p {
   max-width: 700px;
   margin: 0 auto;
   color: rgba(245, 240, 230, 0.86);
@@ -1781,13 +1800,13 @@ footer > p {
   line-height: 1.65;
 }
 
-.hero-fc {
+.freundeclub-aufmacher {
   display: block;
   padding: clamp(54px, 8vw, 96px) 0 clamp(48px, 7vw, 86px);
   background: none;
 }
 
-.hero-fc .club-hero-image {
+.freundeclub-aufmacher .club-aufmacher-bild {
   display: block;
   width: min(100%, 1120px);
   aspect-ratio: 3 / 2;
@@ -1825,7 +1844,7 @@ footer > p {
   transition: none;
 }
 
-.club-card {
+.club-karte {
   display: flex;
   min-width: 0;
   height: 100%;
@@ -1838,20 +1857,20 @@ footer > p {
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
-.club-card:hover,
-.club-card:focus-within {
+.club-karte:hover,
+.club-karte:focus-within {
   transform: translateY(-4px);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
 }
 
-.club-card img {
+.club-karte img {
   width: 100%;
   height: 235px;
   object-fit: cover;
   display: block;
 }
 
-.club-card-content {
+.club-karte-inhalt {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1859,14 +1878,14 @@ footer > p {
   padding: 24px 20px 28px;
 }
 
-.club-card h3 {
+.club-karte h3 {
   margin: 0 auto 12px;
   color: var(--color-primary);
   font-size: 1.28rem;
   line-height: 1.25;
 }
 
-.club-card p {
+.club-karte p {
   max-width: none;
   margin: 0 auto;
   color: rgba(59, 30, 8, 0.86);
@@ -1878,8 +1897,8 @@ footer > p {
   transform: none;
 }
 
-.vorteile-grid .club-card:hover,
-.vorteile-grid .club-card:focus-within {
+.vorteile-grid .club-karte:hover,
+.vorteile-grid .club-karte:focus-within {
   transform: translateY(-4px);
 }
 
@@ -1896,7 +1915,7 @@ footer > p {
   margin-right: auto;
 }
 
-.club-form {
+.club-formular {
   width: min(100%, 920px);
   margin: clamp(30px, 4vw, 46px) auto 0;
   padding: clamp(22px, 4vw, 38px);
@@ -1907,13 +1926,13 @@ footer > p {
   box-shadow: 0 22px 52px rgba(0, 0, 0, 0.24);
 }
 
-.club-form-grid {
+.club-formular-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.club-form label {
+.club-formular label {
   display: grid;
   gap: 8px;
   min-width: 0;
@@ -1923,8 +1942,8 @@ footer > p {
   line-height: 1.35;
 }
 
-.club-form input,
-.club-form select {
+.club-formular input,
+.club-formular select {
   width: 100%;
   min-height: 52px;
   box-sizing: border-box;
@@ -1938,13 +1957,13 @@ footer > p {
   font-weight: 700;
 }
 
-.club-form input:focus,
-.club-form select:focus {
+.club-formular input:focus,
+.club-formular select:focus {
   outline: 3px solid rgba(230, 207, 161, 0.36);
   outline-offset: 2px;
 }
 
-.club-checkbox {
+.club-kontrollkaestchen {
   display: grid;
   max-width: 760px;
   margin: 22px auto 0;
@@ -1954,7 +1973,7 @@ footer > p {
   gap: 10px;
 }
 
-.club-checkbox input {
+.club-kontrollkaestchen input {
   width: 20px;
   height: 20px;
   min-height: 20px;
@@ -1962,19 +1981,19 @@ footer > p {
   accent-color: var(--color-schrift);
 }
 
-.club-checkbox span {
+.club-kontrollkaestchen span {
   color: rgba(245, 240, 230, 0.9);
   text-align: center;
   font-weight: 600;
   line-height: 1.55;
 }
 
-.club-checkbox a {
+.club-kontrollkaestchen a {
   color: var(--color-schrift);
   font-weight: 800;
 }
 
-.club-submit {
+.club-absenden {
   display: inline-flex;
   min-height: 54px;
   margin-top: 28px;
@@ -1991,14 +2010,14 @@ footer > p {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.club-submit:hover,
-.club-submit:focus-visible {
+.club-absenden:hover,
+.club-absenden:focus-visible {
   background: var(--color-hover);
   transform: translateY(-1px);
   outline: none;
 }
 
-.club-form-message {
+.club-formular-meldung {
   max-width: 640px;
   margin: 22px auto 0;
   padding: 14px 18px;
@@ -2008,7 +2027,7 @@ footer > p {
   font-weight: 800;
 }
 
-.club-form-message.is-visible {
+.club-formular-meldung.ist-sichtbar {
   display: block;
 }
 
@@ -2019,30 +2038,30 @@ footer > p {
 }
 
 @media (max-width: 700px) {
-  .club-section-inner {
+  .club-abschnitt-innen {
     width: min(100% - 28px, 1180px);
   }
 
-  .hero-fc .club-hero-image {
+  .freundeclub-aufmacher .club-aufmacher-bild {
     aspect-ratio: 4 / 3;
   }
 
   .vorteile-grid,
-  .club-form-grid {
+  .club-formular-grid {
     grid-template-columns: 1fr;
   }
 
-  .club-card img {
+  .club-karte img {
     height: 220px;
   }
 
-  .club-form {
+  .club-formular {
     padding: 20px 14px;
   }
 }
 
 /* Schwebende Trikot-Card (Landing Page) */
-.trikot-float-card {
+.trikot-schwebekarte {
   position: fixed;
   right: clamp(14px, 3vw, 28px);
   bottom: clamp(14px, 3vw, 28px);
@@ -2061,34 +2080,34 @@ footer > p {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.trikot-float-card:hover,
-.trikot-float-card:focus-visible {
+.trikot-schwebekarte:hover,
+.trikot-schwebekarte:focus-visible {
   transform: translateY(-3px);
   box-shadow: 0 24px 54px rgba(0, 0, 0, 0.5);
   outline: none;
 }
 
-.trikot-float-card__image {
+.trikot-schwebekarte__bild {
   flex: 0 0 auto;
   width: 72px;
   height: 72px;
   object-fit: contain;
 }
 
-.trikot-float-card__text {
+.trikot-schwebekarte__text {
   display: flex;
   flex-direction: column;
   gap: 6px;
   line-height: 1.3;
 }
 
-.trikot-float-card__text strong {
+.trikot-schwebekarte__text strong {
   font-size: 0.95rem;
   font-weight: 800;
   color: var(--color-hover);
 }
 
-.trikot-float-card__badge {
+.trikot-schwebekarte__kennzeichen {
   align-self: flex-start;
   padding: 2px 10px;
   border-radius: 999px;
@@ -2100,7 +2119,7 @@ footer > p {
   text-transform: uppercase;
 }
 
-.trikot-float-card__close {
+.trikot-schwebekarte__schliessen {
   position: absolute;
   top: 6px;
   right: 8px;
@@ -2119,18 +2138,18 @@ footer > p {
   transition: background-color 0.2s ease;
 }
 
-.trikot-float-card__close:hover,
-.trikot-float-card__close:focus-visible {
+.trikot-schwebekarte__schliessen:hover,
+.trikot-schwebekarte__schliessen:focus-visible {
   background: rgba(230, 207, 161, 0.4);
   outline: none;
 }
 
 /* Trikot-Bestellseite (Kassen-Layout) */
-.trikot-showcase {
+.trikot-vorschau {
   text-align: center;
 }
 
-.trikot-showcase__media {
+.trikot-vorschau__bildbereich {
   display: grid;
   place-items: center;
   margin-bottom: 18px;
@@ -2139,7 +2158,7 @@ footer > p {
   background: radial-gradient(circle at 50% 30%, rgba(245, 240, 230, 0.12), rgba(245, 240, 230, 0.02) 70%);
 }
 
-.trikot-showcase__media img {
+.trikot-vorschau__bildbereich img {
   width: 100%;
   max-width: 360px;
   height: auto;
@@ -2147,30 +2166,30 @@ footer > p {
   filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
 }
 
-.trikot-showcase h2 {
+.trikot-vorschau h2 {
   text-align: center;
 }
 
-.trikot-showcase__hint {
+.trikot-vorschau__hinweis {
   margin: 18px 0 0;
   color: rgba(245, 240, 230, 0.7);
   font-size: 0.86rem;
 }
 
-.trikot-auth__title {
+.trikot-anmeldung__titel {
   margin: 0 0 12px;
   color: var(--color-hover, #f5f0e6);
   font-size: 1.35rem;
   font-weight: 900;
 }
 
-.trikot-auth__lead {
+.trikot-anmeldung__einleitung {
   margin: 0 0 22px;
   color: rgba(245, 240, 230, 0.82);
   line-height: 1.6;
 }
 
-.checkout-form select {
+.kassenformular select {
   width: 100%;
   min-height: 52px;
   box-sizing: border-box;
@@ -2184,17 +2203,17 @@ footer > p {
 }
 
 @media (max-width: 560px) {
-  .trikot-float-card {
+  .trikot-schwebekarte {
     gap: 10px;
     padding: 12px 14px 12px 12px;
   }
 
-  .trikot-float-card__image {
+  .trikot-schwebekarte__bild {
     width: 56px;
     height: 56px;
   }
 
-  .trikot-float-card__text strong {
+  .trikot-schwebekarte__text strong {
     font-size: 0.85rem;
   }
 }

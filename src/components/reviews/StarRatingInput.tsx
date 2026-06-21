@@ -1,3 +1,5 @@
+//AI-Tool - siehe AI-Tool Doku - 
+
 import { useState } from "react";
 
 interface StarRatingInputProps {
@@ -13,13 +15,13 @@ export function StarRatingInput({ value, onChange, name = "rating" }: StarRating
   const activeValue = hoverValue || value;
 
   return (
-    <span className="star-rating-input" role="radiogroup" aria-label="Sterne-Bewertung">
+    <span className="sternebewertung-eingabe" role="radiogroup" aria-label="Sterne-Bewertung">
       {STAR_VALUES.map((star) => (
         <button
           key={star}
           type="button"
           name={name}
-          className={star <= activeValue ? "star-rating-input__star is-active" : "star-rating-input__star"}
+          className={star <= activeValue ? "sternebewertung-eingabe__stern ist-aktiv" : "sternebewertung-eingabe__stern"}
           aria-label={`${star} ${star === 1 ? "Stern" : "Sterne"}`}
           aria-pressed={star === value}
           onMouseEnter={() => setHoverValue(star)}
@@ -34,3 +36,5 @@ export function StarRatingInput({ value, onChange, name = "rating" }: StarRating
     </span>
   );
 }
+
+//AI-Tool - siehe AI-Tool Doku - 

@@ -39,7 +39,7 @@ body {
   display: none;
 }
 
-.foot-grid {
+.footer-grid {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr; 
   justify-content: center;
@@ -61,19 +61,19 @@ body {
   border-radius: 10px;
 }
 
-.foot-row {   /* Hier dan auch Schriftart font etc für die footer Links*/
+.footer-zeile {   /* Hier dan auch Schriftart font etc für die footer Links*/
   display:grid;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 40 px;
   font-family: var(--font-main);
 }
 
-.foot-row a{
+.footer-zeile a{
   font-family: var(--font-main);
   color: var(--color-primary);
 }
 
-.foot-row a:hover {
+.footer-zeile a:hover {
   color: var(--color-light);
 }
 
@@ -86,7 +86,7 @@ body {
     color: var(--color-light);
 }
 
-.social-link{
+.sozial-link{
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -94,11 +94,11 @@ body {
 }
 
 
-.social-link svg {
+.sozial-link svg {
   transition: stroke 0.3s;
 }
 
-.social-link:hover svg {
+.sozial-link:hover svg {
   stroke: var(--color-schrift);
 }
 
@@ -184,7 +184,7 @@ nav a:hover {
 }
 
 .hero {
-  background-image: url('../images/hero_img.png');
+  background-image: url('../images_converted/hero_img.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -370,7 +370,7 @@ nav a:hover {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 footer {
@@ -1112,7 +1112,7 @@ footer::before {
   background: linear-gradient(90deg, var(--color-secondary, #a88f6b), var(--color-schrift, #e6cfa1), var(--color-secondary, #a88f6b));
 }
 
-footer .foot-grid {
+footer .footer-grid {
   position: relative;
   display: grid;
   grid-template-columns: minmax(260px, 1.2fr) minmax(160px, 0.75fr) minmax(180px, 0.75fr);
@@ -1124,16 +1124,16 @@ footer .foot-grid {
   background: none;
 }
 
-footer .foot-grid > div {
+footer .footer-grid > div {
   min-width: 0;
 }
 
-footer .foot-grid > div:nth-child(2),
-footer .foot-grid > div:nth-child(3) {
+footer .footer-grid > div:nth-child(2),
+footer .footer-grid > div:nth-child(3) {
   padding-top: 8px;
 }
 
-footer .foot-grid h3 {
+footer .footer-grid h3 {
   margin: 0 0 16px;
   color: var(--color-schrift, #e6cfa1);
   font-size: clamp(1rem, 1.2vw, 1.15rem);
@@ -1176,7 +1176,7 @@ footer .karte-link:focus-visible {
   color: var(--color-schrift, #e6cfa1);
 }
 
-footer .foot-row {
+footer .footer-zeile {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1184,12 +1184,12 @@ footer .foot-row {
   font-family: inherit;
 }
 
-footer .foot-row h3 {
+footer .footer-zeile h3 {
   margin: 0;
   font-size: 1rem;
 }
 
-footer .foot-row a {
+footer .footer-zeile a {
   position: relative;
   display: inline-flex;
   padding: 8px 0;
@@ -1199,7 +1199,7 @@ footer .foot-row a {
   font-weight: 700;
 }
 
-footer .foot-row a::after {
+footer .footer-zeile a::after {
   content: "";
   position: absolute;
   right: 0;
@@ -1212,17 +1212,17 @@ footer .foot-row a::after {
   transition: transform 0.2s ease;
 }
 
-footer .foot-row a:hover,
-footer .foot-row a:focus-visible {
+footer .footer-zeile a:hover,
+footer .footer-zeile a:focus-visible {
   color: var(--color-schrift, #e6cfa1);
 }
 
-footer .foot-row a:hover::after,
-footer .foot-row a:focus-visible::after {
+footer .footer-zeile a:hover::after,
+footer .footer-zeile a:focus-visible::after {
   transform: scaleX(1);
 }
 
-footer .social-link {
+footer .sozial-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1236,22 +1236,22 @@ footer .social-link {
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-footer .social-link svg {
+footer .sozial-link svg {
   width: 22px;
   height: 22px;
   stroke: currentColor;
   transition: transform 0.2s ease;
 }
 
-footer .social-link:hover,
-footer .social-link:focus-visible {
+footer .sozial-link:hover,
+footer .sozial-link:focus-visible {
   color: var(--color-primary, #3b1e08);
   background: var(--color-schrift, #e6cfa1);
   transform: translateY(-2px);
 }
 
-footer .social-link:hover svg,
-footer .social-link:focus-visible svg {
+footer .sozial-link:hover svg,
+footer .sozial-link:focus-visible svg {
   transform: scale(1.04);
   stroke: currentColor;
 }
@@ -1273,7 +1273,7 @@ footer > p {
     text-align: center;
   }
 
-  footer .foot-grid {
+  footer .footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -1282,11 +1282,11 @@ footer > p {
     margin: 0 auto;
   }
 
-  footer .foot-row {
+  footer .footer-zeile {
     align-items: center;
   }
 
-  footer .social-link {
+  footer .sozial-link {
     margin: 0 5px 10px;
   }
 }

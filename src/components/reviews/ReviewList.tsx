@@ -1,5 +1,7 @@
+//AI-Tool - siehe AI-Tool Doku - 
+
 import { ReviewItem } from "./ReviewItem";
-import type { Review } from "../../reviewStore";
+import type { Review } from "../../../assets/ts/reviewStore";
 
 interface ReviewListProps {
   reviews: readonly Review[];
@@ -9,11 +11,11 @@ interface ReviewListProps {
 
 export function ReviewList({ reviews, currentUserEmail, onDelete }: ReviewListProps) {
   if (reviews.length === 0) {
-    return <p className="review-list__empty">Für dieses Produkt gibt es noch keine Bewertungen.</p>;
+    return <p className="bewertungsliste__leer">Für dieses Produkt gibt es noch keine Bewertungen.</p>;
   }
 
   return (
-    <div className="review-list">
+    <div className="bewertungsliste">
       {reviews.map((review) => (
         <ReviewItem
           key={review.id}
@@ -25,3 +27,5 @@ export function ReviewList({ reviews, currentUserEmail, onDelete }: ReviewListPr
     </div>
   );
 }
+
+//AI-Tool - siehe AI-Tool Doku - 

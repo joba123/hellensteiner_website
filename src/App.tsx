@@ -1,37 +1,50 @@
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router";
-import { CheckoutApp } from "./CheckoutApp";
-import { CareerApp } from "./CareerApp";
-import { JobDetailApp } from "./JobDetailApp";
-import { BewerbungApp } from "./BewerbungApp";
+import { useEffect, useLayoutEffect } from "react";
+import { BrowserRouter, Routes as Routen, Route, useLocation } from "react-router";
+import { CheckoutApp as KassenSeite } from "./pages/CheckoutApp";
+import { CareerApp as KarriereSeite } from "./pages/CareerApp";
+import { JobDetailApp as StellenDetailSeite } from "./pages/JobDetailApp";
+import { BewerbungApp as BewerbungsSeite } from "./pages/BewerbungApp";
 import { ProduktDetailSeite } from "./pages/ProduktDetailSeite";
-import { Button } from "./components/Button";
-import { SiteLayout } from "./components/SiteLayout";
-import { AgbPage, DatenschutzPage, ImpressumPage } from "./pages/LegalPages";
-import { FreundeClub } from "./pages/FreundeClub";
-import { Kontakt } from "./pages/Kontakt";
-import { LandingPage } from "./pages/LandingPage";
-import { Shop } from "./pages/Shop";
-import { TrikotBestellung } from "./pages/TrikotBestellung";
+import { Button as Knopf } from "./components/Button";
+import { SiteLayout as SeitenLayout } from "./components/SiteLayout";
+import { AgbPage as AgbSeite, DatenschutzPage as DatenschutzSeite, ImpressumPage as ImpressumSeite } from "./pages/LegalPages";
+import { FreundeClub as FreundeClubSeite } from "./pages/FreundeClub";
+import { Kontakt as KontaktSeite } from "./pages/Kontakt";
+import { LandingPage as Startseite } from "./pages/LandingPage";
+import { Shop as ShopSeite } from "./pages/Shop";
+import { TrikotBestellung as TrikotBestellSeite } from "./pages/TrikotBestellung";
+import { BiergartenApp as BiergartenSeite } from "./pages/BiergartenApp";
+import { HistorieApp as HistorieSeite } from "./pages/HistorieApp";
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function Hochscrollen() {
+  const { pathname: pfadname } = useLocation();
 
   useEffect(() => {
+    const bisherigeScrollWiederherstellung = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    return () => {
+      window.history.scrollRestoration = bisherigeScrollWiederherstellung;
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pfadname]);
 
   return null;
 }
 
-function NotFoundPage() {
+function NichtGefunden() {
   return (
-    <main className="application-page application-page--empty">
-      <section className="application-empty">
-        <p className="career-eyebrow">Hellensteiner Bräu</p>
+    <main className="bewerbung-seite bewerbung-seite--leer">
+      <section className="bewerbung-leer">
+        <p className="karriere-ueberzeile">Hellensteiner Bräu</p>
         <h1>Seite nicht gefunden</h1>
         <p>Diese Seite existiert nicht oder wurde in die neue React-Navigation verschoben.</p>
-        <Button as="a" href="/">Zur Startseite</Button>
+        <Knopf as="a" href="/">Zur Startseite</Knopf>
       </section>
     </main>
   );
@@ -40,125 +53,145 @@ function NotFoundPage() {
 export function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
+      <Hochscrollen />
+      <Routen>
         <Route
           path="/"
           element={
-            <SiteLayout>
-              <LandingPage />
-            </SiteLayout>
+            <SeitenLayout>
+              <Startseite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/shop"
           element={
-            <SiteLayout aktiveRoute="shop">
-              <Shop />
-            </SiteLayout>
+            <SeitenLayout aktiveRoute="shop">
+              <ShopSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/produkt/:id"
           element={
-            <SiteLayout aktiveRoute="shop">
+            <SeitenLayout aktiveRoute="shop">
               <main>
                 <ProduktDetailSeite />
               </main>
-            </SiteLayout>
+            </SeitenLayout>
+          }
+        />
+        <Route
+          path="/historie"
+          element={
+            <SeitenLayout aktiveRoute="historie">
+              <main className="historie-seite">
+                <HistorieSeite />
+              </main>
+            </SeitenLayout>
+          }
+        />
+        <Route
+          path="/biergarten"
+          element={
+            <SeitenLayout aktiveRoute="biergarten">
+              <main className="biergarten-seite">
+                <BiergartenSeite />
+              </main>
+            </SeitenLayout>
           }
         />
         <Route
           path="/freunde-club"
           element={
-            <SiteLayout aktiveRoute="freunde-club">
-              <FreundeClub />
-            </SiteLayout>
+            <SeitenLayout aktiveRoute="freunde-club">
+              <FreundeClubSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/karriere"
           element={
-            <SiteLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
-              <CareerApp />
-            </SiteLayout>
+            <SeitenLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
+              <KarriereSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/bewerbung/:id"
           element={
-            <SiteLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
-              <JobDetailApp />
-            </SiteLayout>
+            <SeitenLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
+              <StellenDetailSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/bewerbung/:id/formular"
           element={
-            <SiteLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
-              <BewerbungApp />
-            </SiteLayout>
+            <SeitenLayout aktiveRoute="karriere" warenkorbAnzeigen={false}>
+              <BewerbungsSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/checkout"
           element={
-            <SiteLayout aktiveRoute="shop">
+            <SeitenLayout aktiveRoute="shop">
               <main>
-                <CheckoutApp />
+                <KassenSeite />
               </main>
-            </SiteLayout>
+            </SeitenLayout>
           }
         />
         <Route
           path="/trikot"
           element={
-            <SiteLayout>
-              <TrikotBestellung />
-            </SiteLayout>
+            <SeitenLayout>
+              <TrikotBestellSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/kontakt"
           element={
-            <SiteLayout>
-              <Kontakt />
-            </SiteLayout>
+            <SeitenLayout>
+              <KontaktSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/impressum"
           element={
-            <SiteLayout>
-              <ImpressumPage />
-            </SiteLayout>
+            <SeitenLayout>
+              <ImpressumSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/datenschutz"
           element={
-            <SiteLayout>
-              <DatenschutzPage />
-            </SiteLayout>
+            <SeitenLayout>
+              <DatenschutzSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="/agb"
           element={
-            <SiteLayout>
-              <AgbPage />
-            </SiteLayout>
+            <SeitenLayout>
+              <AgbSeite />
+            </SeitenLayout>
           }
         />
         <Route
           path="*"
           element={
-            <SiteLayout warenkorbAnzeigen={false}>
-              <NotFoundPage />
-            </SiteLayout>
+            <SeitenLayout warenkorbAnzeigen={false}>
+              <NichtGefunden />
+            </SeitenLayout>
           }
         />
-      </Routes>
+      </Routen>
     </BrowserRouter>
   );
 }

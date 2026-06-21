@@ -1,3 +1,5 @@
+//AI-Tool - siehe AI-Tool Doku - 
+
 interface StarRatingProps {
   rating: number;
   size?: "small" | "medium" | "large";
@@ -9,7 +11,7 @@ const STAR_VALUES = [1, 2, 3, 4, 5] as const;
 
 export function StarRating({ rating, size = "medium", className, ariaLabel }: StarRatingProps) {
   const roundedRating = Math.round(rating);
-  const starClassName = ["star-rating", `star-rating--${size}`, className].filter(Boolean).join(" ");
+  const starClassName = ["sternebewertung", `star-rating--${size}`, className].filter(Boolean).join(" ");
   const label = ariaLabel ?? `Bewertung: ${roundedRating} von 5 Sternen`;
 
   return (
@@ -18,7 +20,7 @@ export function StarRating({ rating, size = "medium", className, ariaLabel }: St
         <span
           key={value}
           aria-hidden="true"
-          className={value <= roundedRating ? "star-rating__star is-filled" : "star-rating__star"}
+          className={value <= roundedRating ? "sternebewertung__stern ist-ausgefuellt" : "sternebewertung__stern"}
         >
           ★
         </span>
@@ -26,3 +28,5 @@ export function StarRating({ rating, size = "medium", className, ariaLabel }: St
     </span>
   );
 }
+
+//AI-Tool - siehe AI-Tool Doku - 

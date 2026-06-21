@@ -153,7 +153,7 @@ function LegalPage({
           <article key={section.title}>
             <h1>{section.title}</h1>
             {section.body.map((paragraph) => (
-              <p className="p2" key={paragraph}>{paragraph}</p>
+              <p className="absatz-zwei" key={paragraph}>{paragraph}</p>
             ))}
           </article>
         ))}
@@ -167,7 +167,7 @@ export function DatenschutzPage() {
     <LegalPage
       title="Datenschutzrichtlinie"
       dateLabel="Aktualisiert am:"
-      image="/assets/images/Image-Datenschutz.png"
+      image="/assets/images_converted/Image-Datenschutz.jpg"
       imageAlt="Freunde stoßen mit Hellensteiner-Bräu-Biergläsern und -Flasche an."
       sections={privacySections}
     />
@@ -179,7 +179,7 @@ export function AgbPage() {
     <LegalPage
       title="Allgemeine Geschäftsbedingungen (AGB)"
       dateLabel="Aktualisiert am:"
-      image="/assets/images/Image-AGB.png"
+      image="/assets/images_converted/Image-AGB.jpg"
       imageAlt="Holzfässer mit Hellensteiner-Bräu-Logo in einer Brauerei."
       sections={agbSections}
     />
@@ -191,7 +191,7 @@ export function ImpressumPage() {
     <LegalPage
       title="Impressum"
       dateLabel="Stand:"
-      image="/assets/images/Image-Impressum.png"
+      image="/assets/images_converted/Image-Impressum.jpg"
       imageAlt="Nahaufnahme eines glänzenden Bierzapfhahns in einer Bar."
       sections={impressumSections}
     />
